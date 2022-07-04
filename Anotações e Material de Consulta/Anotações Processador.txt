@@ -1,0 +1,31 @@
+Memória é mantida em separado no componente "RAM", que:
+    -recebe o conteúdo a ser armazenado através de M5
+    -transmite o conteúdo a ser lido através de Mem
+    -recebe o endereço de onde vai ser lido ou onde vai ser escrito através de M1
+    -recebe "RW" como input
+
+Load e Store consomem dois ciclos de clock, e por isso tem coisa acontecendo nelas tanto no Fetch quanto no Execute
+
+Instruções executadas no estado FETCH:
+    -INCHAR
+    -OUTCHAR
+    -MOV
+
+Muxes:
+    -M1:    seleciona qual endereço de memória vai ser usado num dado ciclo
+    -M2:    seleciona o que entra nos registradores (conectado a um Demux que seleciona pra qual registrador entra o valor)
+    -M3:    (normalmente) seleciona qual registrador vai mandar conteúdo pra primeira entrada da ULA 
+    -M4:    (normalmente) seleciona qual registrador vai mandar conteúdo pra segunda entrada da ULA
+    -M5:    seleciona o que é mandado de input pra memória RAM
+    -M6:    seleciona 
+    
+    M2 e M6 têm sinais de controle especiais
+
+Variáveis:
+    -LoadIR:    sinal de controle do IR. (IR aparece recebendo input do FR. WTF?)
+    -RW:        sinal de Letura/Ecrita da memória em Leitura  (0 - ler, 1 - escrever)
+    -LoadReg(RX):   faz com que reg(RX) receba o conteúdo de MUX2
+    -Mem:       indica conteúdo da memória
+    -selM2:     controle direto do M2. Pode deixar passar o conteúdo da ula (:=sULA), da memória (:=sMem), do M4(:=sM4), do teclad0 (:=sTeclado) ou do Stack Pointer (:=sSP)
+
+A, B, C, D, E, 

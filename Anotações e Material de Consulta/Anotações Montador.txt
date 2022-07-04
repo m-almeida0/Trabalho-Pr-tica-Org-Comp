@@ -1,0 +1,185 @@
+/*Look - último caractere lido
+progr_buffer - buffer do programa. 
+parser_SkipUntil - 
+parser_GetItem_s - Pega nome de label, registrador ou intrucao
+
+parser_GetChar - makes "Look" the char in the position currently being read by the parser, then icreases the position variable
+#define JMPR            "001010"
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!LINHA 1510!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+
+// Para incluir uma nova INSTRUCAO, é necessario mexer em 3 ugares diferentes:
+// 1) Definir os separadores da Instrucao e quantas linhas do EXE (mif) ela necessita:
+    /*  case LOAD_CODE :
+        case STORE_CODE :
+        case LOADIMED_CODE :
+        case STOREIMED_CODE :
+            parser_SkipUntil(',');
+            parser_SkipUntilEnd(); 
+            end_cnt+=2;
+            break;
+    */
+
+// 2) Explicar como o Montador vai montar os BITs da Instrucao e escrever no arquivo:
+    /*  case LOAD_CODE : // Load R1, End
+        str_tmp1 = parser_GetItem_s();
+        val1 = BuscaRegistrador(str_tmp1);
+        free(str_tmp1);
+        parser_Match(',');
+        val2 = RecebeEndereco();
+        str_tmp1 = ConverteRegistrador(val1);
+        str_tmp2 = NumPBinString(val2);
+        sprintf(str_msg,"%s%s0000000",LOAD,str_tmp1);
+        parser_Write_Inst(str_msg,end_cnt);
+        end_cnt += 1;
+        sprintf(str_msg,"%s",str_tmp2);
+        parser_Write_Inst(str_msg,end_cnt);
+        end_cnt +=1;
+        free(str_tmp1);
+        free(str_tmp2);
+        break;
+    */
+
+// 3) Buscar o nome da instrucao na base de instrucoes e retornar 'op_code interno' da instrucao:
+    /*  if (strcmp(str_tmp,LOAD_STR) == 0)
+        {
+            return LOAD_CODE;
+        }
+    */
+
+JMPINDEX_CODE           98//incondicional
+JEQINDEX_CODE           99//igual
+JNEINDEX_CODE          106//não igual
+JZINDEX_CODE           107//zero
+JNZINDEX_CODE          108//not zero
+JCINDEX_CODE           109//carry
+JNCINDEX_CODE          110//not carry
+JGTINDEX_CODE          111//greater than
+JLTINDEX_CODE          112//lesser than
+JEGINDEX_CODE          113//equal or greater
+JELINDEX_CODE          114//equal or lesser
+JOINDEX_CODE           115//overflow
+JNOINDEX_CODE          116//not overflow
+JDZINDEX_CODE          117//divide by zero
+JNINDEX_CODE           118//negative
+
+/* JMP INDEX*/
+#define JID_STR                  "JID"
+#define JIEQ_STR                 "JIEQ"
+#define JINE_STR                 "JINE"
+#define JIZ_STR                  "JIZ"
+#define JINZ_STR                 "JINZ"
+#define JIC_STR                  "JIC"
+#define JINC_STR                 "JINC"
+#define JIGT_STR                 "JIGR"
+#define JILT_STR                 "JILE"
+#define JIEG_STR                 "JIEG"
+#define JIEL_STR                 "JIEL"
+#define JIO_STR                  "JIOV"
+#define JINO_STR                 "JINO"
+#define JIDZ_STR                 "JIDZ"
+#define JIN_STR                  "JIN"
+
+case JMP_CODE :
+    val1 = RecebeEndereco();
+    str_tmp1 = NumPBinString(val1);
+    sprintf(str_msg,"%s%s000000",JMP,NO_COND);//printa o começo do comando numa string auxiliar de 200 caracteres..?
+    parser_Write_Inst(str_msg,end_cnt);// printa a string temporária no arquivo de escrita na posição demarcada por end_cnt
+    end_cnt += 1;
+    sprintf(str_msg,"%s",str_tmp1);
+    parser_Write_Inst(str_msg,end_cnt);
+    end_cnt +=1;
+    free(str_tmp1);
+    break;
+
+
+case STOREINDEX_CODE :
+    str_tmp1 = parser_GetItem_s();/* Pega nome de label, registrador ou intrucao */
+    val1 = BuscaRegistrador(str_tmp1);/* Retorna codigo do registrador, dependendo do texto(poderá ser Rx, rx ou texto de EQU de registrador) */
+    free(str_tmp1);
+    parser_Match(',');//procura uma vírgula, não vamos precisar
+    str_tmp2 = parser_GetItem_s();
+    val2 = BuscaRegistrador(str_tmp2);
+    free(str_tmp2);
+    str_tmp1 = ConverteRegistrador(val1);
+    str_tmp2 = ConverteRegistrador(val2);
+    sprintf(str_msg,"%s%s%s0000",STOREINDEX,str_tmp1,str_tmp2);
+    free(str_tmp1);
+    free(str_tmp2);
+    parser_Write_Inst(str_msg,end_cnt);
+    end_cnt += 1;
+    break;
+
+
+unsigned short RecebeEndereco(void)
+{
+
+    unsigned short ret;
+    char * str_tmp;
+    /* ATENCAO! Labels e EQU nao podem comecar com numeros!!! */
+    if (parser_IsDigit(Look))//"parser_IsDigit" verifica se Look é um número
+    {
+        str_tmp = parser_GetNum_s();//pega número como caractere
+        ret = atoi(str_tmp);
+        free(str_tmp);
+        return ret;
+    }
+    else   /* EQU : X ou Label : Var */
+    {
+        str_tmp = parser_GetItem_s();//SUPOSTAMENTE pega nome de label, registrador ou intrucao
+        /* Busca EQU, se nao encontrar, busca Label */
+        ret = FindLabel(str_tmp);//finds a label. Supposedly.
+        free(str_tmp);
+        return ret;
+    }
+    return 0;
+}
+
+
+char * parser_GetItem_s(void)
+{
+    char *Token;
+    Token = (char *)calloc(STRTAM,sizeof(char));//Token now is a size 200 vector
+    int i=0;
+    if (!parser_IsAlNum(Look))/*se o caractere atual for número, letra ou '.', '-' ou '_'*/
+        parser_Expected("Label, Instrucao ou Registrador");//para o processo se tiver erro
+    while (parser_IsAlNum(Look))/*se o caractere atual for número, letra ou '.', '-' ou '_'*/
+    {
+        Token[i]=Look;
+        parser_GetChar();//pega o próximo caractere, pula de instrução se achar um \n ou um \r
+        i++;
+        if (i>LABEL_MAX_SIZE-1) parser_Expected("Menos caracteres");//detecção de erro
+    }
+    Token[i]='\0';
+    parser_SkipWhite();//pula todos s brancos
+    parser_SkipComment();//pula comentários
+    parser_SkipWhite();//pula brancos
+    return Token;
+}
+
+void parser_Expected(char *s)
+{
+    char ss[400];
+
+    char *line_start = progr_buffer + curr_pos;
+    // line_start aponta para o inicio da linha
+    while (line_start > progr_buffer && *(line_start-1) != '\r' && *(line_start-1) != '\n')
+        line_start--;
+    // line_end aponta para o final da linha
+    char *line_end = progr_buffer + curr_pos;
+    while (*line_end != '\r' && *line_end != '\n' && *line_end != EOF)
+        line_end++;
+    int length = line_end - line_start;
+
+    char spaces[100];
+    int i = 0;
+    while (line_start + i < progr_buffer + curr_pos && i < 98) {
+        spaces[i] = line_start[i] == TAB ? TAB : ' ';//se o começo da linha for tab, spaces[i] é tab. Se não, é ' '
+        i++;
+    }
+    spaces[i] = '^';
+    spaces[i + 1] = '\0';
+
+    sprintf(ss,"%s esperado:\n    \"%.*s\"\n     %s", s, length, line_start, spaces);
+    parser_Abort(ss);
+}
