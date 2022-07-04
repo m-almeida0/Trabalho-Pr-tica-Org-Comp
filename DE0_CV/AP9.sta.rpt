@@ -1,0 +1,1357 @@
+Timing Analyzer report for AP9
+Fri Jul  1 17:32:59 2022
+Quartus Prime Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Timing Analyzer Summary
+  3. Parallel Compilation
+  4. Clocks
+  5. Slow 1100mV 85C Model Fmax Summary
+  6. Timing Closure Recommendations
+  7. Slow 1100mV 85C Model Setup Summary
+  8. Slow 1100mV 85C Model Hold Summary
+  9. Slow 1100mV 85C Model Recovery Summary
+ 10. Slow 1100mV 85C Model Removal Summary
+ 11. Slow 1100mV 85C Model Minimum Pulse Width Summary
+ 12. Slow 1100mV 85C Model Metastability Summary
+ 13. Slow 1100mV 0C Model Fmax Summary
+ 14. Slow 1100mV 0C Model Setup Summary
+ 15. Slow 1100mV 0C Model Hold Summary
+ 16. Slow 1100mV 0C Model Recovery Summary
+ 17. Slow 1100mV 0C Model Removal Summary
+ 18. Slow 1100mV 0C Model Minimum Pulse Width Summary
+ 19. Slow 1100mV 0C Model Metastability Summary
+ 20. Fast 1100mV 85C Model Setup Summary
+ 21. Fast 1100mV 85C Model Hold Summary
+ 22. Fast 1100mV 85C Model Recovery Summary
+ 23. Fast 1100mV 85C Model Removal Summary
+ 24. Fast 1100mV 85C Model Minimum Pulse Width Summary
+ 25. Fast 1100mV 85C Model Metastability Summary
+ 26. Fast 1100mV 0C Model Setup Summary
+ 27. Fast 1100mV 0C Model Hold Summary
+ 28. Fast 1100mV 0C Model Recovery Summary
+ 29. Fast 1100mV 0C Model Removal Summary
+ 30. Fast 1100mV 0C Model Minimum Pulse Width Summary
+ 31. Fast 1100mV 0C Model Metastability Summary
+ 32. Multicorner Timing Analysis Summary
+ 33. Board Trace Model Assignments
+ 34. Input Transition Times
+ 35. Signal Integrity Metrics (Slow 1100mv 0c Model)
+ 36. Signal Integrity Metrics (Slow 1100mv 85c Model)
+ 37. Signal Integrity Metrics (Fast 1100mv 0c Model)
+ 38. Signal Integrity Metrics (Fast 1100mv 85c Model)
+ 39. Setup Transfers
+ 40. Hold Transfers
+ 41. Recovery Transfers
+ 42. Removal Transfers
+ 43. Report TCCS
+ 44. Report RSKM
+ 45. Unconstrained Paths Summary
+ 46. Clock Status Summary
+ 47. Unconstrained Input Ports
+ 48. Unconstrained Output Ports
+ 49. Unconstrained Input Ports
+ 50. Unconstrained Output Ports
+ 51. Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2021  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-----------------------------------------------------------------------------+
+; Timing Analyzer Summary                                                     ;
++-----------------------+-----------------------------------------------------+
+; Quartus Prime Version ; Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition ;
+; Timing Analyzer       ; Legacy Timing Analyzer                              ;
+; Revision Name         ; AP9                                                 ;
+; Device Family         ; Cyclone V                                           ;
+; Device Name           ; 5CEBA4F23C7                                         ;
+; Timing Models         ; Final                                               ;
+; Delay Model           ; Combined                                            ;
+; Rise/Fall Delays      ; Enabled                                             ;
++-----------------------+-----------------------------------------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.89        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;  30.0%      ;
+;     Processor 3            ;  29.8%      ;
+;     Processor 4            ;  29.6%      ;
++----------------------------+-------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clocks                                                                                                                                                                                                                                                         ;
++------------------------------------------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+----------------------------------------------------+
+; Clock Name                                     ; Type ; Period ; Frequency  ; Rise  ; Fall  ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master ; Source ; Targets                                            ;
++------------------------------------------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+----------------------------------------------------+
+; clk_div:inst25|clock_1KHz                      ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { clk_div:inst25|clock_1KHz }                      ;
+; clk_div:inst25|clock_1Khz_int                  ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { clk_div:inst25|clock_1Khz_int }                  ;
+; clk_div:inst25|clock_1Mhz_int                  ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { clk_div:inst25|clock_1Mhz_int }                  ;
+; clk_div:inst25|clock_10Hz_int                  ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { clk_div:inst25|clock_10Hz_int }                  ;
+; clk_div:inst25|clock_10Khz_int                 ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { clk_div:inst25|clock_10Khz_int }                 ;
+; clk_div:inst25|clock_100hz_int                 ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { clk_div:inst25|clock_100hz_int }                 ;
+; clk_div:inst25|clock_100KHz                    ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { clk_div:inst25|clock_100KHz }                    ;
+; clk_div:inst25|clock_100Khz_int                ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { clk_div:inst25|clock_100Khz_int }                ;
+; CLOCK_50                                       ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { CLOCK_50 }                                       ;
+; cpu:inst12|OP[4]                               ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { cpu:inst12|OP[4] }                               ;
+; dec_keyboard:inst11|f3                         ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { dec_keyboard:inst11|f3 }                         ;
+; keyboard:inst14|ready_set                      ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { keyboard:inst14|ready_set }                      ;
+; keyboard:inst14|scan_ready                     ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { keyboard:inst14|scan_ready }                     ;
+; lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] } ;
+; PS2_CLK                                        ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { PS2_CLK }                                        ;
+; SW[8]                                          ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { SW[8] }                                          ;
++------------------------------------------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+----------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------+
+; Slow 1100mV 85C Model Fmax Summary                                                   ;
++------------+-----------------+------------------------------------------------+------+
+; Fmax       ; Restricted Fmax ; Clock Name                                     ; Note ;
++------------+-----------------+------------------------------------------------+------+
+; 25.97 MHz  ; 25.97 MHz       ; SW[8]                                          ;      ;
+; 66.16 MHz  ; 66.16 MHz       ; CLOCK_50                                       ;      ;
+; 111.78 MHz ; 111.78 MHz      ; cpu:inst12|OP[4]                               ;      ;
+; 112.3 MHz  ; 112.3 MHz       ; PS2_CLK                                        ;      ;
+; 148.74 MHz ; 148.74 MHz      ; lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] ;      ;
+; 287.94 MHz ; 287.94 MHz      ; clk_div:inst25|clock_100hz_int                 ;      ;
+; 291.46 MHz ; 291.46 MHz      ; clk_div:inst25|clock_1Khz_int                  ;      ;
+; 299.31 MHz ; 299.31 MHz      ; clk_div:inst25|clock_10Khz_int                 ;      ;
+; 316.86 MHz ; 316.86 MHz      ; clk_div:inst25|clock_1Mhz_int                  ;      ;
+; 350.39 MHz ; 350.39 MHz      ; clk_div:inst25|clock_100Khz_int                ;      ;
+; 363.5 MHz  ; 363.5 MHz       ; clk_div:inst25|clock_1KHz                      ;      ;
+; 392.16 MHz ; 392.16 MHz      ; clk_div:inst25|clock_10Hz_int                  ;      ;
+; 397.14 MHz ; 397.14 MHz      ; dec_keyboard:inst11|f3                         ;      ;
+; 429.0 MHz  ; 429.0 MHz       ; clk_div:inst25|clock_100KHz                    ;      ;
++------------+-----------------+------------------------------------------------+------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
+
+
+----------------------------------
+; Timing Closure Recommendations ;
+----------------------------------
+HTML report is unavailable in plain text report export.
+
+
++--------------------------------------------------------------------------+
+; Slow 1100mV 85C Model Setup Summary                                      ;
++------------------------------------------------+---------+---------------+
+; Clock                                          ; Slack   ; End Point TNS ;
++------------------------------------------------+---------+---------------+
+; cpu:inst12|OP[4]                               ; -41.696 ; -657.660      ;
+; SW[8]                                          ; -37.505 ; -6444.680     ;
+; lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] ; -21.044 ; -1318.731     ;
+; dec_keyboard:inst11|f3                         ; -10.873 ; -104.437      ;
+; PS2_CLK                                        ; -7.905  ; -50.820       ;
+; CLOCK_50                                       ; -7.058  ; -13906.167    ;
+; clk_div:inst25|clock_100hz_int                 ; -2.473  ; -9.847        ;
+; clk_div:inst25|clock_1Khz_int                  ; -2.431  ; -8.634        ;
+; clk_div:inst25|clock_10Khz_int                 ; -2.341  ; -9.686        ;
+; clk_div:inst25|clock_1Mhz_int                  ; -2.156  ; -8.876        ;
+; clk_div:inst25|clock_100Khz_int                ; -1.854  ; -9.367        ;
+; clk_div:inst25|clock_1KHz                      ; -1.751  ; -5.009        ;
+; clk_div:inst25|clock_10Hz_int                  ; -1.550  ; -11.489       ;
+; clk_div:inst25|clock_100KHz                    ; -1.331  ; -6.438        ;
++------------------------------------------------+---------+---------------+
+
+
++-------------------------------------------------------------------------+
+; Slow 1100mV 85C Model Hold Summary                                      ;
++------------------------------------------------+--------+---------------+
+; Clock                                          ; Slack  ; End Point TNS ;
++------------------------------------------------+--------+---------------+
+; SW[8]                                          ; -1.241 ; -2.468        ;
+; CLOCK_50                                       ; -0.203 ; -0.203        ;
+; lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] ; 0.026  ; 0.000         ;
+; clk_div:inst25|clock_1Khz_int                  ; 0.397  ; 0.000         ;
+; PS2_CLK                                        ; 0.459  ; 0.000         ;
+; clk_div:inst25|clock_1Mhz_int                  ; 0.462  ; 0.000         ;
+; clk_div:inst25|clock_10Khz_int                 ; 0.535  ; 0.000         ;
+; clk_div:inst25|clock_100Khz_int                ; 0.552  ; 0.000         ;
+; clk_div:inst25|clock_100hz_int                 ; 0.573  ; 0.000         ;
+; clk_div:inst25|clock_1KHz                      ; 0.701  ; 0.000         ;
+; clk_div:inst25|clock_100KHz                    ; 0.807  ; 0.000         ;
+; dec_keyboard:inst11|f3                         ; 0.814  ; 0.000         ;
+; clk_div:inst25|clock_10Hz_int                  ; 0.915  ; 0.000         ;
+; cpu:inst12|OP[4]                               ; 0.946  ; 0.000         ;
++------------------------------------------------+--------+---------------+
+
+
++-----------------------------------------------------+
+; Slow 1100mV 85C Model Recovery Summary              ;
++----------------------------+--------+---------------+
+; Clock                      ; Slack  ; End Point TNS ;
++----------------------------+--------+---------------+
+; keyboard:inst14|ready_set  ; -1.454 ; -1.454        ;
+; keyboard:inst14|scan_ready ; -1.180 ; -1.180        ;
++----------------------------+--------+---------------+
+
+
++----------------------------------------------------+
+; Slow 1100mV 85C Model Removal Summary              ;
++----------------------------+-------+---------------+
+; Clock                      ; Slack ; End Point TNS ;
++----------------------------+-------+---------------+
+; keyboard:inst14|ready_set  ; 0.566 ; 0.000         ;
+; keyboard:inst14|scan_ready ; 0.624 ; 0.000         ;
++----------------------------+-------+---------------+
+
+
++-------------------------------------------------------------------------+
+; Slow 1100mV 85C Model Minimum Pulse Width Summary                       ;
++------------------------------------------------+--------+---------------+
+; Clock                                          ; Slack  ; End Point TNS ;
++------------------------------------------------+--------+---------------+
+; CLOCK_50                                       ; -2.636 ; -15234.301    ;
+; SW[8]                                          ; -0.958 ; -500.618      ;
+; PS2_CLK                                        ; -0.652 ; -24.268       ;
+; lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] ; -0.542 ; -140.228      ;
+; dec_keyboard:inst11|f3                         ; -0.538 ; -7.898        ;
+; clk_div:inst25|clock_100KHz                    ; -0.538 ; -6.170        ;
+; clk_div:inst25|clock_10Hz_int                  ; -0.538 ; -6.151        ;
+; clk_div:inst25|clock_10Khz_int                 ; -0.538 ; -5.686        ;
+; clk_div:inst25|clock_1Mhz_int                  ; -0.538 ; -5.554        ;
+; clk_div:inst25|clock_100hz_int                 ; -0.538 ; -5.053        ;
+; clk_div:inst25|clock_100Khz_int                ; -0.538 ; -4.614        ;
+; clk_div:inst25|clock_1Khz_int                  ; -0.538 ; -4.297        ;
+; clk_div:inst25|clock_1KHz                      ; -0.538 ; -2.428        ;
+; keyboard:inst14|scan_ready                     ; -0.538 ; -0.786        ;
+; keyboard:inst14|ready_set                      ; -0.538 ; -0.768        ;
+; cpu:inst12|OP[4]                               ; 0.225  ; 0.000         ;
++------------------------------------------------+--------+---------------+
+
+
+-----------------------------------------------
+; Slow 1100mV 85C Model Metastability Summary ;
+-----------------------------------------------
+Design MTBF is not calculated because the design doesn't meet its timing requirements.
+
+
+
++--------------------------------------------------------------------------------------+
+; Slow 1100mV 0C Model Fmax Summary                                                    ;
++------------+-----------------+------------------------------------------------+------+
+; Fmax       ; Restricted Fmax ; Clock Name                                     ; Note ;
++------------+-----------------+------------------------------------------------+------+
+; 24.8 MHz   ; 24.8 MHz        ; SW[8]                                          ;      ;
+; 69.09 MHz  ; 69.09 MHz       ; CLOCK_50                                       ;      ;
+; 112.68 MHz ; 112.68 MHz      ; PS2_CLK                                        ;      ;
+; 114.52 MHz ; 114.52 MHz      ; cpu:inst12|OP[4]                               ;      ;
+; 143.74 MHz ; 143.74 MHz      ; lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] ;      ;
+; 284.74 MHz ; 284.74 MHz      ; clk_div:inst25|clock_100hz_int                 ;      ;
+; 290.53 MHz ; 290.53 MHz      ; clk_div:inst25|clock_1Khz_int                  ;      ;
+; 297.53 MHz ; 297.53 MHz      ; clk_div:inst25|clock_10Khz_int                 ;      ;
+; 314.86 MHz ; 314.86 MHz      ; clk_div:inst25|clock_1Mhz_int                  ;      ;
+; 341.53 MHz ; 341.53 MHz      ; clk_div:inst25|clock_100Khz_int                ;      ;
+; 357.27 MHz ; 357.27 MHz      ; clk_div:inst25|clock_1KHz                      ;      ;
+; 385.36 MHz ; 385.36 MHz      ; clk_div:inst25|clock_10Hz_int                  ;      ;
+; 391.85 MHz ; 391.85 MHz      ; dec_keyboard:inst11|f3                         ;      ;
+; 427.72 MHz ; 427.72 MHz      ; clk_div:inst25|clock_100KHz                    ;      ;
++------------+-----------------+------------------------------------------------+------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
+
+
++--------------------------------------------------------------------------+
+; Slow 1100mV 0C Model Setup Summary                                       ;
++------------------------------------------------+---------+---------------+
+; Clock                                          ; Slack   ; End Point TNS ;
++------------------------------------------------+---------+---------------+
+; cpu:inst12|OP[4]                               ; -43.168 ; -682.112      ;
+; SW[8]                                          ; -39.319 ; -6379.210     ;
+; lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] ; -21.772 ; -1346.848     ;
+; dec_keyboard:inst11|f3                         ; -10.814 ; -103.900      ;
+; PS2_CLK                                        ; -7.875  ; -48.662       ;
+; CLOCK_50                                       ; -6.737  ; -12546.465    ;
+; clk_div:inst25|clock_100hz_int                 ; -2.512  ; -10.026       ;
+; clk_div:inst25|clock_1Khz_int                  ; -2.442  ; -8.786        ;
+; clk_div:inst25|clock_10Khz_int                 ; -2.361  ; -9.985        ;
+; clk_div:inst25|clock_1Mhz_int                  ; -2.176  ; -9.087        ;
+; clk_div:inst25|clock_100Khz_int                ; -1.928  ; -9.704        ;
+; clk_div:inst25|clock_1KHz                      ; -1.799  ; -4.739        ;
+; clk_div:inst25|clock_10Hz_int                  ; -1.595  ; -11.851       ;
+; clk_div:inst25|clock_100KHz                    ; -1.338  ; -6.580        ;
++------------------------------------------------+---------+---------------+
+
+
++-------------------------------------------------------------------------+
+; Slow 1100mV 0C Model Hold Summary                                       ;
++------------------------------------------------+--------+---------------+
+; Clock                                          ; Slack  ; End Point TNS ;
++------------------------------------------------+--------+---------------+
+; SW[8]                                          ; -1.028 ; -2.042        ;
+; CLOCK_50                                       ; -0.369 ; -0.423        ;
+; lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] ; 0.016  ; 0.000         ;
+; clk_div:inst25|clock_1Khz_int                  ; 0.400  ; 0.000         ;
+; clk_div:inst25|clock_1Mhz_int                  ; 0.482  ; 0.000         ;
+; PS2_CLK                                        ; 0.486  ; 0.000         ;
+; clk_div:inst25|clock_100hz_int                 ; 0.560  ; 0.000         ;
+; clk_div:inst25|clock_10Khz_int                 ; 0.569  ; 0.000         ;
+; clk_div:inst25|clock_100Khz_int                ; 0.643  ; 0.000         ;
+; clk_div:inst25|clock_1KHz                      ; 0.695  ; 0.000         ;
+; dec_keyboard:inst11|f3                         ; 0.823  ; 0.000         ;
+; clk_div:inst25|clock_100KHz                    ; 0.833  ; 0.000         ;
+; cpu:inst12|OP[4]                               ; 0.864  ; 0.000         ;
+; clk_div:inst25|clock_10Hz_int                  ; 0.912  ; 0.000         ;
++------------------------------------------------+--------+---------------+
+
+
++-----------------------------------------------------+
+; Slow 1100mV 0C Model Recovery Summary               ;
++----------------------------+--------+---------------+
+; Clock                      ; Slack  ; End Point TNS ;
++----------------------------+--------+---------------+
+; keyboard:inst14|ready_set  ; -1.447 ; -1.447        ;
+; keyboard:inst14|scan_ready ; -1.086 ; -1.086        ;
++----------------------------+--------+---------------+
+
+
++----------------------------------------------------+
+; Slow 1100mV 0C Model Removal Summary               ;
++----------------------------+-------+---------------+
+; Clock                      ; Slack ; End Point TNS ;
++----------------------------+-------+---------------+
+; keyboard:inst14|ready_set  ; 0.518 ; 0.000         ;
+; keyboard:inst14|scan_ready ; 0.581 ; 0.000         ;
++----------------------------+-------+---------------+
+
+
++-------------------------------------------------------------------------+
+; Slow 1100mV 0C Model Minimum Pulse Width Summary                        ;
++------------------------------------------------+--------+---------------+
+; Clock                                          ; Slack  ; End Point TNS ;
++------------------------------------------------+--------+---------------+
+; CLOCK_50                                       ; -2.636 ; -15236.873    ;
+; SW[8]                                          ; -1.011 ; -539.164      ;
+; PS2_CLK                                        ; -0.684 ; -22.836       ;
+; lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] ; -0.538 ; -136.737      ;
+; dec_keyboard:inst11|f3                         ; -0.538 ; -7.796        ;
+; clk_div:inst25|clock_10Hz_int                  ; -0.538 ; -6.173        ;
+; clk_div:inst25|clock_100KHz                    ; -0.538 ; -5.973        ;
+; clk_div:inst25|clock_10Khz_int                 ; -0.538 ; -5.614        ;
+; clk_div:inst25|clock_1Mhz_int                  ; -0.538 ; -5.506        ;
+; clk_div:inst25|clock_100hz_int                 ; -0.538 ; -4.849        ;
+; clk_div:inst25|clock_100Khz_int                ; -0.538 ; -4.638        ;
+; clk_div:inst25|clock_1Khz_int                  ; -0.538 ; -4.232        ;
+; clk_div:inst25|clock_1KHz                      ; -0.538 ; -2.415        ;
+; keyboard:inst14|scan_ready                     ; -0.538 ; -0.779        ;
+; keyboard:inst14|ready_set                      ; -0.538 ; -0.770        ;
+; cpu:inst12|OP[4]                               ; 0.252  ; 0.000         ;
++------------------------------------------------+--------+---------------+
+
+
+----------------------------------------------
+; Slow 1100mV 0C Model Metastability Summary ;
+----------------------------------------------
+Design MTBF is not calculated because the design doesn't meet its timing requirements.
+
+
+
++--------------------------------------------------------------------------+
+; Fast 1100mV 85C Model Setup Summary                                      ;
++------------------------------------------------+---------+---------------+
+; Clock                                          ; Slack   ; End Point TNS ;
++------------------------------------------------+---------+---------------+
+; cpu:inst12|OP[4]                               ; -19.406 ; -304.377      ;
+; SW[8]                                          ; -17.223 ; -3519.327     ;
+; lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] ; -9.191  ; -577.118      ;
+; dec_keyboard:inst11|f3                         ; -5.010  ; -48.573       ;
+; CLOCK_50                                       ; -4.000  ; -6129.504     ;
+; PS2_CLK                                        ; -3.919  ; -15.293       ;
+; clk_div:inst25|clock_100hz_int                 ; -1.252  ; -3.253        ;
+; clk_div:inst25|clock_1Khz_int                  ; -1.204  ; -3.044        ;
+; clk_div:inst25|clock_10Khz_int                 ; -1.188  ; -3.216        ;
+; clk_div:inst25|clock_1Mhz_int                  ; -1.091  ; -2.987        ;
+; clk_div:inst25|clock_100Khz_int                ; -0.774  ; -2.898        ;
+; clk_div:inst25|clock_1KHz                      ; -0.568  ; -1.647        ;
+; clk_div:inst25|clock_100KHz                    ; -0.545  ; -1.633        ;
+; clk_div:inst25|clock_10Hz_int                  ; -0.472  ; -3.140        ;
++------------------------------------------------+---------+---------------+
+
+
++-------------------------------------------------------------------------+
+; Fast 1100mV 85C Model Hold Summary                                      ;
++------------------------------------------------+--------+---------------+
+; Clock                                          ; Slack  ; End Point TNS ;
++------------------------------------------------+--------+---------------+
+; CLOCK_50                                       ; -0.431 ; -0.545        ;
+; SW[8]                                          ; -0.271 ; -0.541        ;
+; lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] ; -0.247 ; -0.520        ;
+; clk_div:inst25|clock_1Mhz_int                  ; -0.025 ; -0.025        ;
+; clk_div:inst25|clock_10Khz_int                 ; -0.020 ; -0.020        ;
+; clk_div:inst25|clock_100Khz_int                ; -0.015 ; -0.015        ;
+; clk_div:inst25|clock_1KHz                      ; 0.043  ; 0.000         ;
+; clk_div:inst25|clock_100hz_int                 ; 0.046  ; 0.000         ;
+; clk_div:inst25|clock_1Khz_int                  ; 0.094  ; 0.000         ;
+; PS2_CLK                                        ; 0.183  ; 0.000         ;
+; clk_div:inst25|clock_100KHz                    ; 0.275  ; 0.000         ;
+; dec_keyboard:inst11|f3                         ; 0.313  ; 0.000         ;
+; clk_div:inst25|clock_10Hz_int                  ; 0.349  ; 0.000         ;
+; cpu:inst12|OP[4]                               ; 0.504  ; 0.000         ;
++------------------------------------------------+--------+---------------+
+
+
++-----------------------------------------------------+
+; Fast 1100mV 85C Model Recovery Summary              ;
++----------------------------+--------+---------------+
+; Clock                      ; Slack  ; End Point TNS ;
++----------------------------+--------+---------------+
+; keyboard:inst14|ready_set  ; -0.902 ; -0.902        ;
+; keyboard:inst14|scan_ready ; -0.300 ; -0.300        ;
++----------------------------+--------+---------------+
+
+
++----------------------------------------------------+
+; Fast 1100mV 85C Model Removal Summary              ;
++----------------------------+-------+---------------+
+; Clock                      ; Slack ; End Point TNS ;
++----------------------------+-------+---------------+
+; keyboard:inst14|scan_ready ; 0.063 ; 0.000         ;
+; keyboard:inst14|ready_set  ; 0.122 ; 0.000         ;
++----------------------------+-------+---------------+
+
+
++-------------------------------------------------------------------------+
+; Fast 1100mV 85C Model Minimum Pulse Width Summary                       ;
++------------------------------------------------+--------+---------------+
+; Clock                                          ; Slack  ; End Point TNS ;
++------------------------------------------------+--------+---------------+
+; CLOCK_50                                       ; -2.174 ; -12504.322    ;
+; SW[8]                                          ; -1.029 ; -511.789      ;
+; PS2_CLK                                        ; -0.720 ; -24.726       ;
+; lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] ; -0.179 ; -8.409        ;
+; clk_div:inst25|clock_10Khz_int                 ; -0.079 ; -0.470        ;
+; clk_div:inst25|clock_1Mhz_int                  ; -0.043 ; -0.254        ;
+; clk_div:inst25|clock_100KHz                    ; -0.016 ; -0.103        ;
+; clk_div:inst25|clock_1Khz_int                  ; -0.005 ; -0.023        ;
+; clk_div:inst25|clock_100hz_int                 ; 0.018  ; 0.000         ;
+; clk_div:inst25|clock_1KHz                      ; 0.049  ; 0.000         ;
+; dec_keyboard:inst11|f3                         ; 0.124  ; 0.000         ;
+; clk_div:inst25|clock_100Khz_int                ; 0.134  ; 0.000         ;
+; clk_div:inst25|clock_10Hz_int                  ; 0.143  ; 0.000         ;
+; keyboard:inst14|ready_set                      ; 0.144  ; 0.000         ;
+; keyboard:inst14|scan_ready                     ; 0.144  ; 0.000         ;
+; cpu:inst12|OP[4]                               ; 0.289  ; 0.000         ;
++------------------------------------------------+--------+---------------+
+
+
+-----------------------------------------------
+; Fast 1100mV 85C Model Metastability Summary ;
+-----------------------------------------------
+Design MTBF is not calculated because the design doesn't meet its timing requirements.
+
+
+
++--------------------------------------------------------------------------+
+; Fast 1100mV 0C Model Setup Summary                                       ;
++------------------------------------------------+---------+---------------+
+; Clock                                          ; Slack   ; End Point TNS ;
++------------------------------------------------+---------+---------------+
+; cpu:inst12|OP[4]                               ; -18.088 ; -283.491      ;
+; SW[8]                                          ; -16.009 ; -3109.297     ;
+; lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] ; -8.474  ; -525.554      ;
+; dec_keyboard:inst11|f3                         ; -4.727  ; -45.830       ;
+; PS2_CLK                                        ; -3.672  ; -12.301       ;
+; CLOCK_50                                       ; -3.583  ; -4996.340     ;
+; clk_div:inst25|clock_100hz_int                 ; -1.133  ; -2.838        ;
+; clk_div:inst25|clock_1Khz_int                  ; -1.088  ; -2.685        ;
+; clk_div:inst25|clock_10Khz_int                 ; -1.076  ; -2.806        ;
+; clk_div:inst25|clock_1Mhz_int                  ; -0.995  ; -2.544        ;
+; clk_div:inst25|clock_100Khz_int                ; -0.730  ; -2.567        ;
+; clk_div:inst25|clock_1KHz                      ; -0.492  ; -1.307        ;
+; clk_div:inst25|clock_100KHz                    ; -0.427  ; -1.244        ;
+; clk_div:inst25|clock_10Hz_int                  ; -0.405  ; -2.666        ;
++------------------------------------------------+---------+---------------+
+
+
++-------------------------------------------------------------------------+
+; Fast 1100mV 0C Model Hold Summary                                       ;
++------------------------------------------------+--------+---------------+
+; Clock                                          ; Slack  ; End Point TNS ;
++------------------------------------------------+--------+---------------+
+; CLOCK_50                                       ; -0.516 ; -11.501       ;
+; lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] ; -0.239 ; -0.810        ;
+; SW[8]                                          ; -0.224 ; -0.445        ;
+; clk_div:inst25|clock_10Khz_int                 ; -0.048 ; -0.048        ;
+; clk_div:inst25|clock_1Mhz_int                  ; -0.031 ; -0.031        ;
+; clk_div:inst25|clock_100Khz_int                ; -0.022 ; -0.022        ;
+; clk_div:inst25|clock_1KHz                      ; 0.005  ; 0.000         ;
+; clk_div:inst25|clock_100hz_int                 ; 0.014  ; 0.000         ;
+; clk_div:inst25|clock_1Khz_int                  ; 0.053  ; 0.000         ;
+; PS2_CLK                                        ; 0.172  ; 0.000         ;
+; clk_div:inst25|clock_100KHz                    ; 0.250  ; 0.000         ;
+; dec_keyboard:inst11|f3                         ; 0.288  ; 0.000         ;
+; clk_div:inst25|clock_10Hz_int                  ; 0.316  ; 0.000         ;
+; cpu:inst12|OP[4]                               ; 0.473  ; 0.000         ;
++------------------------------------------------+--------+---------------+
+
+
++-----------------------------------------------------+
+; Fast 1100mV 0C Model Recovery Summary               ;
++----------------------------+--------+---------------+
+; Clock                      ; Slack  ; End Point TNS ;
++----------------------------+--------+---------------+
+; keyboard:inst14|ready_set  ; -0.796 ; -0.796        ;
+; keyboard:inst14|scan_ready ; -0.222 ; -0.222        ;
++----------------------------+--------+---------------+
+
+
++----------------------------------------------------+
+; Fast 1100mV 0C Model Removal Summary               ;
++----------------------------+-------+---------------+
+; Clock                      ; Slack ; End Point TNS ;
++----------------------------+-------+---------------+
+; keyboard:inst14|scan_ready ; 0.013 ; 0.000         ;
+; keyboard:inst14|ready_set  ; 0.065 ; 0.000         ;
++----------------------------+-------+---------------+
+
+
++-------------------------------------------------------------------------+
+; Fast 1100mV 0C Model Minimum Pulse Width Summary                        ;
++------------------------------------------------+--------+---------------+
+; Clock                                          ; Slack  ; End Point TNS ;
++------------------------------------------------+--------+---------------+
+; CLOCK_50                                       ; -2.174 ; -12717.444    ;
+; SW[8]                                          ; -1.005 ; -520.925      ;
+; PS2_CLK                                        ; -0.751 ; -25.804       ;
+; lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] ; -0.100 ; -2.628        ;
+; clk_div:inst25|clock_10Khz_int                 ; -0.033 ; -0.195        ;
+; clk_div:inst25|clock_1Mhz_int                  ; 0.004  ; 0.000         ;
+; clk_div:inst25|clock_100KHz                    ; 0.026  ; 0.000         ;
+; clk_div:inst25|clock_1Khz_int                  ; 0.034  ; 0.000         ;
+; clk_div:inst25|clock_100hz_int                 ; 0.062  ; 0.000         ;
+; clk_div:inst25|clock_1KHz                      ; 0.071  ; 0.000         ;
+; clk_div:inst25|clock_100Khz_int                ; 0.132  ; 0.000         ;
+; dec_keyboard:inst11|f3                         ; 0.134  ; 0.000         ;
+; clk_div:inst25|clock_10Hz_int                  ; 0.143  ; 0.000         ;
+; keyboard:inst14|ready_set                      ; 0.143  ; 0.000         ;
+; keyboard:inst14|scan_ready                     ; 0.151  ; 0.000         ;
+; cpu:inst12|OP[4]                               ; 0.334  ; 0.000         ;
++------------------------------------------------+--------+---------------+
+
+
+----------------------------------------------
+; Fast 1100mV 0C Model Metastability Summary ;
+----------------------------------------------
+Design MTBF is not calculated because the design doesn't meet its timing requirements.
+
+
+
++-------------------------------------------------------------------------------------------------------------------+
+; Multicorner Timing Analysis Summary                                                                               ;
++-------------------------------------------------+------------+---------+----------+---------+---------------------+
+; Clock                                           ; Setup      ; Hold    ; Recovery ; Removal ; Minimum Pulse Width ;
++-------------------------------------------------+------------+---------+----------+---------+---------------------+
+; Worst-case Slack                                ; -43.168    ; -1.241  ; -1.454   ; 0.013   ; -2.636              ;
+;  CLOCK_50                                       ; -7.058     ; -0.516  ; N/A      ; N/A     ; -2.636              ;
+;  PS2_CLK                                        ; -7.905     ; 0.172   ; N/A      ; N/A     ; -0.751              ;
+;  SW[8]                                          ; -39.319    ; -1.241  ; N/A      ; N/A     ; -1.029              ;
+;  clk_div:inst25|clock_100KHz                    ; -1.338     ; 0.250   ; N/A      ; N/A     ; -0.538              ;
+;  clk_div:inst25|clock_100Khz_int                ; -1.928     ; -0.022  ; N/A      ; N/A     ; -0.538              ;
+;  clk_div:inst25|clock_100hz_int                 ; -2.512     ; 0.014   ; N/A      ; N/A     ; -0.538              ;
+;  clk_div:inst25|clock_10Hz_int                  ; -1.595     ; 0.316   ; N/A      ; N/A     ; -0.538              ;
+;  clk_div:inst25|clock_10Khz_int                 ; -2.361     ; -0.048  ; N/A      ; N/A     ; -0.538              ;
+;  clk_div:inst25|clock_1KHz                      ; -1.799     ; 0.005   ; N/A      ; N/A     ; -0.538              ;
+;  clk_div:inst25|clock_1Khz_int                  ; -2.442     ; 0.053   ; N/A      ; N/A     ; -0.538              ;
+;  clk_div:inst25|clock_1Mhz_int                  ; -2.176     ; -0.031  ; N/A      ; N/A     ; -0.538              ;
+;  cpu:inst12|OP[4]                               ; -43.168    ; 0.473   ; N/A      ; N/A     ; 0.225               ;
+;  dec_keyboard:inst11|f3                         ; -10.873    ; 0.288   ; N/A      ; N/A     ; -0.538              ;
+;  keyboard:inst14|ready_set                      ; N/A        ; N/A     ; -1.454   ; 0.065   ; -0.538              ;
+;  keyboard:inst14|scan_ready                     ; N/A        ; N/A     ; -1.180   ; 0.013   ; -0.538              ;
+;  lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] ; -21.772    ; -0.247  ; N/A      ; N/A     ; -0.542              ;
+; Design-wide TNS                                 ; -22551.841 ; -12.857 ; -2.634   ; 0.0     ; -15984.355          ;
+;  CLOCK_50                                       ; -13906.167 ; -11.501 ; N/A      ; N/A     ; -15236.873          ;
+;  PS2_CLK                                        ; -50.820    ; 0.000   ; N/A      ; N/A     ; -25.804             ;
+;  SW[8]                                          ; -6444.680  ; -2.468  ; N/A      ; N/A     ; -539.164            ;
+;  clk_div:inst25|clock_100KHz                    ; -6.580     ; 0.000   ; N/A      ; N/A     ; -6.170              ;
+;  clk_div:inst25|clock_100Khz_int                ; -9.704     ; -0.022  ; N/A      ; N/A     ; -4.638              ;
+;  clk_div:inst25|clock_100hz_int                 ; -10.026    ; 0.000   ; N/A      ; N/A     ; -5.053              ;
+;  clk_div:inst25|clock_10Hz_int                  ; -11.851    ; 0.000   ; N/A      ; N/A     ; -6.173              ;
+;  clk_div:inst25|clock_10Khz_int                 ; -9.985     ; -0.048  ; N/A      ; N/A     ; -5.686              ;
+;  clk_div:inst25|clock_1KHz                      ; -5.009     ; 0.000   ; N/A      ; N/A     ; -2.428              ;
+;  clk_div:inst25|clock_1Khz_int                  ; -8.786     ; 0.000   ; N/A      ; N/A     ; -4.297              ;
+;  clk_div:inst25|clock_1Mhz_int                  ; -9.087     ; -0.031  ; N/A      ; N/A     ; -5.554              ;
+;  cpu:inst12|OP[4]                               ; -682.112   ; 0.000   ; N/A      ; N/A     ; 0.000               ;
+;  dec_keyboard:inst11|f3                         ; -104.437   ; 0.000   ; N/A      ; N/A     ; -7.898              ;
+;  keyboard:inst14|ready_set                      ; N/A        ; N/A     ; -1.454   ; 0.000   ; -0.770              ;
+;  keyboard:inst14|scan_ready                     ; N/A        ; N/A     ; -1.180   ; 0.000   ; -0.786              ;
+;  lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] ; -1346.848  ; -0.810  ; N/A      ; N/A     ; -140.228            ;
++-------------------------------------------------+------------+---------+----------+---------+---------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Board Trace Model Assignments                                                                                                                                                                                                                                                                                                                                                                               ;
++----------+--------------+-------------------+-------------------------+-------------------------+---------------+---------------------+----------------+------------------+--------+------------------+------------------------+------------------------+--------------+---------------+-----------------+-------+---------------------+--------------------+---------------+-----------------+-------------+
+; Pin      ; I/O Standard ; Near Tline Length ; Near Tline L per Length ; Near Tline C per Length ; Near Series R ; Near Differential R ; Near Pull-up R ; Near Pull-down R ; Near C ; Far Tline Length ; Far Tline L per Length ; Far Tline C per Length ; Far Series R ; Far Pull-up R ; Far Pull-down R ; Far C ; Termination Voltage ; Far Differential R ; EBD File Name ; EBD Signal Name ; EBD Far-end ;
++----------+--------------+-------------------+-------------------------+-------------------------+---------------+---------------------+----------------+------------------+--------+------------------+------------------------+------------------------+--------------+---------------+-----------------+-------+---------------------+--------------------+---------------+-----------------+-------------+
+; VGA_VS   ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; VGA_HS   ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; LEDR[8]  ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; LEDR[3]  ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; LEDR[4]  ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; LEDR[5]  ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; LEDR[1]  ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; VGA_B[3] ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; VGA_B[2] ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; VGA_B[1] ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; VGA_B[0] ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; VGA_G[3] ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; VGA_G[2] ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; VGA_G[1] ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; VGA_G[0] ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; VGA_R[3] ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; VGA_R[2] ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; VGA_R[1] ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; VGA_R[0] ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
++----------+--------------+-------------------+-------------------------+-------------------------+---------------+---------------------+----------------+------------------+--------+------------------+------------------------+------------------------+--------------+---------------+-----------------+-------+---------------------+--------------------+---------------+-----------------+-------------+
+
+
++-------------------------------------------------------------+
+; Input Transition Times                                      ;
++----------+--------------+-----------------+-----------------+
+; Pin      ; I/O Standard ; 10-90 Rise Time ; 90-10 Fall Time ;
++----------+--------------+-----------------+-----------------+
+; SW[6]    ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; SW[7]    ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; SW[8]    ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; KEY[0]   ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; CLOCK_50 ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; SW[2]    ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; SW[0]    ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; SW[1]    ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; SW[9]    ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; PS2_CLK  ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; PS2_DAT  ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
++----------+--------------+-----------------+-----------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Signal Integrity Metrics (Slow 1100mv 0c Model)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ;
++----------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; Pin      ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
++----------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; VGA_VS   ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.01e-07 V                   ; 3.13 V              ; -0.229 V            ; 0.132 V                              ; 0.377 V                              ; 4.37e-10 s                  ; 1.58e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.01e-07 V                  ; 3.13 V             ; -0.229 V           ; 0.132 V                             ; 0.377 V                             ; 4.37e-10 s                 ; 1.58e-10 s                 ; Yes                       ; No                        ;
+; VGA_HS   ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.01e-07 V                   ; 3.13 V              ; -0.229 V            ; 0.131 V                              ; 0.38 V                               ; 4.37e-10 s                  ; 1.58e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.01e-07 V                  ; 3.13 V             ; -0.229 V           ; 0.131 V                             ; 0.38 V                              ; 4.37e-10 s                 ; 1.58e-10 s                 ; Yes                       ; No                        ;
+; LEDR[8]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.01e-07 V                   ; 3.13 V              ; -0.229 V            ; 0.131 V                              ; 0.38 V                               ; 4.37e-10 s                  ; 1.58e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.01e-07 V                  ; 3.13 V             ; -0.229 V           ; 0.131 V                             ; 0.38 V                              ; 4.37e-10 s                 ; 1.58e-10 s                 ; Yes                       ; No                        ;
+; LEDR[3]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.1e-07 V                    ; 3.12 V              ; -0.169 V            ; 0.165 V                              ; 0.384 V                              ; 4.57e-10 s                  ; 1.75e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.1e-07 V                   ; 3.12 V             ; -0.169 V           ; 0.165 V                             ; 0.384 V                             ; 4.57e-10 s                 ; 1.75e-10 s                 ; Yes                       ; No                        ;
+; LEDR[4]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.01e-07 V                   ; 3.13 V              ; -0.229 V            ; 0.131 V                              ; 0.38 V                               ; 4.37e-10 s                  ; 1.58e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.01e-07 V                  ; 3.13 V             ; -0.229 V           ; 0.131 V                             ; 0.38 V                              ; 4.37e-10 s                 ; 1.58e-10 s                 ; Yes                       ; No                        ;
+; LEDR[5]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.01e-07 V                   ; 3.13 V              ; -0.229 V            ; 0.132 V                              ; 0.377 V                              ; 4.37e-10 s                  ; 1.58e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.01e-07 V                  ; 3.13 V             ; -0.229 V           ; 0.132 V                             ; 0.377 V                             ; 4.37e-10 s                 ; 1.58e-10 s                 ; Yes                       ; No                        ;
+; LEDR[1]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.01e-07 V                   ; 3.13 V              ; -0.229 V            ; 0.132 V                              ; 0.377 V                              ; 4.37e-10 s                  ; 1.58e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.01e-07 V                  ; 3.13 V             ; -0.229 V           ; 0.132 V                             ; 0.377 V                             ; 4.37e-10 s                 ; 1.58e-10 s                 ; Yes                       ; No                        ;
+; VGA_B[3] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.58e-07 V                   ; 3.09 V              ; -0.13 V             ; 0.032 V                              ; 0.298 V                              ; 4.39e-10 s                  ; 1.69e-10 s                  ; Yes                        ; Yes                        ; 3.08 V                      ; 1.58e-07 V                  ; 3.09 V             ; -0.13 V            ; 0.032 V                             ; 0.298 V                             ; 4.39e-10 s                 ; 1.69e-10 s                 ; Yes                       ; Yes                       ;
+; VGA_B[2] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.1e-07 V                    ; 3.12 V              ; -0.169 V            ; 0.165 V                              ; 0.384 V                              ; 4.57e-10 s                  ; 1.75e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.1e-07 V                   ; 3.12 V             ; -0.169 V           ; 0.165 V                             ; 0.384 V                             ; 4.57e-10 s                 ; 1.75e-10 s                 ; Yes                       ; No                        ;
+; VGA_B[1] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.01e-07 V                   ; 3.13 V              ; -0.229 V            ; 0.132 V                              ; 0.377 V                              ; 4.37e-10 s                  ; 1.58e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.01e-07 V                  ; 3.13 V             ; -0.229 V           ; 0.132 V                             ; 0.377 V                             ; 4.37e-10 s                 ; 1.58e-10 s                 ; Yes                       ; No                        ;
+; VGA_B[0] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.01e-07 V                   ; 3.13 V              ; -0.229 V            ; 0.131 V                              ; 0.38 V                               ; 4.37e-10 s                  ; 1.58e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.01e-07 V                  ; 3.13 V             ; -0.229 V           ; 0.131 V                             ; 0.38 V                              ; 4.37e-10 s                 ; 1.58e-10 s                 ; Yes                       ; No                        ;
+; VGA_G[3] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.58e-07 V                   ; 3.09 V              ; -0.13 V             ; 0.032 V                              ; 0.298 V                              ; 4.39e-10 s                  ; 1.69e-10 s                  ; Yes                        ; Yes                        ; 3.08 V                      ; 1.58e-07 V                  ; 3.09 V             ; -0.13 V            ; 0.032 V                             ; 0.298 V                             ; 4.39e-10 s                 ; 1.69e-10 s                 ; Yes                       ; Yes                       ;
+; VGA_G[2] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.1e-07 V                    ; 3.12 V              ; -0.169 V            ; 0.165 V                              ; 0.384 V                              ; 4.57e-10 s                  ; 1.75e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.1e-07 V                   ; 3.12 V             ; -0.169 V           ; 0.165 V                             ; 0.384 V                             ; 4.57e-10 s                 ; 1.75e-10 s                 ; Yes                       ; No                        ;
+; VGA_G[1] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.01e-07 V                   ; 3.13 V              ; -0.229 V            ; 0.132 V                              ; 0.377 V                              ; 4.37e-10 s                  ; 1.58e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.01e-07 V                  ; 3.13 V             ; -0.229 V           ; 0.132 V                             ; 0.377 V                             ; 4.37e-10 s                 ; 1.58e-10 s                 ; Yes                       ; No                        ;
+; VGA_G[0] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.01e-07 V                   ; 3.13 V              ; -0.229 V            ; 0.131 V                              ; 0.38 V                               ; 4.37e-10 s                  ; 1.58e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.01e-07 V                  ; 3.13 V             ; -0.229 V           ; 0.131 V                             ; 0.38 V                              ; 4.37e-10 s                 ; 1.58e-10 s                 ; Yes                       ; No                        ;
+; VGA_R[3] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.01e-07 V                   ; 3.13 V              ; -0.229 V            ; 0.131 V                              ; 0.38 V                               ; 4.37e-10 s                  ; 1.58e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.01e-07 V                  ; 3.13 V             ; -0.229 V           ; 0.131 V                             ; 0.38 V                              ; 4.37e-10 s                 ; 1.58e-10 s                 ; Yes                       ; No                        ;
+; VGA_R[2] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.58e-07 V                   ; 3.09 V              ; -0.13 V             ; 0.032 V                              ; 0.298 V                              ; 4.39e-10 s                  ; 1.69e-10 s                  ; Yes                        ; Yes                        ; 3.08 V                      ; 1.58e-07 V                  ; 3.09 V             ; -0.13 V            ; 0.032 V                             ; 0.298 V                             ; 4.39e-10 s                 ; 1.69e-10 s                 ; Yes                       ; Yes                       ;
+; VGA_R[1] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.1e-07 V                    ; 3.12 V              ; -0.169 V            ; 0.165 V                              ; 0.384 V                              ; 4.57e-10 s                  ; 1.75e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.1e-07 V                   ; 3.12 V             ; -0.169 V           ; 0.165 V                             ; 0.384 V                             ; 4.57e-10 s                 ; 1.75e-10 s                 ; Yes                       ; No                        ;
+; VGA_R[0] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.01e-07 V                   ; 3.13 V              ; -0.229 V            ; 0.132 V                              ; 0.377 V                              ; 4.37e-10 s                  ; 1.58e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.01e-07 V                  ; 3.13 V             ; -0.229 V           ; 0.132 V                             ; 0.377 V                             ; 4.37e-10 s                 ; 1.58e-10 s                 ; Yes                       ; No                        ;
++----------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Signal Integrity Metrics (Slow 1100mv 85c Model)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      ;
++----------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; Pin      ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
++----------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; VGA_VS   ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.02e-05 V                   ; 3.11 V              ; -0.117 V            ; 0.087 V                              ; 0.148 V                              ; 5.31e-10 s                  ; 3.14e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.02e-05 V                  ; 3.11 V             ; -0.117 V           ; 0.087 V                             ; 0.148 V                             ; 5.31e-10 s                 ; 3.14e-10 s                 ; Yes                       ; No                        ;
+; VGA_HS   ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.02e-05 V                   ; 3.11 V              ; -0.117 V            ; 0.087 V                              ; 0.147 V                              ; 5.3e-10 s                   ; 3.14e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.02e-05 V                  ; 3.11 V             ; -0.117 V           ; 0.087 V                             ; 0.147 V                             ; 5.3e-10 s                  ; 3.14e-10 s                 ; Yes                       ; No                        ;
+; LEDR[8]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.02e-05 V                   ; 3.11 V              ; -0.117 V            ; 0.087 V                              ; 0.147 V                              ; 5.3e-10 s                   ; 3.14e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.02e-05 V                  ; 3.11 V             ; -0.117 V           ; 0.087 V                             ; 0.147 V                             ; 5.3e-10 s                  ; 3.14e-10 s                 ; Yes                       ; No                        ;
+; LEDR[3]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.1e-05 V                    ; 3.11 V              ; -0.0931 V           ; 0.115 V                              ; 0.142 V                              ; 5.74e-10 s                  ; 3.17e-10 s                  ; Yes                        ; Yes                        ; 3.08 V                      ; 2.1e-05 V                   ; 3.11 V             ; -0.0931 V          ; 0.115 V                             ; 0.142 V                             ; 5.74e-10 s                 ; 3.17e-10 s                 ; Yes                       ; Yes                       ;
+; LEDR[4]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.02e-05 V                   ; 3.11 V              ; -0.117 V            ; 0.087 V                              ; 0.147 V                              ; 5.3e-10 s                   ; 3.14e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.02e-05 V                  ; 3.11 V             ; -0.117 V           ; 0.087 V                             ; 0.147 V                             ; 5.3e-10 s                  ; 3.14e-10 s                 ; Yes                       ; No                        ;
+; LEDR[5]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.02e-05 V                   ; 3.11 V              ; -0.117 V            ; 0.087 V                              ; 0.148 V                              ; 5.31e-10 s                  ; 3.14e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.02e-05 V                  ; 3.11 V             ; -0.117 V           ; 0.087 V                             ; 0.148 V                             ; 5.31e-10 s                 ; 3.14e-10 s                 ; Yes                       ; No                        ;
+; LEDR[1]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.02e-05 V                   ; 3.11 V              ; -0.117 V            ; 0.087 V                              ; 0.148 V                              ; 5.31e-10 s                  ; 3.14e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.02e-05 V                  ; 3.11 V             ; -0.117 V           ; 0.087 V                             ; 0.148 V                             ; 5.31e-10 s                 ; 3.14e-10 s                 ; Yes                       ; No                        ;
+; VGA_B[3] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.66e-05 V                   ; 3.09 V              ; -0.0542 V           ; 0.04 V                               ; 0.089 V                              ; 5.35e-10 s                  ; 3.01e-10 s                  ; Yes                        ; Yes                        ; 3.08 V                      ; 1.66e-05 V                  ; 3.09 V             ; -0.0542 V          ; 0.04 V                              ; 0.089 V                             ; 5.35e-10 s                 ; 3.01e-10 s                 ; Yes                       ; Yes                       ;
+; VGA_B[2] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.1e-05 V                    ; 3.11 V              ; -0.0931 V           ; 0.115 V                              ; 0.142 V                              ; 5.74e-10 s                  ; 3.17e-10 s                  ; Yes                        ; Yes                        ; 3.08 V                      ; 2.1e-05 V                   ; 3.11 V             ; -0.0931 V          ; 0.115 V                             ; 0.142 V                             ; 5.74e-10 s                 ; 3.17e-10 s                 ; Yes                       ; Yes                       ;
+; VGA_B[1] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.02e-05 V                   ; 3.11 V              ; -0.117 V            ; 0.087 V                              ; 0.148 V                              ; 5.31e-10 s                  ; 3.14e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.02e-05 V                  ; 3.11 V             ; -0.117 V           ; 0.087 V                             ; 0.148 V                             ; 5.31e-10 s                 ; 3.14e-10 s                 ; Yes                       ; No                        ;
+; VGA_B[0] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.02e-05 V                   ; 3.11 V              ; -0.117 V            ; 0.087 V                              ; 0.147 V                              ; 5.3e-10 s                   ; 3.14e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.02e-05 V                  ; 3.11 V             ; -0.117 V           ; 0.087 V                             ; 0.147 V                             ; 5.3e-10 s                  ; 3.14e-10 s                 ; Yes                       ; No                        ;
+; VGA_G[3] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.66e-05 V                   ; 3.09 V              ; -0.0542 V           ; 0.04 V                               ; 0.089 V                              ; 5.35e-10 s                  ; 3.01e-10 s                  ; Yes                        ; Yes                        ; 3.08 V                      ; 1.66e-05 V                  ; 3.09 V             ; -0.0542 V          ; 0.04 V                              ; 0.089 V                             ; 5.35e-10 s                 ; 3.01e-10 s                 ; Yes                       ; Yes                       ;
+; VGA_G[2] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.1e-05 V                    ; 3.11 V              ; -0.0931 V           ; 0.115 V                              ; 0.142 V                              ; 5.74e-10 s                  ; 3.17e-10 s                  ; Yes                        ; Yes                        ; 3.08 V                      ; 2.1e-05 V                   ; 3.11 V             ; -0.0931 V          ; 0.115 V                             ; 0.142 V                             ; 5.74e-10 s                 ; 3.17e-10 s                 ; Yes                       ; Yes                       ;
+; VGA_G[1] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.02e-05 V                   ; 3.11 V              ; -0.117 V            ; 0.087 V                              ; 0.148 V                              ; 5.31e-10 s                  ; 3.14e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.02e-05 V                  ; 3.11 V             ; -0.117 V           ; 0.087 V                             ; 0.148 V                             ; 5.31e-10 s                 ; 3.14e-10 s                 ; Yes                       ; No                        ;
+; VGA_G[0] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.02e-05 V                   ; 3.11 V              ; -0.117 V            ; 0.087 V                              ; 0.147 V                              ; 5.3e-10 s                   ; 3.14e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.02e-05 V                  ; 3.11 V             ; -0.117 V           ; 0.087 V                             ; 0.147 V                             ; 5.3e-10 s                  ; 3.14e-10 s                 ; Yes                       ; No                        ;
+; VGA_R[3] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.02e-05 V                   ; 3.11 V              ; -0.117 V            ; 0.087 V                              ; 0.147 V                              ; 5.3e-10 s                   ; 3.14e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.02e-05 V                  ; 3.11 V             ; -0.117 V           ; 0.087 V                             ; 0.147 V                             ; 5.3e-10 s                  ; 3.14e-10 s                 ; Yes                       ; No                        ;
+; VGA_R[2] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.66e-05 V                   ; 3.09 V              ; -0.0542 V           ; 0.04 V                               ; 0.089 V                              ; 5.35e-10 s                  ; 3.01e-10 s                  ; Yes                        ; Yes                        ; 3.08 V                      ; 1.66e-05 V                  ; 3.09 V             ; -0.0542 V          ; 0.04 V                              ; 0.089 V                             ; 5.35e-10 s                 ; 3.01e-10 s                 ; Yes                       ; Yes                       ;
+; VGA_R[1] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.1e-05 V                    ; 3.11 V              ; -0.0931 V           ; 0.115 V                              ; 0.142 V                              ; 5.74e-10 s                  ; 3.17e-10 s                  ; Yes                        ; Yes                        ; 3.08 V                      ; 2.1e-05 V                   ; 3.11 V             ; -0.0931 V          ; 0.115 V                             ; 0.142 V                             ; 5.74e-10 s                 ; 3.17e-10 s                 ; Yes                       ; Yes                       ;
+; VGA_R[0] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.02e-05 V                   ; 3.11 V              ; -0.117 V            ; 0.087 V                              ; 0.148 V                              ; 5.31e-10 s                  ; 3.14e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.02e-05 V                  ; 3.11 V             ; -0.117 V           ; 0.087 V                             ; 0.148 V                             ; 5.31e-10 s                 ; 3.14e-10 s                 ; Yes                       ; No                        ;
++----------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Signal Integrity Metrics (Fast 1100mv 0c Model)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ;
++----------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; Pin      ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
++----------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; VGA_VS   ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.72e-06 V                   ; 3.7 V               ; -0.49 V             ; 0.117 V                              ; 0.621 V                              ; 3.84e-10 s                  ; 1.48e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 4.72e-06 V                  ; 3.7 V              ; -0.49 V            ; 0.117 V                             ; 0.621 V                             ; 3.84e-10 s                 ; 1.48e-10 s                 ; Yes                       ; No                        ;
+; VGA_HS   ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.72e-06 V                   ; 3.7 V               ; -0.49 V             ; 0.117 V                              ; 0.622 V                              ; 3.84e-10 s                  ; 1.48e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 4.72e-06 V                  ; 3.7 V              ; -0.49 V            ; 0.117 V                             ; 0.622 V                             ; 3.84e-10 s                 ; 1.48e-10 s                 ; Yes                       ; No                        ;
+; LEDR[8]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.72e-06 V                   ; 3.7 V               ; -0.49 V             ; 0.117 V                              ; 0.622 V                              ; 3.84e-10 s                  ; 1.48e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 4.72e-06 V                  ; 3.7 V              ; -0.49 V            ; 0.117 V                             ; 0.622 V                             ; 3.84e-10 s                 ; 1.48e-10 s                 ; Yes                       ; No                        ;
+; LEDR[3]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.94e-06 V                   ; 3.69 V              ; -0.414 V            ; 0.134 V                              ; 0.585 V                              ; 4.19e-10 s                  ; 1.53e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 4.94e-06 V                  ; 3.69 V             ; -0.414 V           ; 0.134 V                             ; 0.585 V                             ; 4.19e-10 s                 ; 1.53e-10 s                 ; Yes                       ; No                        ;
+; LEDR[4]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.72e-06 V                   ; 3.7 V               ; -0.49 V             ; 0.117 V                              ; 0.622 V                              ; 3.84e-10 s                  ; 1.48e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 4.72e-06 V                  ; 3.7 V              ; -0.49 V            ; 0.117 V                             ; 0.622 V                             ; 3.84e-10 s                 ; 1.48e-10 s                 ; Yes                       ; No                        ;
+; LEDR[5]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.72e-06 V                   ; 3.7 V               ; -0.49 V             ; 0.117 V                              ; 0.621 V                              ; 3.84e-10 s                  ; 1.48e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 4.72e-06 V                  ; 3.7 V              ; -0.49 V            ; 0.117 V                             ; 0.621 V                             ; 3.84e-10 s                 ; 1.48e-10 s                 ; Yes                       ; No                        ;
+; LEDR[1]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.72e-06 V                   ; 3.7 V               ; -0.49 V             ; 0.117 V                              ; 0.621 V                              ; 3.84e-10 s                  ; 1.48e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 4.72e-06 V                  ; 3.7 V              ; -0.49 V            ; 0.117 V                             ; 0.621 V                             ; 3.84e-10 s                 ; 1.48e-10 s                 ; Yes                       ; No                        ;
+; VGA_B[3] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 3.63e-06 V                   ; 3.64 V              ; -0.326 V            ; 0.091 V                              ; 0.479 V                              ; 3.83e-10 s                  ; 1.5e-10 s                   ; Yes                        ; No                         ; 3.63 V                      ; 3.63e-06 V                  ; 3.64 V             ; -0.326 V           ; 0.091 V                             ; 0.479 V                             ; 3.83e-10 s                 ; 1.5e-10 s                  ; Yes                       ; No                        ;
+; VGA_B[2] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.94e-06 V                   ; 3.69 V              ; -0.414 V            ; 0.134 V                              ; 0.585 V                              ; 4.19e-10 s                  ; 1.53e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 4.94e-06 V                  ; 3.69 V             ; -0.414 V           ; 0.134 V                             ; 0.585 V                             ; 4.19e-10 s                 ; 1.53e-10 s                 ; Yes                       ; No                        ;
+; VGA_B[1] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.72e-06 V                   ; 3.7 V               ; -0.49 V             ; 0.117 V                              ; 0.621 V                              ; 3.84e-10 s                  ; 1.48e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 4.72e-06 V                  ; 3.7 V              ; -0.49 V            ; 0.117 V                             ; 0.621 V                             ; 3.84e-10 s                 ; 1.48e-10 s                 ; Yes                       ; No                        ;
+; VGA_B[0] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.72e-06 V                   ; 3.7 V               ; -0.49 V             ; 0.117 V                              ; 0.622 V                              ; 3.84e-10 s                  ; 1.48e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 4.72e-06 V                  ; 3.7 V              ; -0.49 V            ; 0.117 V                             ; 0.622 V                             ; 3.84e-10 s                 ; 1.48e-10 s                 ; Yes                       ; No                        ;
+; VGA_G[3] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 3.63e-06 V                   ; 3.64 V              ; -0.326 V            ; 0.091 V                              ; 0.479 V                              ; 3.83e-10 s                  ; 1.5e-10 s                   ; Yes                        ; No                         ; 3.63 V                      ; 3.63e-06 V                  ; 3.64 V             ; -0.326 V           ; 0.091 V                             ; 0.479 V                             ; 3.83e-10 s                 ; 1.5e-10 s                  ; Yes                       ; No                        ;
+; VGA_G[2] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.94e-06 V                   ; 3.69 V              ; -0.414 V            ; 0.134 V                              ; 0.585 V                              ; 4.19e-10 s                  ; 1.53e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 4.94e-06 V                  ; 3.69 V             ; -0.414 V           ; 0.134 V                             ; 0.585 V                             ; 4.19e-10 s                 ; 1.53e-10 s                 ; Yes                       ; No                        ;
+; VGA_G[1] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.72e-06 V                   ; 3.7 V               ; -0.49 V             ; 0.117 V                              ; 0.621 V                              ; 3.84e-10 s                  ; 1.48e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 4.72e-06 V                  ; 3.7 V              ; -0.49 V            ; 0.117 V                             ; 0.621 V                             ; 3.84e-10 s                 ; 1.48e-10 s                 ; Yes                       ; No                        ;
+; VGA_G[0] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.72e-06 V                   ; 3.7 V               ; -0.49 V             ; 0.117 V                              ; 0.622 V                              ; 3.84e-10 s                  ; 1.48e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 4.72e-06 V                  ; 3.7 V              ; -0.49 V            ; 0.117 V                             ; 0.622 V                             ; 3.84e-10 s                 ; 1.48e-10 s                 ; Yes                       ; No                        ;
+; VGA_R[3] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.72e-06 V                   ; 3.7 V               ; -0.49 V             ; 0.117 V                              ; 0.622 V                              ; 3.84e-10 s                  ; 1.48e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 4.72e-06 V                  ; 3.7 V              ; -0.49 V            ; 0.117 V                             ; 0.622 V                             ; 3.84e-10 s                 ; 1.48e-10 s                 ; Yes                       ; No                        ;
+; VGA_R[2] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 3.63e-06 V                   ; 3.64 V              ; -0.326 V            ; 0.091 V                              ; 0.479 V                              ; 3.83e-10 s                  ; 1.5e-10 s                   ; Yes                        ; No                         ; 3.63 V                      ; 3.63e-06 V                  ; 3.64 V             ; -0.326 V           ; 0.091 V                             ; 0.479 V                             ; 3.83e-10 s                 ; 1.5e-10 s                  ; Yes                       ; No                        ;
+; VGA_R[1] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.94e-06 V                   ; 3.69 V              ; -0.414 V            ; 0.134 V                              ; 0.585 V                              ; 4.19e-10 s                  ; 1.53e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 4.94e-06 V                  ; 3.69 V             ; -0.414 V           ; 0.134 V                             ; 0.585 V                             ; 4.19e-10 s                 ; 1.53e-10 s                 ; Yes                       ; No                        ;
+; VGA_R[0] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.72e-06 V                   ; 3.7 V               ; -0.49 V             ; 0.117 V                              ; 0.621 V                              ; 3.84e-10 s                  ; 1.48e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 4.72e-06 V                  ; 3.7 V              ; -0.49 V            ; 0.117 V                             ; 0.621 V                             ; 3.84e-10 s                 ; 1.48e-10 s                 ; Yes                       ; No                        ;
++----------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Signal Integrity Metrics (Fast 1100mv 85c Model)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      ;
++----------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; Pin      ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
++----------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; VGA_VS   ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000229 V                   ; 3.65 V              ; -0.319 V            ; 0.041 V                              ; 0.528 V                              ; 4.29e-10 s                  ; 1.87e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000229 V                  ; 3.65 V             ; -0.319 V           ; 0.041 V                             ; 0.528 V                             ; 4.29e-10 s                 ; 1.87e-10 s                 ; Yes                       ; No                        ;
+; VGA_HS   ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000229 V                   ; 3.65 V              ; -0.316 V            ; 0.041 V                              ; 0.53 V                               ; 4.29e-10 s                  ; 1.87e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000229 V                  ; 3.65 V             ; -0.316 V           ; 0.041 V                             ; 0.53 V                              ; 4.29e-10 s                 ; 1.87e-10 s                 ; Yes                       ; No                        ;
+; LEDR[8]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000229 V                   ; 3.65 V              ; -0.316 V            ; 0.041 V                              ; 0.53 V                               ; 4.29e-10 s                  ; 1.87e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000229 V                  ; 3.65 V             ; -0.316 V           ; 0.041 V                             ; 0.53 V                              ; 4.29e-10 s                 ; 1.87e-10 s                 ; Yes                       ; No                        ;
+; LEDR[3]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000238 V                   ; 3.64 V              ; -0.254 V            ; 0.052 V                              ; 0.543 V                              ; 4.59e-10 s                  ; 1.96e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000238 V                  ; 3.64 V             ; -0.254 V           ; 0.052 V                             ; 0.543 V                             ; 4.59e-10 s                 ; 1.96e-10 s                 ; Yes                       ; No                        ;
+; LEDR[4]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000229 V                   ; 3.65 V              ; -0.316 V            ; 0.041 V                              ; 0.53 V                               ; 4.29e-10 s                  ; 1.87e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000229 V                  ; 3.65 V             ; -0.316 V           ; 0.041 V                             ; 0.53 V                              ; 4.29e-10 s                 ; 1.87e-10 s                 ; Yes                       ; No                        ;
+; LEDR[5]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000229 V                   ; 3.65 V              ; -0.319 V            ; 0.041 V                              ; 0.528 V                              ; 4.29e-10 s                  ; 1.87e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000229 V                  ; 3.65 V             ; -0.319 V           ; 0.041 V                             ; 0.528 V                             ; 4.29e-10 s                 ; 1.87e-10 s                 ; Yes                       ; No                        ;
+; LEDR[1]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000229 V                   ; 3.65 V              ; -0.319 V            ; 0.041 V                              ; 0.528 V                              ; 4.29e-10 s                  ; 1.87e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000229 V                  ; 3.65 V             ; -0.319 V           ; 0.041 V                             ; 0.528 V                             ; 4.29e-10 s                 ; 1.87e-10 s                 ; Yes                       ; No                        ;
+; VGA_B[3] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000184 V                   ; 3.64 V              ; -0.19 V             ; 0.019 V                              ; 0.425 V                              ; 4.44e-10 s                  ; 1.91e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000184 V                  ; 3.64 V             ; -0.19 V            ; 0.019 V                             ; 0.425 V                             ; 4.44e-10 s                 ; 1.91e-10 s                 ; Yes                       ; No                        ;
+; VGA_B[2] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000238 V                   ; 3.64 V              ; -0.254 V            ; 0.052 V                              ; 0.543 V                              ; 4.59e-10 s                  ; 1.96e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000238 V                  ; 3.64 V             ; -0.254 V           ; 0.052 V                             ; 0.543 V                             ; 4.59e-10 s                 ; 1.96e-10 s                 ; Yes                       ; No                        ;
+; VGA_B[1] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000229 V                   ; 3.65 V              ; -0.319 V            ; 0.041 V                              ; 0.528 V                              ; 4.29e-10 s                  ; 1.87e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000229 V                  ; 3.65 V             ; -0.319 V           ; 0.041 V                             ; 0.528 V                             ; 4.29e-10 s                 ; 1.87e-10 s                 ; Yes                       ; No                        ;
+; VGA_B[0] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000229 V                   ; 3.65 V              ; -0.316 V            ; 0.041 V                              ; 0.53 V                               ; 4.29e-10 s                  ; 1.87e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000229 V                  ; 3.65 V             ; -0.316 V           ; 0.041 V                             ; 0.53 V                              ; 4.29e-10 s                 ; 1.87e-10 s                 ; Yes                       ; No                        ;
+; VGA_G[3] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000184 V                   ; 3.64 V              ; -0.19 V             ; 0.019 V                              ; 0.425 V                              ; 4.44e-10 s                  ; 1.91e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000184 V                  ; 3.64 V             ; -0.19 V            ; 0.019 V                             ; 0.425 V                             ; 4.44e-10 s                 ; 1.91e-10 s                 ; Yes                       ; No                        ;
+; VGA_G[2] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000238 V                   ; 3.64 V              ; -0.254 V            ; 0.052 V                              ; 0.543 V                              ; 4.59e-10 s                  ; 1.96e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000238 V                  ; 3.64 V             ; -0.254 V           ; 0.052 V                             ; 0.543 V                             ; 4.59e-10 s                 ; 1.96e-10 s                 ; Yes                       ; No                        ;
+; VGA_G[1] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000229 V                   ; 3.65 V              ; -0.319 V            ; 0.041 V                              ; 0.528 V                              ; 4.29e-10 s                  ; 1.87e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000229 V                  ; 3.65 V             ; -0.319 V           ; 0.041 V                             ; 0.528 V                             ; 4.29e-10 s                 ; 1.87e-10 s                 ; Yes                       ; No                        ;
+; VGA_G[0] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000229 V                   ; 3.65 V              ; -0.316 V            ; 0.041 V                              ; 0.53 V                               ; 4.29e-10 s                  ; 1.87e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000229 V                  ; 3.65 V             ; -0.316 V           ; 0.041 V                             ; 0.53 V                              ; 4.29e-10 s                 ; 1.87e-10 s                 ; Yes                       ; No                        ;
+; VGA_R[3] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000229 V                   ; 3.65 V              ; -0.316 V            ; 0.041 V                              ; 0.53 V                               ; 4.29e-10 s                  ; 1.87e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000229 V                  ; 3.65 V             ; -0.316 V           ; 0.041 V                             ; 0.53 V                              ; 4.29e-10 s                 ; 1.87e-10 s                 ; Yes                       ; No                        ;
+; VGA_R[2] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000184 V                   ; 3.64 V              ; -0.19 V             ; 0.019 V                              ; 0.425 V                              ; 4.44e-10 s                  ; 1.91e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000184 V                  ; 3.64 V             ; -0.19 V            ; 0.019 V                             ; 0.425 V                             ; 4.44e-10 s                 ; 1.91e-10 s                 ; Yes                       ; No                        ;
+; VGA_R[1] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000238 V                   ; 3.64 V              ; -0.254 V            ; 0.052 V                              ; 0.543 V                              ; 4.59e-10 s                  ; 1.96e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000238 V                  ; 3.64 V             ; -0.254 V           ; 0.052 V                             ; 0.543 V                             ; 4.59e-10 s                 ; 1.96e-10 s                 ; Yes                       ; No                        ;
+; VGA_R[0] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000229 V                   ; 3.65 V              ; -0.319 V            ; 0.041 V                              ; 0.528 V                              ; 4.29e-10 s                  ; 1.87e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000229 V                  ; 3.65 V             ; -0.319 V           ; 0.041 V                             ; 0.528 V                             ; 4.29e-10 s                 ; 1.87e-10 s                 ; Yes                       ; No                        ;
++----------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Setup Transfers                                                                                                                                     ;
++------------------------------------------------+------------------------------------------------+--------------+----------+--------------+----------+
+; From Clock                                     ; To Clock                                       ; RR Paths     ; FR Paths ; RF Paths     ; FF Paths ;
++------------------------------------------------+------------------------------------------------+--------------+----------+--------------+----------+
+; clk_div:inst25|clock_1KHz                      ; clk_div:inst25|clock_1KHz                      ; 4            ; 0        ; 0            ; 0        ;
+; keyboard:inst14|scan_ready                     ; clk_div:inst25|clock_1KHz                      ; 3            ; 0        ; 0            ; 0        ;
+; clk_div:inst25|clock_1Khz_int                  ; clk_div:inst25|clock_1Khz_int                  ; 13           ; 0        ; 0            ; 0        ;
+; clk_div:inst25|clock_100hz_int                 ; clk_div:inst25|clock_1Khz_int                  ; 1            ; 1        ; 0            ; 0        ;
+; clk_div:inst25|clock_1Mhz_int                  ; clk_div:inst25|clock_1Mhz_int                  ; 16           ; 0        ; 0            ; 0        ;
+; clk_div:inst25|clock_100Khz_int                ; clk_div:inst25|clock_1Mhz_int                  ; 1            ; 1        ; 0            ; 0        ;
+; clk_div:inst25|clock_10Hz_int                  ; clk_div:inst25|clock_10Hz_int                  ; 24           ; 0        ; 0            ; 0        ;
+; clk_div:inst25|clock_1Khz_int                  ; clk_div:inst25|clock_10Khz_int                 ; 1            ; 1        ; 0            ; 0        ;
+; clk_div:inst25|clock_10Khz_int                 ; clk_div:inst25|clock_10Khz_int                 ; 16           ; 0        ; 0            ; 0        ;
+; clk_div:inst25|clock_10Hz_int                  ; clk_div:inst25|clock_100hz_int                 ; 1            ; 1        ; 0            ; 0        ;
+; clk_div:inst25|clock_100hz_int                 ; clk_div:inst25|clock_100hz_int                 ; 17           ; 0        ; 0            ; 0        ;
+; clk_div:inst25|clock_100KHz                    ; clk_div:inst25|clock_100KHz                    ; 9            ; 0        ; 0            ; 0        ;
+; clk_div:inst25|clock_10Khz_int                 ; clk_div:inst25|clock_100Khz_int                ; 1            ; 1        ; 0            ; 0        ;
+; clk_div:inst25|clock_100Khz_int                ; clk_div:inst25|clock_100Khz_int                ; 17           ; 0        ; 0            ; 0        ;
+; CLOCK_50                                       ; CLOCK_50                                       ; 6087         ; 982      ; 0            ; 0        ;
+; lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] ; CLOCK_50                                       ; 48494        ; 983      ; 0            ; 0        ;
+; SW[8]                                          ; CLOCK_50                                       ; 2178         ; 0        ; 0            ; 0        ;
+; cpu:inst12|OP[4]                               ; cpu:inst12|OP[4]                               ; 0            ; 0        ; 16           ; 16       ;
+; SW[8]                                          ; cpu:inst12|OP[4]                               ; 0            ; 0        ; > 2147483647 ; 0        ;
+; dec_keyboard:inst11|f3                         ; dec_keyboard:inst11|f3                         ; 12           ; 0        ; 0            ; 0        ;
+; PS2_CLK                                        ; dec_keyboard:inst11|f3                         ; 232          ; 0        ; 0            ; 0        ;
+; clk_div:inst25|clock_1KHz                      ; lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] ; 1            ; 1        ; 0            ; 0        ;
+; clk_div:inst25|clock_1Khz_int                  ; lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] ; 1            ; 1        ; 0            ; 0        ;
+; clk_div:inst25|clock_1Mhz_int                  ; lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] ; 1            ; 1        ; 0            ; 0        ;
+; clk_div:inst25|clock_10Hz_int                  ; lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] ; 2            ; 1        ; 0            ; 0        ;
+; clk_div:inst25|clock_10Khz_int                 ; lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] ; 1            ; 1        ; 0            ; 0        ;
+; clk_div:inst25|clock_100hz_int                 ; lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] ; 1            ; 1        ; 0            ; 0        ;
+; clk_div:inst25|clock_100KHz                    ; lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] ; 1            ; 1        ; 0            ; 0        ;
+; clk_div:inst25|clock_100Khz_int                ; lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] ; 1            ; 1        ; 0            ; 0        ;
+; CLOCK_50                                       ; lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] ; 76           ; 0        ; 0            ; 0        ;
+; lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] ; lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] ; 4016         ; 0        ; 0            ; 0        ;
+; SW[8]                                          ; lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] ; > 2147483647 ; 0        ; 0            ; 0        ;
+; keyboard:inst14|ready_set                      ; PS2_CLK                                        ; 1            ; 1        ; 0            ; 0        ;
+; PS2_CLK                                        ; PS2_CLK                                        ; 130          ; 0        ; 0            ; 0        ;
+; CLOCK_50                                       ; SW[8]                                          ; 25739694     ; 0        ; 0            ; 0        ;
+; cpu:inst12|OP[4]                               ; SW[8]                                          ; 10           ; 465610   ; 0            ; 0        ;
+; dec_keyboard:inst11|f3                         ; SW[8]                                          ; 8            ; 0        ; 0            ; 0        ;
+; SW[8]                                          ; SW[8]                                          ; > 2147483647 ; 0        ; 0            ; 0        ;
++------------------------------------------------+------------------------------------------------+--------------+----------+--------------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Hold Transfers                                                                                                                                      ;
++------------------------------------------------+------------------------------------------------+--------------+----------+--------------+----------+
+; From Clock                                     ; To Clock                                       ; RR Paths     ; FR Paths ; RF Paths     ; FF Paths ;
++------------------------------------------------+------------------------------------------------+--------------+----------+--------------+----------+
+; clk_div:inst25|clock_1KHz                      ; clk_div:inst25|clock_1KHz                      ; 4            ; 0        ; 0            ; 0        ;
+; keyboard:inst14|scan_ready                     ; clk_div:inst25|clock_1KHz                      ; 3            ; 0        ; 0            ; 0        ;
+; clk_div:inst25|clock_1Khz_int                  ; clk_div:inst25|clock_1Khz_int                  ; 13           ; 0        ; 0            ; 0        ;
+; clk_div:inst25|clock_100hz_int                 ; clk_div:inst25|clock_1Khz_int                  ; 1            ; 1        ; 0            ; 0        ;
+; clk_div:inst25|clock_1Mhz_int                  ; clk_div:inst25|clock_1Mhz_int                  ; 16           ; 0        ; 0            ; 0        ;
+; clk_div:inst25|clock_100Khz_int                ; clk_div:inst25|clock_1Mhz_int                  ; 1            ; 1        ; 0            ; 0        ;
+; clk_div:inst25|clock_10Hz_int                  ; clk_div:inst25|clock_10Hz_int                  ; 24           ; 0        ; 0            ; 0        ;
+; clk_div:inst25|clock_1Khz_int                  ; clk_div:inst25|clock_10Khz_int                 ; 1            ; 1        ; 0            ; 0        ;
+; clk_div:inst25|clock_10Khz_int                 ; clk_div:inst25|clock_10Khz_int                 ; 16           ; 0        ; 0            ; 0        ;
+; clk_div:inst25|clock_10Hz_int                  ; clk_div:inst25|clock_100hz_int                 ; 1            ; 1        ; 0            ; 0        ;
+; clk_div:inst25|clock_100hz_int                 ; clk_div:inst25|clock_100hz_int                 ; 17           ; 0        ; 0            ; 0        ;
+; clk_div:inst25|clock_100KHz                    ; clk_div:inst25|clock_100KHz                    ; 9            ; 0        ; 0            ; 0        ;
+; clk_div:inst25|clock_10Khz_int                 ; clk_div:inst25|clock_100Khz_int                ; 1            ; 1        ; 0            ; 0        ;
+; clk_div:inst25|clock_100Khz_int                ; clk_div:inst25|clock_100Khz_int                ; 17           ; 0        ; 0            ; 0        ;
+; CLOCK_50                                       ; CLOCK_50                                       ; 6087         ; 982      ; 0            ; 0        ;
+; lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] ; CLOCK_50                                       ; 48494        ; 983      ; 0            ; 0        ;
+; SW[8]                                          ; CLOCK_50                                       ; 2178         ; 0        ; 0            ; 0        ;
+; cpu:inst12|OP[4]                               ; cpu:inst12|OP[4]                               ; 0            ; 0        ; 16           ; 16       ;
+; SW[8]                                          ; cpu:inst12|OP[4]                               ; 0            ; 0        ; > 2147483647 ; 0        ;
+; dec_keyboard:inst11|f3                         ; dec_keyboard:inst11|f3                         ; 12           ; 0        ; 0            ; 0        ;
+; PS2_CLK                                        ; dec_keyboard:inst11|f3                         ; 232          ; 0        ; 0            ; 0        ;
+; clk_div:inst25|clock_1KHz                      ; lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] ; 1            ; 1        ; 0            ; 0        ;
+; clk_div:inst25|clock_1Khz_int                  ; lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] ; 1            ; 1        ; 0            ; 0        ;
+; clk_div:inst25|clock_1Mhz_int                  ; lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] ; 1            ; 1        ; 0            ; 0        ;
+; clk_div:inst25|clock_10Hz_int                  ; lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] ; 2            ; 1        ; 0            ; 0        ;
+; clk_div:inst25|clock_10Khz_int                 ; lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] ; 1            ; 1        ; 0            ; 0        ;
+; clk_div:inst25|clock_100hz_int                 ; lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] ; 1            ; 1        ; 0            ; 0        ;
+; clk_div:inst25|clock_100KHz                    ; lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] ; 1            ; 1        ; 0            ; 0        ;
+; clk_div:inst25|clock_100Khz_int                ; lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] ; 1            ; 1        ; 0            ; 0        ;
+; CLOCK_50                                       ; lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] ; 76           ; 0        ; 0            ; 0        ;
+; lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] ; lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] ; 4016         ; 0        ; 0            ; 0        ;
+; SW[8]                                          ; lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] ; > 2147483647 ; 0        ; 0            ; 0        ;
+; keyboard:inst14|ready_set                      ; PS2_CLK                                        ; 1            ; 1        ; 0            ; 0        ;
+; PS2_CLK                                        ; PS2_CLK                                        ; 130          ; 0        ; 0            ; 0        ;
+; CLOCK_50                                       ; SW[8]                                          ; 25739694     ; 0        ; 0            ; 0        ;
+; cpu:inst12|OP[4]                               ; SW[8]                                          ; 10           ; 465610   ; 0            ; 0        ;
+; dec_keyboard:inst11|f3                         ; SW[8]                                          ; 8            ; 0        ; 0            ; 0        ;
+; SW[8]                                          ; SW[8]                                          ; > 2147483647 ; 0        ; 0            ; 0        ;
++------------------------------------------------+------------------------------------------------+--------------+----------+--------------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++-----------------------------------------------------------------------------------------------------+
+; Recovery Transfers                                                                                  ;
++----------------------------+----------------------------+----------+----------+----------+----------+
+; From Clock                 ; To Clock                   ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++----------------------------+----------------------------+----------+----------+----------+----------+
+; keyboard:inst14|scan_ready ; keyboard:inst14|ready_set  ; 1        ; 1        ; 0        ; 0        ;
+; clk_div:inst25|clock_1KHz  ; keyboard:inst14|scan_ready ; 1        ; 0        ; 0        ; 0        ;
++----------------------------+----------------------------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++-----------------------------------------------------------------------------------------------------+
+; Removal Transfers                                                                                   ;
++----------------------------+----------------------------+----------+----------+----------+----------+
+; From Clock                 ; To Clock                   ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++----------------------------+----------------------------+----------+----------+----------+----------+
+; keyboard:inst14|scan_ready ; keyboard:inst14|ready_set  ; 1        ; 1        ; 0        ; 0        ;
+; clk_div:inst25|clock_1KHz  ; keyboard:inst14|scan_ready ; 1        ; 0        ; 0        ; 0        ;
++----------------------------+----------------------------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
+---------------
+; Report TCCS ;
+---------------
+No dedicated SERDES Transmitter circuitry present in device or used in design
+
+
+---------------
+; Report RSKM ;
+---------------
+No non-DPA dedicated SERDES Receiver circuitry present in device or used in design
+
+
++------------------------------------------------+
+; Unconstrained Paths Summary                    ;
++---------------------------------+-------+------+
+; Property                        ; Setup ; Hold ;
++---------------------------------+-------+------+
+; Illegal Clocks                  ; 0     ; 0    ;
+; Unconstrained Clocks            ; 0     ; 0    ;
+; Unconstrained Input Ports       ; 7     ; 7    ;
+; Unconstrained Input Port Paths  ; 606   ; 606  ;
+; Unconstrained Output Ports      ; 19    ; 19   ;
+; Unconstrained Output Port Paths ; 19    ; 19   ;
++---------------------------------+-------+------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Clock Status Summary                                                                                                 ;
++------------------------------------------------+------------------------------------------------+------+-------------+
+; Target                                         ; Clock                                          ; Type ; Status      ;
++------------------------------------------------+------------------------------------------------+------+-------------+
+; CLOCK_50                                       ; CLOCK_50                                       ; Base ; Constrained ;
+; PS2_CLK                                        ; PS2_CLK                                        ; Base ; Constrained ;
+; SW[8]                                          ; SW[8]                                          ; Base ; Constrained ;
+; clk_div:inst25|clock_1KHz                      ; clk_div:inst25|clock_1KHz                      ; Base ; Constrained ;
+; clk_div:inst25|clock_1Khz_int                  ; clk_div:inst25|clock_1Khz_int                  ; Base ; Constrained ;
+; clk_div:inst25|clock_1Mhz_int                  ; clk_div:inst25|clock_1Mhz_int                  ; Base ; Constrained ;
+; clk_div:inst25|clock_10Hz_int                  ; clk_div:inst25|clock_10Hz_int                  ; Base ; Constrained ;
+; clk_div:inst25|clock_10Khz_int                 ; clk_div:inst25|clock_10Khz_int                 ; Base ; Constrained ;
+; clk_div:inst25|clock_100KHz                    ; clk_div:inst25|clock_100KHz                    ; Base ; Constrained ;
+; clk_div:inst25|clock_100Khz_int                ; clk_div:inst25|clock_100Khz_int                ; Base ; Constrained ;
+; clk_div:inst25|clock_100hz_int                 ; clk_div:inst25|clock_100hz_int                 ; Base ; Constrained ;
+; cpu:inst12|OP[4]                               ; cpu:inst12|OP[4]                               ; Base ; Constrained ;
+; dec_keyboard:inst11|f3                         ; dec_keyboard:inst11|f3                         ; Base ; Constrained ;
+; keyboard:inst14|ready_set                      ; keyboard:inst14|ready_set                      ; Base ; Constrained ;
+; keyboard:inst14|scan_ready                     ; keyboard:inst14|scan_ready                     ; Base ; Constrained ;
+; lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] ; lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] ; Base ; Constrained ;
++------------------------------------------------+------------------------------------------------+------+-------------+
+
+
++---------------------------------------------------------------------------------------------------+
+; Unconstrained Input Ports                                                                         ;
++------------+--------------------------------------------------------------------------------------+
+; Input Port ; Comment                                                                              ;
++------------+--------------------------------------------------------------------------------------+
+; KEY[0]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; PS2_DAT    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; SW[0]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; SW[1]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; SW[2]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; SW[8]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; SW[9]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
++------------+--------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------+
+; Unconstrained Output Ports                                                                          ;
++-------------+---------------------------------------------------------------------------------------+
+; Output Port ; Comment                                                                               ;
++-------------+---------------------------------------------------------------------------------------+
+; LEDR[1]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; LEDR[3]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; LEDR[4]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; LEDR[5]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; LEDR[8]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_B[0]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_B[1]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_B[2]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_B[3]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_G[0]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_G[1]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_G[2]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_G[3]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_HS      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_R[0]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_R[1]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_R[2]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_R[3]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_VS      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
++-------------+---------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------+
+; Unconstrained Input Ports                                                                         ;
++------------+--------------------------------------------------------------------------------------+
+; Input Port ; Comment                                                                              ;
++------------+--------------------------------------------------------------------------------------+
+; KEY[0]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; PS2_DAT    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; SW[0]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; SW[1]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; SW[2]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; SW[8]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; SW[9]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
++------------+--------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------+
+; Unconstrained Output Ports                                                                          ;
++-------------+---------------------------------------------------------------------------------------+
+; Output Port ; Comment                                                                               ;
++-------------+---------------------------------------------------------------------------------------+
+; LEDR[1]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; LEDR[3]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; LEDR[4]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; LEDR[5]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; LEDR[8]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_B[0]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_B[1]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_B[2]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_B[3]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_G[0]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_G[1]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_G[2]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_G[3]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_HS      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_R[0]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_R[1]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_R[2]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_R[3]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_VS      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
++-------------+---------------------------------------------------------------------------------------+
+
+
++--------------------------+
+; Timing Analyzer Messages ;
++--------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Timing Analyzer
+    Info: Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
+    Info: Processing started: Fri Jul  1 17:32:45 2022
+Info: Command: quartus_sta AP9 -c AP9
+Info: qsta_default_script.tcl version: #1
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (21077): Low junction temperature is 0 degrees C
+Info (21077): High junction temperature is 85 degrees C
+Warning (335093): The Timing Analyzer is analyzing 16 combinational loops as latches. For more details, run the Check Timing command in the Timing Analyzer or view the "User-Specified and Inferred Latches" table in the Analysis & Synthesis report.
+Critical Warning (332012): Synopsys Design Constraints File file not found: 'AP9.sdc'. A Synopsys Design Constraints File is required by the Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
+Info (332142): No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
+Info (332105): Deriving Clocks
+    Info (332105): create_clock -period 1.000 -name CLOCK_50 CLOCK_50
+    Info (332105): create_clock -period 1.000 -name SW[8] SW[8]
+    Info (332105): create_clock -period 1.000 -name clk_div:inst25|clock_100KHz clk_div:inst25|clock_100KHz
+    Info (332105): create_clock -period 1.000 -name lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0]
+    Info (332105): create_clock -period 1.000 -name clk_div:inst25|clock_1Mhz_int clk_div:inst25|clock_1Mhz_int
+    Info (332105): create_clock -period 1.000 -name clk_div:inst25|clock_100Khz_int clk_div:inst25|clock_100Khz_int
+    Info (332105): create_clock -period 1.000 -name clk_div:inst25|clock_100hz_int clk_div:inst25|clock_100hz_int
+    Info (332105): create_clock -period 1.000 -name clk_div:inst25|clock_1Khz_int clk_div:inst25|clock_1Khz_int
+    Info (332105): create_clock -period 1.000 -name clk_div:inst25|clock_10Khz_int clk_div:inst25|clock_10Khz_int
+    Info (332105): create_clock -period 1.000 -name clk_div:inst25|clock_10Hz_int clk_div:inst25|clock_10Hz_int
+    Info (332105): create_clock -period 1.000 -name cpu:inst12|OP[4] cpu:inst12|OP[4]
+    Info (332105): create_clock -period 1.000 -name dec_keyboard:inst11|f3 dec_keyboard:inst11|f3
+    Info (332105): create_clock -period 1.000 -name clk_div:inst25|clock_1KHz clk_div:inst25|clock_1KHz
+    Info (332105): create_clock -period 1.000 -name keyboard:inst14|scan_ready keyboard:inst14|scan_ready
+    Info (332105): create_clock -period 1.000 -name keyboard:inst14|ready_set keyboard:inst14|ready_set
+    Info (332105): create_clock -period 1.000 -name PS2_CLK PS2_CLK
+Info (332097): The following timing edges are non-unate.  The Timing Analyzer will assume pos-unate behavior for these edges in the clock network.
+    Info (332098): Cell: inst12|result[14]~1  from: dataf  to: combout
+    Info (332098): Cell: inst5  from: dataf  to: combout
+Info (332143): No user constrained clock uncertainty found in the design. Calling "derive_clock_uncertainty"
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
+Info: Found TIMING_ANALYZER_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
+Info: Analyzing Slow 1100mV 85C Model
+Critical Warning (332148): Timing requirements not met
+    Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
+Info (332146): Worst-case setup slack is -41.696
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):   -41.696            -657.660 cpu:inst12|OP[4] 
+    Info (332119):   -37.505           -6444.680 SW[8] 
+    Info (332119):   -21.044           -1318.731 lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] 
+    Info (332119):   -10.873            -104.437 dec_keyboard:inst11|f3 
+    Info (332119):    -7.905             -50.820 PS2_CLK 
+    Info (332119):    -7.058          -13906.167 CLOCK_50 
+    Info (332119):    -2.473              -9.847 clk_div:inst25|clock_100hz_int 
+    Info (332119):    -2.431              -8.634 clk_div:inst25|clock_1Khz_int 
+    Info (332119):    -2.341              -9.686 clk_div:inst25|clock_10Khz_int 
+    Info (332119):    -2.156              -8.876 clk_div:inst25|clock_1Mhz_int 
+    Info (332119):    -1.854              -9.367 clk_div:inst25|clock_100Khz_int 
+    Info (332119):    -1.751              -5.009 clk_div:inst25|clock_1KHz 
+    Info (332119):    -1.550             -11.489 clk_div:inst25|clock_10Hz_int 
+    Info (332119):    -1.331              -6.438 clk_div:inst25|clock_100KHz 
+Info (332146): Worst-case hold slack is -1.241
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -1.241              -2.468 SW[8] 
+    Info (332119):    -0.203              -0.203 CLOCK_50 
+    Info (332119):     0.026               0.000 lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] 
+    Info (332119):     0.397               0.000 clk_div:inst25|clock_1Khz_int 
+    Info (332119):     0.459               0.000 PS2_CLK 
+    Info (332119):     0.462               0.000 clk_div:inst25|clock_1Mhz_int 
+    Info (332119):     0.535               0.000 clk_div:inst25|clock_10Khz_int 
+    Info (332119):     0.552               0.000 clk_div:inst25|clock_100Khz_int 
+    Info (332119):     0.573               0.000 clk_div:inst25|clock_100hz_int 
+    Info (332119):     0.701               0.000 clk_div:inst25|clock_1KHz 
+    Info (332119):     0.807               0.000 clk_div:inst25|clock_100KHz 
+    Info (332119):     0.814               0.000 dec_keyboard:inst11|f3 
+    Info (332119):     0.915               0.000 clk_div:inst25|clock_10Hz_int 
+    Info (332119):     0.946               0.000 cpu:inst12|OP[4] 
+Info (332146): Worst-case recovery slack is -1.454
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -1.454              -1.454 keyboard:inst14|ready_set 
+    Info (332119):    -1.180              -1.180 keyboard:inst14|scan_ready 
+Info (332146): Worst-case removal slack is 0.566
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.566               0.000 keyboard:inst14|ready_set 
+    Info (332119):     0.624               0.000 keyboard:inst14|scan_ready 
+Info (332146): Worst-case minimum pulse width slack is -2.636
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -2.636          -15234.301 CLOCK_50 
+    Info (332119):    -0.958            -500.618 SW[8] 
+    Info (332119):    -0.652             -24.268 PS2_CLK 
+    Info (332119):    -0.542            -140.228 lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] 
+    Info (332119):    -0.538              -7.898 dec_keyboard:inst11|f3 
+    Info (332119):    -0.538              -6.170 clk_div:inst25|clock_100KHz 
+    Info (332119):    -0.538              -6.151 clk_div:inst25|clock_10Hz_int 
+    Info (332119):    -0.538              -5.686 clk_div:inst25|clock_10Khz_int 
+    Info (332119):    -0.538              -5.554 clk_div:inst25|clock_1Mhz_int 
+    Info (332119):    -0.538              -5.053 clk_div:inst25|clock_100hz_int 
+    Info (332119):    -0.538              -4.614 clk_div:inst25|clock_100Khz_int 
+    Info (332119):    -0.538              -4.297 clk_div:inst25|clock_1Khz_int 
+    Info (332119):    -0.538              -2.428 clk_div:inst25|clock_1KHz 
+    Info (332119):    -0.538              -0.786 keyboard:inst14|scan_ready 
+    Info (332119):    -0.538              -0.768 keyboard:inst14|ready_set 
+    Info (332119):     0.225               0.000 cpu:inst12|OP[4] 
+Warning (18330): Ignoring Synchronizer Identification setting Off, and using Auto instead.
+Info (332114): Report Metastability: Found 111 synchronizer chains.
+    Info (332114): Design MTBF is not calculated because the design doesn't meet its timing requirements.
+Info: Analyzing Slow 1100mV 0C Model
+Info (334003): Started post-fitting delay annotation
+Info (334004): Delay annotation completed successfully
+Info (332097): The following timing edges are non-unate.  The Timing Analyzer will assume pos-unate behavior for these edges in the clock network.
+    Info (332098): Cell: inst12|result[14]~1  from: dataf  to: combout
+    Info (332098): Cell: inst5  from: dataf  to: combout
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
+Critical Warning (332148): Timing requirements not met
+    Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
+Info (332146): Worst-case setup slack is -43.168
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):   -43.168            -682.112 cpu:inst12|OP[4] 
+    Info (332119):   -39.319           -6379.210 SW[8] 
+    Info (332119):   -21.772           -1346.848 lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] 
+    Info (332119):   -10.814            -103.900 dec_keyboard:inst11|f3 
+    Info (332119):    -7.875             -48.662 PS2_CLK 
+    Info (332119):    -6.737          -12546.465 CLOCK_50 
+    Info (332119):    -2.512             -10.026 clk_div:inst25|clock_100hz_int 
+    Info (332119):    -2.442              -8.786 clk_div:inst25|clock_1Khz_int 
+    Info (332119):    -2.361              -9.985 clk_div:inst25|clock_10Khz_int 
+    Info (332119):    -2.176              -9.087 clk_div:inst25|clock_1Mhz_int 
+    Info (332119):    -1.928              -9.704 clk_div:inst25|clock_100Khz_int 
+    Info (332119):    -1.799              -4.739 clk_div:inst25|clock_1KHz 
+    Info (332119):    -1.595             -11.851 clk_div:inst25|clock_10Hz_int 
+    Info (332119):    -1.338              -6.580 clk_div:inst25|clock_100KHz 
+Info (332146): Worst-case hold slack is -1.028
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -1.028              -2.042 SW[8] 
+    Info (332119):    -0.369              -0.423 CLOCK_50 
+    Info (332119):     0.016               0.000 lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] 
+    Info (332119):     0.400               0.000 clk_div:inst25|clock_1Khz_int 
+    Info (332119):     0.482               0.000 clk_div:inst25|clock_1Mhz_int 
+    Info (332119):     0.486               0.000 PS2_CLK 
+    Info (332119):     0.560               0.000 clk_div:inst25|clock_100hz_int 
+    Info (332119):     0.569               0.000 clk_div:inst25|clock_10Khz_int 
+    Info (332119):     0.643               0.000 clk_div:inst25|clock_100Khz_int 
+    Info (332119):     0.695               0.000 clk_div:inst25|clock_1KHz 
+    Info (332119):     0.823               0.000 dec_keyboard:inst11|f3 
+    Info (332119):     0.833               0.000 clk_div:inst25|clock_100KHz 
+    Info (332119):     0.864               0.000 cpu:inst12|OP[4] 
+    Info (332119):     0.912               0.000 clk_div:inst25|clock_10Hz_int 
+Info (332146): Worst-case recovery slack is -1.447
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -1.447              -1.447 keyboard:inst14|ready_set 
+    Info (332119):    -1.086              -1.086 keyboard:inst14|scan_ready 
+Info (332146): Worst-case removal slack is 0.518
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.518               0.000 keyboard:inst14|ready_set 
+    Info (332119):     0.581               0.000 keyboard:inst14|scan_ready 
+Info (332146): Worst-case minimum pulse width slack is -2.636
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -2.636          -15236.873 CLOCK_50 
+    Info (332119):    -1.011            -539.164 SW[8] 
+    Info (332119):    -0.684             -22.836 PS2_CLK 
+    Info (332119):    -0.538            -136.737 lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] 
+    Info (332119):    -0.538              -7.796 dec_keyboard:inst11|f3 
+    Info (332119):    -0.538              -6.173 clk_div:inst25|clock_10Hz_int 
+    Info (332119):    -0.538              -5.973 clk_div:inst25|clock_100KHz 
+    Info (332119):    -0.538              -5.614 clk_div:inst25|clock_10Khz_int 
+    Info (332119):    -0.538              -5.506 clk_div:inst25|clock_1Mhz_int 
+    Info (332119):    -0.538              -4.849 clk_div:inst25|clock_100hz_int 
+    Info (332119):    -0.538              -4.638 clk_div:inst25|clock_100Khz_int 
+    Info (332119):    -0.538              -4.232 clk_div:inst25|clock_1Khz_int 
+    Info (332119):    -0.538              -2.415 clk_div:inst25|clock_1KHz 
+    Info (332119):    -0.538              -0.779 keyboard:inst14|scan_ready 
+    Info (332119):    -0.538              -0.770 keyboard:inst14|ready_set 
+    Info (332119):     0.252               0.000 cpu:inst12|OP[4] 
+Warning (18330): Ignoring Synchronizer Identification setting Off, and using Auto instead.
+Info (332114): Report Metastability: Found 111 synchronizer chains.
+    Info (332114): Design MTBF is not calculated because the design doesn't meet its timing requirements.
+Info: Analyzing Fast 1100mV 85C Model
+Info (334003): Started post-fitting delay annotation
+Info (334004): Delay annotation completed successfully
+Info (332097): The following timing edges are non-unate.  The Timing Analyzer will assume pos-unate behavior for these edges in the clock network.
+    Info (332098): Cell: inst12|result[14]~1  from: dataf  to: combout
+    Info (332098): Cell: inst5  from: dataf  to: combout
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
+Critical Warning (332148): Timing requirements not met
+    Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
+Info (332146): Worst-case setup slack is -19.406
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):   -19.406            -304.377 cpu:inst12|OP[4] 
+    Info (332119):   -17.223           -3519.327 SW[8] 
+    Info (332119):    -9.191            -577.118 lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] 
+    Info (332119):    -5.010             -48.573 dec_keyboard:inst11|f3 
+    Info (332119):    -4.000           -6129.504 CLOCK_50 
+    Info (332119):    -3.919             -15.293 PS2_CLK 
+    Info (332119):    -1.252              -3.253 clk_div:inst25|clock_100hz_int 
+    Info (332119):    -1.204              -3.044 clk_div:inst25|clock_1Khz_int 
+    Info (332119):    -1.188              -3.216 clk_div:inst25|clock_10Khz_int 
+    Info (332119):    -1.091              -2.987 clk_div:inst25|clock_1Mhz_int 
+    Info (332119):    -0.774              -2.898 clk_div:inst25|clock_100Khz_int 
+    Info (332119):    -0.568              -1.647 clk_div:inst25|clock_1KHz 
+    Info (332119):    -0.545              -1.633 clk_div:inst25|clock_100KHz 
+    Info (332119):    -0.472              -3.140 clk_div:inst25|clock_10Hz_int 
+Info (332146): Worst-case hold slack is -0.431
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -0.431              -0.545 CLOCK_50 
+    Info (332119):    -0.271              -0.541 SW[8] 
+    Info (332119):    -0.247              -0.520 lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] 
+    Info (332119):    -0.025              -0.025 clk_div:inst25|clock_1Mhz_int 
+    Info (332119):    -0.020              -0.020 clk_div:inst25|clock_10Khz_int 
+    Info (332119):    -0.015              -0.015 clk_div:inst25|clock_100Khz_int 
+    Info (332119):     0.043               0.000 clk_div:inst25|clock_1KHz 
+    Info (332119):     0.046               0.000 clk_div:inst25|clock_100hz_int 
+    Info (332119):     0.094               0.000 clk_div:inst25|clock_1Khz_int 
+    Info (332119):     0.183               0.000 PS2_CLK 
+    Info (332119):     0.275               0.000 clk_div:inst25|clock_100KHz 
+    Info (332119):     0.313               0.000 dec_keyboard:inst11|f3 
+    Info (332119):     0.349               0.000 clk_div:inst25|clock_10Hz_int 
+    Info (332119):     0.504               0.000 cpu:inst12|OP[4] 
+Info (332146): Worst-case recovery slack is -0.902
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -0.902              -0.902 keyboard:inst14|ready_set 
+    Info (332119):    -0.300              -0.300 keyboard:inst14|scan_ready 
+Info (332146): Worst-case removal slack is 0.063
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.063               0.000 keyboard:inst14|scan_ready 
+    Info (332119):     0.122               0.000 keyboard:inst14|ready_set 
+Info (332146): Worst-case minimum pulse width slack is -2.174
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -2.174          -12504.322 CLOCK_50 
+    Info (332119):    -1.029            -511.789 SW[8] 
+    Info (332119):    -0.720             -24.726 PS2_CLK 
+    Info (332119):    -0.179              -8.409 lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] 
+    Info (332119):    -0.079              -0.470 clk_div:inst25|clock_10Khz_int 
+    Info (332119):    -0.043              -0.254 clk_div:inst25|clock_1Mhz_int 
+    Info (332119):    -0.016              -0.103 clk_div:inst25|clock_100KHz 
+    Info (332119):    -0.005              -0.023 clk_div:inst25|clock_1Khz_int 
+    Info (332119):     0.018               0.000 clk_div:inst25|clock_100hz_int 
+    Info (332119):     0.049               0.000 clk_div:inst25|clock_1KHz 
+    Info (332119):     0.124               0.000 dec_keyboard:inst11|f3 
+    Info (332119):     0.134               0.000 clk_div:inst25|clock_100Khz_int 
+    Info (332119):     0.143               0.000 clk_div:inst25|clock_10Hz_int 
+    Info (332119):     0.144               0.000 keyboard:inst14|ready_set 
+    Info (332119):     0.144               0.000 keyboard:inst14|scan_ready 
+    Info (332119):     0.289               0.000 cpu:inst12|OP[4] 
+Warning (18330): Ignoring Synchronizer Identification setting Off, and using Auto instead.
+Info (332114): Report Metastability: Found 111 synchronizer chains.
+    Info (332114): Design MTBF is not calculated because the design doesn't meet its timing requirements.
+Info: Analyzing Fast 1100mV 0C Model
+Info (332097): The following timing edges are non-unate.  The Timing Analyzer will assume pos-unate behavior for these edges in the clock network.
+    Info (332098): Cell: inst12|result[14]~1  from: dataf  to: combout
+    Info (332098): Cell: inst5  from: dataf  to: combout
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
+Critical Warning (332148): Timing requirements not met
+    Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
+Info (332146): Worst-case setup slack is -18.088
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):   -18.088            -283.491 cpu:inst12|OP[4] 
+    Info (332119):   -16.009           -3109.297 SW[8] 
+    Info (332119):    -8.474            -525.554 lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] 
+    Info (332119):    -4.727             -45.830 dec_keyboard:inst11|f3 
+    Info (332119):    -3.672             -12.301 PS2_CLK 
+    Info (332119):    -3.583           -4996.340 CLOCK_50 
+    Info (332119):    -1.133              -2.838 clk_div:inst25|clock_100hz_int 
+    Info (332119):    -1.088              -2.685 clk_div:inst25|clock_1Khz_int 
+    Info (332119):    -1.076              -2.806 clk_div:inst25|clock_10Khz_int 
+    Info (332119):    -0.995              -2.544 clk_div:inst25|clock_1Mhz_int 
+    Info (332119):    -0.730              -2.567 clk_div:inst25|clock_100Khz_int 
+    Info (332119):    -0.492              -1.307 clk_div:inst25|clock_1KHz 
+    Info (332119):    -0.427              -1.244 clk_div:inst25|clock_100KHz 
+    Info (332119):    -0.405              -2.666 clk_div:inst25|clock_10Hz_int 
+Info (332146): Worst-case hold slack is -0.516
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -0.516             -11.501 CLOCK_50 
+    Info (332119):    -0.239              -0.810 lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] 
+    Info (332119):    -0.224              -0.445 SW[8] 
+    Info (332119):    -0.048              -0.048 clk_div:inst25|clock_10Khz_int 
+    Info (332119):    -0.031              -0.031 clk_div:inst25|clock_1Mhz_int 
+    Info (332119):    -0.022              -0.022 clk_div:inst25|clock_100Khz_int 
+    Info (332119):     0.005               0.000 clk_div:inst25|clock_1KHz 
+    Info (332119):     0.014               0.000 clk_div:inst25|clock_100hz_int 
+    Info (332119):     0.053               0.000 clk_div:inst25|clock_1Khz_int 
+    Info (332119):     0.172               0.000 PS2_CLK 
+    Info (332119):     0.250               0.000 clk_div:inst25|clock_100KHz 
+    Info (332119):     0.288               0.000 dec_keyboard:inst11|f3 
+    Info (332119):     0.316               0.000 clk_div:inst25|clock_10Hz_int 
+    Info (332119):     0.473               0.000 cpu:inst12|OP[4] 
+Info (332146): Worst-case recovery slack is -0.796
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -0.796              -0.796 keyboard:inst14|ready_set 
+    Info (332119):    -0.222              -0.222 keyboard:inst14|scan_ready 
+Info (332146): Worst-case removal slack is 0.013
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.013               0.000 keyboard:inst14|scan_ready 
+    Info (332119):     0.065               0.000 keyboard:inst14|ready_set 
+Info (332146): Worst-case minimum pulse width slack is -2.174
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -2.174          -12717.444 CLOCK_50 
+    Info (332119):    -1.005            -520.925 SW[8] 
+    Info (332119):    -0.751             -25.804 PS2_CLK 
+    Info (332119):    -0.100              -2.628 lpm_dff1:inst1|lpm_ff:lpm_ff_component|dffs[0] 
+    Info (332119):    -0.033              -0.195 clk_div:inst25|clock_10Khz_int 
+    Info (332119):     0.004               0.000 clk_div:inst25|clock_1Mhz_int 
+    Info (332119):     0.026               0.000 clk_div:inst25|clock_100KHz 
+    Info (332119):     0.034               0.000 clk_div:inst25|clock_1Khz_int 
+    Info (332119):     0.062               0.000 clk_div:inst25|clock_100hz_int 
+    Info (332119):     0.071               0.000 clk_div:inst25|clock_1KHz 
+    Info (332119):     0.132               0.000 clk_div:inst25|clock_100Khz_int 
+    Info (332119):     0.134               0.000 dec_keyboard:inst11|f3 
+    Info (332119):     0.143               0.000 clk_div:inst25|clock_10Hz_int 
+    Info (332119):     0.143               0.000 keyboard:inst14|ready_set 
+    Info (332119):     0.151               0.000 keyboard:inst14|scan_ready 
+    Info (332119):     0.334               0.000 cpu:inst12|OP[4] 
+Warning (18330): Ignoring Synchronizer Identification setting Off, and using Auto instead.
+Info (332114): Report Metastability: Found 111 synchronizer chains.
+    Info (332114): Design MTBF is not calculated because the design doesn't meet its timing requirements.
+Info (332102): Design is not fully constrained for setup requirements
+Info (332102): Design is not fully constrained for hold requirements
+Info: Quartus Prime Timing Analyzer was successful. 0 errors, 11 warnings
+    Info: Peak virtual memory: 5164 megabytes
+    Info: Processing ended: Fri Jul  1 17:32:59 2022
+    Info: Elapsed time: 00:00:14
+    Info: Total CPU time (on all processors): 00:00:25
+
+
