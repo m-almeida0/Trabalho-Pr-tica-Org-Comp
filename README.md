@@ -1,1 +1,1 @@
-# Trabalho-Pr-tica-Org-Comp
+# Trabalho-Prática-Org-Comp
