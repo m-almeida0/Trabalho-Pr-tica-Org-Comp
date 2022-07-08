@@ -5,19 +5,26 @@ jmp main
 ; As variaveis locais de cada funcao serao alocadas nos Registradores internos = r0 - r7
 RNG: var #1
 ATK: var #1
-static ATK + #0, #53
+static ATK + #0, #0
 DEF: var #1
-static DEF + #0, #67
+static DEF + #0, #0
 SPA: var #1
-static SPA + #0, #84
+static SPA + #0, #0
 SPD: var #1
-static SPD + #0, #91
+static SPD + #0, #0
 SPE: var #1
-static SPE + #0, #23
+static SPE + #0, #0
 HP: var #1
-static HP + #0, #12
+static HP + #0, #0
+POCAO: var #1
+static POCAO + #0, #0
+ATKUP: var #1
+static ATKUP + #0, #0
+DEFUP: var #1
+static DEFUP + #0, #0
 PONTOS: var #1
-static PONTOS + #0, #40
+static PONTOS + #0, #50
+
 Palavra: var #41	; Vetor para Armazenar as letras da Palavra
 PalavraSize: var #1	; Tamanho da Palavra
 Letra: var #1		; Contem a letra que foi digitada
@@ -71,8 +78,6 @@ fim_loop_inicio:
 	
     call printDefineStatusScreen
     call mostraStatus
-    loadn r3, #'1'
-    loadn r4, #'2'
     jmp loop_status
 
 loop_status:
@@ -81,24 +86,227 @@ loop_status:
     cmp r1,r2
     jeq fim_loop_status
 
+    loadn r4, #JMP_TABLE_STATUS
+    add r4, r4, r1
+    loadi r1, r4
+
+    loadn r4, #0
+
+    cmp r1, r4
+    jeq loop_status
+
+    jid r1
+
 diminui_atk:
-    cmp r1,r3
-    jne aumenta_atk
+    ; Checando se pode diminuir mais
     load r5, ATK
+    loadn r6, #0
+    cmp r5, r6
+    jeq loop_status
+
+    ; Diminuindo e atualizando na tela
     dec r5
+    load r6, PONTOS
+    inc r6
+    store PONTOS, r6
     store ATK, r5
     call mostraATK
+    call mostraPontos
+    
     jmp loop_status
 
 aumenta_atk:
-    cmp r1,r4
-    jne loop_status
+    ; Checando se pode aumentar mais
     load r5, ATK
+    load r6, PONTOS
+    loadn r7, #0
+    cmp r6, r7
+    jeq loop_status
+
     inc r5
     store ATK, r5
+    dec r6
+    store PONTOS, r6
     call mostraATK
+    call mostraPontos
 
     jmp loop_status
+
+diminui_def:
+    ; Checando se pode diminuir mais
+    load r5, DEF
+    loadn r6, #0
+    cmp r5, r6
+    jeq loop_status
+
+    ; Diminuindo e atualizando na tela
+    dec r5
+    load r6, PONTOS
+    inc r6
+    store PONTOS, r6
+    store DEF, r5
+    call mostraDEF
+    call mostraPontos
+ 
+    jmp loop_status
+
+aumenta_def:
+    ; Checando se pode aumentar mais
+    load r5, DEF
+    load r6, PONTOS
+    loadn r7, #0
+    cmp r6, r7
+    jeq loop_status
+
+    inc r5
+    store DEF, r5
+    dec r6
+    store PONTOS, r6
+    call mostraDEF
+    call mostraPontos
+
+    jmp loop_status
+
+diminui_spa:
+    ; Checando se pode diminuir mais
+    load r5, SPA
+    loadn r6, #0
+    cmp r5, r6
+    jeq loop_status
+
+    ; Diminuindo e atualizando na tela
+    dec r5
+    load r6, PONTOS
+    inc r6
+    store PONTOS, r6
+    store SPA, r5
+    call mostraSPA
+    call mostraPontos
+ 
+    jmp loop_status
+
+aumenta_spa:
+    ; Checando se pode aumentar mais
+    load r5, SPA
+    load r6, PONTOS
+    loadn r7, #0
+    cmp r6, r7
+    jeq loop_status
+
+    inc r5
+    store SPA, r5
+    dec r6
+    store PONTOS, r6
+    call mostraSPA
+    call mostraPontos
+
+    jmp loop_status
+
+diminui_spd:
+    ; Checando se pode diminuir mais
+    load r5, SPD
+    loadn r6, #0
+    cmp r5, r6
+    jeq loop_status
+
+    ; Diminuindo e atualizando na tela
+    dec r5
+    load r6, PONTOS
+    inc r6
+    store PONTOS, r6
+    store SPD, r5
+    call mostraSPD
+    call mostraPontos
+ 
+    jmp loop_status
+
+aumenta_spd:
+    ; Checando se pode aumentar mais
+    load r5, SPD
+    load r6, PONTOS
+    loadn r7, #0
+    cmp r6, r7
+    jeq loop_status
+
+    inc r5
+    store SPD, r5
+    dec r6
+    store PONTOS, r6
+    call mostraSPD
+    call mostraPontos
+
+    jmp loop_status
+
+diminui_spe:
+    ; Checando se pode diminuir mais
+    load r5, SPE
+    loadn r6, #0
+    cmp r5, r6
+    jeq loop_status
+
+    ; Diminuindo e atualizando na tela
+    dec r5
+    load r6, PONTOS
+    inc r6
+    store PONTOS, r6
+    store SPE, r5
+    call mostraSPE
+    call mostraPontos
+ 
+    jmp loop_status
+
+aumenta_spe:
+    ; Checando se pode aumentar mais
+    load r5, SPE
+    load r6, PONTOS
+    loadn r7, #0
+    cmp r6, r7
+    jeq loop_status
+
+    inc r5
+    store SPE, r5
+    dec r6
+    store PONTOS, r6
+    call mostraSPE
+    call mostraPontos
+
+    jmp loop_status
+
+diminui_hp:
+    ; Checando se pode diminuir mais
+    load r5, HP
+    loadn r6, #0
+    cmp r5, r6
+    jeq loop_status
+
+    ; Diminuindo e atualizando na tela
+    dec r5
+    load r6, PONTOS
+    inc r6
+    store PONTOS, r6
+    store HP, r5
+    call mostraHP
+    call mostraPontos
+ 
+    jmp loop_status
+
+aumenta_hp:
+    ; Checando se pode aumentar mais
+    load r5, HP
+    load r6, PONTOS
+    loadn r7, #0
+    cmp r6, r7
+    jeq loop_status
+
+    inc r5
+    store HP, r5
+    dec r6
+    store PONTOS, r6
+    call mostraHP
+    call mostraPontos
+
+    jmp loop_status
+
 
 fim_loop_status:
     halt
@@ -177,7 +385,55 @@ mostraHP:
     pop r0
     rts
 
-; Monstra todos os status na tela
+mostraPocao:
+    push r0
+    push r1
+    
+    load r0, POCAO
+    loadn r1, #769
+    call printNum
+
+    pop r1
+    pop r0
+    rts
+
+mostraATKUP:
+    push r0
+    push r1
+
+    load r0, ATKUP
+    loadn r1, #849
+    call printNum
+
+    pop r1
+    pop r0
+    rts
+
+mostraDEFUP:
+    push r0
+    push r1
+
+    load r0, DEFUP
+    loadn r1, #929
+    call printNum
+
+    pop r1
+    pop r0
+    rts
+
+mostraPontos:
+    push r0
+    push r1
+
+    load r0, PONTOS
+    loadn r1, #72
+    call printNum
+
+    pop r1
+    pop r0
+    rts
+
+; Montra todos os status na tela
 mostraStatus:
     
     call mostraATK
@@ -186,6 +442,10 @@ mostraStatus:
     call mostraSPD
     call mostraSPE
     call mostraHP
+    call mostraPocao
+    call mostraATKUP
+    call mostraDEFUP
+    call mostraPontos
 
     rts
 
@@ -945,19 +1205,19 @@ DefineStatus : var #1200
   static DefineStatus + #685, #83
   static DefineStatus + #686, #58
   static DefineStatus + #687, #3967
-  static DefineStatus + #688, #3967
+  static DefineStatus + #688, #0
   static DefineStatus + #689, #3967
   static DefineStatus + #690, #3967
-  static DefineStatus + #691, #3967
-  static DefineStatus + #692, #45
-  static DefineStatus + #693, #127
-  static DefineStatus + #694, #43
-  static DefineStatus + #695, #3967
-  static DefineStatus + #696, #91
-  static DefineStatus + #697, #67
-  static DefineStatus + #698, #3967
-  static DefineStatus + #699, #68
-  static DefineStatus + #700, #93
+  static DefineStatus + #691, #0
+  static DefineStatus + #692, #0
+  static DefineStatus + #693, #0
+  static DefineStatus + #694, #0
+  static DefineStatus + #695, #0
+  static DefineStatus + #696, #0
+  static DefineStatus + #697, #0
+  static DefineStatus + #698, #0
+  static DefineStatus + #699, #0
+  static DefineStatus + #700, #0
   static DefineStatus + #701, #127
   static DefineStatus + #702, #127
   static DefineStatus + #703, #127
@@ -989,11 +1249,11 @@ DefineStatus : var #1200
   static DefineStatus + #727, #3967
   static DefineStatus + #728, #3967
   static DefineStatus + #729, #3967
-  static DefineStatus + #730, #3967
-  static DefineStatus + #731, #3967
-  static DefineStatus + #732, #3967
-  static DefineStatus + #733, #3967
-  static DefineStatus + #734, #3967
+  static DefineStatus + #730, #0
+  static DefineStatus + #731, #0
+  static DefineStatus + #732, #0
+  static DefineStatus + #733, #0
+  static DefineStatus + #734, #0
   static DefineStatus + #735, #3967
   static DefineStatus + #736, #3967
   static DefineStatus + #737, #3967
@@ -1038,9 +1298,9 @@ DefineStatus : var #1200
   static DefineStatus + #774, #43
   static DefineStatus + #775, #3967
   static DefineStatus + #776, #91
-  static DefineStatus + #777, #69
+  static DefineStatus + #777, #67
   static DefineStatus + #778, #3967
-  static DefineStatus + #779, #70
+  static DefineStatus + #779, #68
   static DefineStatus + #780, #93
   static DefineStatus + #781, #3967
   static DefineStatus + #782, #3967
@@ -1122,9 +1382,9 @@ DefineStatus : var #1200
   static DefineStatus + #854, #43
   static DefineStatus + #855, #3967
   static DefineStatus + #856, #91
-  static DefineStatus + #857, #71
+  static DefineStatus + #857, #69
   static DefineStatus + #858, #3967
-  static DefineStatus + #859, #72
+  static DefineStatus + #859, #70
   static DefineStatus + #860, #93
   static DefineStatus + #861, #3967
   static DefineStatus + #862, #3967
@@ -1206,9 +1466,9 @@ DefineStatus : var #1200
   static DefineStatus + #934, #43
   static DefineStatus + #935, #3967
   static DefineStatus + #936, #91
-  static DefineStatus + #937, #73
+  static DefineStatus + #937, #71
   static DefineStatus + #938, #3967
-  static DefineStatus + #939, #74
+  static DefineStatus + #939, #72
   static DefineStatus + #940, #93
   static DefineStatus + #941, #3967
   static DefineStatus + #942, #3967
@@ -1507,3 +1767,261 @@ printDefineStatusScreen:
   pop R1
   pop R0
   rts
+
+JMP_TABLE_STATUS: var #256
+static JMP_TABLE_STATUS + #0, #0
+static JMP_TABLE_STATUS + #1, #0
+static JMP_TABLE_STATUS + #2, #0
+static JMP_TABLE_STATUS + #3, #0
+static JMP_TABLE_STATUS + #4, #0
+static JMP_TABLE_STATUS + #5, #0
+static JMP_TABLE_STATUS + #6, #0
+static JMP_TABLE_STATUS + #7, #0
+static JMP_TABLE_STATUS + #8, #0
+static JMP_TABLE_STATUS + #9, #0
+static JMP_TABLE_STATUS + #10, #0
+static JMP_TABLE_STATUS + #11, #0
+static JMP_TABLE_STATUS + #12, #0
+static JMP_TABLE_STATUS + #13, #0
+static JMP_TABLE_STATUS + #14, #0
+static JMP_TABLE_STATUS + #15, #0
+static JMP_TABLE_STATUS + #16, #0
+static JMP_TABLE_STATUS + #17, #0
+static JMP_TABLE_STATUS + #18, #0
+static JMP_TABLE_STATUS + #19, #0
+static JMP_TABLE_STATUS + #20, #0
+static JMP_TABLE_STATUS + #21, #0
+static JMP_TABLE_STATUS + #22, #0
+static JMP_TABLE_STATUS + #23, #0
+static JMP_TABLE_STATUS + #24, #0
+static JMP_TABLE_STATUS + #25, #0
+static JMP_TABLE_STATUS + #26, #0
+static JMP_TABLE_STATUS + #27, #0
+static JMP_TABLE_STATUS + #28, #0
+static JMP_TABLE_STATUS + #29, #0
+static JMP_TABLE_STATUS + #30, #0
+static JMP_TABLE_STATUS + #31, #0
+static JMP_TABLE_STATUS + #32, #0
+static JMP_TABLE_STATUS + #33, #0
+static JMP_TABLE_STATUS + #34, #0
+static JMP_TABLE_STATUS + #35, #0
+static JMP_TABLE_STATUS + #36, #0
+static JMP_TABLE_STATUS + #37, #0
+static JMP_TABLE_STATUS + #38, #0
+static JMP_TABLE_STATUS + #39, #0
+static JMP_TABLE_STATUS + #40, #0
+static JMP_TABLE_STATUS + #41, #0
+static JMP_TABLE_STATUS + #42, #0
+static JMP_TABLE_STATUS + #43, #0
+static JMP_TABLE_STATUS + #44, #0
+static JMP_TABLE_STATUS + #45, #0
+static JMP_TABLE_STATUS + #46, #0
+static JMP_TABLE_STATUS + #47, #0
+static JMP_TABLE_STATUS + #48, #aumenta_spe
+static JMP_TABLE_STATUS + #49, #diminui_atk
+static JMP_TABLE_STATUS + #50, #aumenta_atk
+static JMP_TABLE_STATUS + #51, #diminui_def
+static JMP_TABLE_STATUS + #52, #aumenta_def
+static JMP_TABLE_STATUS + #53, #diminui_spa
+static JMP_TABLE_STATUS + #54, #aumenta_spa
+static JMP_TABLE_STATUS + #55, #diminui_spd
+static JMP_TABLE_STATUS + #56, #aumenta_spd
+static JMP_TABLE_STATUS + #57, #diminui_spe
+static JMP_TABLE_STATUS + #58, #0
+static JMP_TABLE_STATUS + #59, #0
+static JMP_TABLE_STATUS + #60, #0
+static JMP_TABLE_STATUS + #61, #0
+static JMP_TABLE_STATUS + #62, #0
+static JMP_TABLE_STATUS + #63, #0
+static JMP_TABLE_STATUS + #64, #0
+static JMP_TABLE_STATUS + #65, #0
+static JMP_TABLE_STATUS + #66, #0
+static JMP_TABLE_STATUS + #67, #0
+static JMP_TABLE_STATUS + #68, #0
+static JMP_TABLE_STATUS + #69, #0
+static JMP_TABLE_STATUS + #70, #0
+static JMP_TABLE_STATUS + #71, #0
+static JMP_TABLE_STATUS + #72, #0
+static JMP_TABLE_STATUS + #73, #0
+static JMP_TABLE_STATUS + #74, #0
+static JMP_TABLE_STATUS + #75, #0
+static JMP_TABLE_STATUS + #76, #0
+static JMP_TABLE_STATUS + #77, #0
+static JMP_TABLE_STATUS + #78, #0
+static JMP_TABLE_STATUS + #79, #0
+static JMP_TABLE_STATUS + #80, #0
+static JMP_TABLE_STATUS + #81, #0
+static JMP_TABLE_STATUS + #82, #0
+static JMP_TABLE_STATUS + #83, #0
+static JMP_TABLE_STATUS + #84, #0
+static JMP_TABLE_STATUS + #85, #0
+static JMP_TABLE_STATUS + #86, #0
+static JMP_TABLE_STATUS + #87, #0
+static JMP_TABLE_STATUS + #88, #0
+static JMP_TABLE_STATUS + #89, #0
+static JMP_TABLE_STATUS + #90, #0
+static JMP_TABLE_STATUS + #91, #0
+static JMP_TABLE_STATUS + #92, #0
+static JMP_TABLE_STATUS + #93, #0
+static JMP_TABLE_STATUS + #94, #0
+static JMP_TABLE_STATUS + #95, #0
+static JMP_TABLE_STATUS + #96, #0
+static JMP_TABLE_STATUS + #97, #diminui_hp
+static JMP_TABLE_STATUS + #98, #aumenta_hp
+static JMP_TABLE_STATUS + #99, #0
+static JMP_TABLE_STATUS + #100, #0
+static JMP_TABLE_STATUS + #101, #0
+static JMP_TABLE_STATUS + #102, #0
+static JMP_TABLE_STATUS + #103, #0
+static JMP_TABLE_STATUS + #104, #0
+static JMP_TABLE_STATUS + #105, #0
+static JMP_TABLE_STATUS + #106, #0
+static JMP_TABLE_STATUS + #107, #0
+static JMP_TABLE_STATUS + #108, #0
+static JMP_TABLE_STATUS + #109, #0
+static JMP_TABLE_STATUS + #110, #0
+static JMP_TABLE_STATUS + #111, #0
+static JMP_TABLE_STATUS + #112, #0
+static JMP_TABLE_STATUS + #113, #0
+static JMP_TABLE_STATUS + #114, #0
+static JMP_TABLE_STATUS + #115, #0
+static JMP_TABLE_STATUS + #116, #0
+static JMP_TABLE_STATUS + #117, #0
+static JMP_TABLE_STATUS + #118, #0
+static JMP_TABLE_STATUS + #119, #0
+static JMP_TABLE_STATUS + #120, #0
+static JMP_TABLE_STATUS + #121, #0
+static JMP_TABLE_STATUS + #122, #0
+static JMP_TABLE_STATUS + #123, #0
+static JMP_TABLE_STATUS + #124, #0
+static JMP_TABLE_STATUS + #125, #0
+static JMP_TABLE_STATUS + #126, #0
+static JMP_TABLE_STATUS + #127, #0
+static JMP_TABLE_STATUS + #128, #0
+static JMP_TABLE_STATUS + #129, #0
+static JMP_TABLE_STATUS + #130, #0
+static JMP_TABLE_STATUS + #131, #0
+static JMP_TABLE_STATUS + #132, #0
+static JMP_TABLE_STATUS + #133, #0
+static JMP_TABLE_STATUS + #134, #0
+static JMP_TABLE_STATUS + #135, #0
+static JMP_TABLE_STATUS + #136, #0
+static JMP_TABLE_STATUS + #137, #0
+static JMP_TABLE_STATUS + #138, #0
+static JMP_TABLE_STATUS + #139, #0
+static JMP_TABLE_STATUS + #140, #0
+static JMP_TABLE_STATUS + #141, #0
+static JMP_TABLE_STATUS + #142, #0
+static JMP_TABLE_STATUS + #143, #0
+static JMP_TABLE_STATUS + #144, #0
+static JMP_TABLE_STATUS + #145, #0
+static JMP_TABLE_STATUS + #146, #0
+static JMP_TABLE_STATUS + #147, #0
+static JMP_TABLE_STATUS + #148, #0
+static JMP_TABLE_STATUS + #149, #0
+static JMP_TABLE_STATUS + #150, #0
+static JMP_TABLE_STATUS + #151, #0
+static JMP_TABLE_STATUS + #152, #0
+static JMP_TABLE_STATUS + #153, #0
+static JMP_TABLE_STATUS + #154, #0
+static JMP_TABLE_STATUS + #155, #0
+static JMP_TABLE_STATUS + #156, #0
+static JMP_TABLE_STATUS + #157, #0
+static JMP_TABLE_STATUS + #158, #0
+static JMP_TABLE_STATUS + #159, #0
+static JMP_TABLE_STATUS + #160, #0
+static JMP_TABLE_STATUS + #161, #0
+static JMP_TABLE_STATUS + #162, #0
+static JMP_TABLE_STATUS + #163, #0
+static JMP_TABLE_STATUS + #164, #0
+static JMP_TABLE_STATUS + #165, #0
+static JMP_TABLE_STATUS + #166, #0
+static JMP_TABLE_STATUS + #167, #0
+static JMP_TABLE_STATUS + #168, #0
+static JMP_TABLE_STATUS + #169, #0
+static JMP_TABLE_STATUS + #170, #0
+static JMP_TABLE_STATUS + #171, #0
+static JMP_TABLE_STATUS + #172, #0
+static JMP_TABLE_STATUS + #173, #0
+static JMP_TABLE_STATUS + #174, #0
+static JMP_TABLE_STATUS + #175, #0
+static JMP_TABLE_STATUS + #176, #0
+static JMP_TABLE_STATUS + #177, #0
+static JMP_TABLE_STATUS + #178, #0
+static JMP_TABLE_STATUS + #179, #0
+static JMP_TABLE_STATUS + #180, #0
+static JMP_TABLE_STATUS + #181, #0
+static JMP_TABLE_STATUS + #182, #0
+static JMP_TABLE_STATUS + #183, #0
+static JMP_TABLE_STATUS + #184, #0
+static JMP_TABLE_STATUS + #185, #0
+static JMP_TABLE_STATUS + #186, #0
+static JMP_TABLE_STATUS + #187, #0
+static JMP_TABLE_STATUS + #188, #0
+static JMP_TABLE_STATUS + #189, #0
+static JMP_TABLE_STATUS + #190, #0
+static JMP_TABLE_STATUS + #191, #0
+static JMP_TABLE_STATUS + #192, #0
+static JMP_TABLE_STATUS + #193, #0
+static JMP_TABLE_STATUS + #194, #0
+static JMP_TABLE_STATUS + #195, #0
+static JMP_TABLE_STATUS + #196, #0
+static JMP_TABLE_STATUS + #197, #0
+static JMP_TABLE_STATUS + #198, #0
+static JMP_TABLE_STATUS + #199, #0
+static JMP_TABLE_STATUS + #200, #0
+static JMP_TABLE_STATUS + #201, #0
+static JMP_TABLE_STATUS + #202, #0
+static JMP_TABLE_STATUS + #203, #0
+static JMP_TABLE_STATUS + #204, #0
+static JMP_TABLE_STATUS + #205, #0
+static JMP_TABLE_STATUS + #206, #0
+static JMP_TABLE_STATUS + #207, #0
+static JMP_TABLE_STATUS + #208, #0
+static JMP_TABLE_STATUS + #209, #0
+static JMP_TABLE_STATUS + #210, #0
+static JMP_TABLE_STATUS + #211, #0
+static JMP_TABLE_STATUS + #212, #0
+static JMP_TABLE_STATUS + #213, #0
+static JMP_TABLE_STATUS + #214, #0
+static JMP_TABLE_STATUS + #215, #0
+static JMP_TABLE_STATUS + #216, #0
+static JMP_TABLE_STATUS + #217, #0
+static JMP_TABLE_STATUS + #218, #0
+static JMP_TABLE_STATUS + #219, #0
+static JMP_TABLE_STATUS + #220, #0
+static JMP_TABLE_STATUS + #221, #0
+static JMP_TABLE_STATUS + #222, #0
+static JMP_TABLE_STATUS + #223, #0
+static JMP_TABLE_STATUS + #224, #0
+static JMP_TABLE_STATUS + #225, #0
+static JMP_TABLE_STATUS + #226, #0
+static JMP_TABLE_STATUS + #227, #0
+static JMP_TABLE_STATUS + #228, #0
+static JMP_TABLE_STATUS + #229, #0
+static JMP_TABLE_STATUS + #230, #0
+static JMP_TABLE_STATUS + #231, #0
+static JMP_TABLE_STATUS + #232, #0
+static JMP_TABLE_STATUS + #233, #0
+static JMP_TABLE_STATUS + #234, #0
+static JMP_TABLE_STATUS + #235, #0
+static JMP_TABLE_STATUS + #236, #0
+static JMP_TABLE_STATUS + #237, #0
+static JMP_TABLE_STATUS + #238, #0
+static JMP_TABLE_STATUS + #239, #0
+static JMP_TABLE_STATUS + #240, #0
+static JMP_TABLE_STATUS + #241, #0
+static JMP_TABLE_STATUS + #242, #0
+static JMP_TABLE_STATUS + #243, #0
+static JMP_TABLE_STATUS + #244, #0
+static JMP_TABLE_STATUS + #245, #0
+static JMP_TABLE_STATUS + #246, #0
+static JMP_TABLE_STATUS + #247, #0
+static JMP_TABLE_STATUS + #248, #0
+static JMP_TABLE_STATUS + #249, #0
+static JMP_TABLE_STATUS + #250, #0
+static JMP_TABLE_STATUS + #251, #0
+static JMP_TABLE_STATUS + #252, #0
+static JMP_TABLE_STATUS + #253, #0
+static JMP_TABLE_STATUS + #254, #0
+static JMP_TABLE_STATUS + #255, #0
