@@ -24,6 +24,8 @@ DEFUP: var #1
 static DEFUP + #0, #0
 PONTOS: var #1
 static PONTOS + #0, #50
+MOEDAS: var #1
+static MOEDAS + #0, #20
 
 Palavra: var #41	; Vetor para Armazenar as letras da Palavra
 PalavraSize: var #1	; Tamanho da Palavra
@@ -316,12 +318,13 @@ diminui_pocao:
 
     ; Diminuindo e atualizando na tela
     dec r5
-    load r6, PONTOS
-    inc r6
-    store PONTOS, r6
+    load r6, MOEDAS
+    loadn r7, #5
+    add r6, r6, r7
+    store MOEDAS, r6
     store POCAO, r5
     call mostraPocao
-    call mostraPontos
+    call mostraMoedas
  
     jmp loop_status
 
@@ -329,17 +332,17 @@ diminui_pocao:
 aumenta_pocao:
     ; Checando se pode aumentar mais
     load r5, POCAO
-    load r6, PONTOS
-    loadn r7, #0
+    load r6, MOEDAS
+    loadn r7, #5
     cmp r6, r7
-    jeq loop_status
+    jle loop_status
 
     inc r5
     store POCAO, r5
-    dec r6
-    store PONTOS, r6
+    sub r6, r6, r7
+    store MOEDAS, r6
     call mostraPocao
-    call mostraPontos
+    call mostraMoedas
 
     jmp loop_status
 
@@ -353,12 +356,13 @@ diminui_atkup:
 
     ; Diminuindo e atualizando na tela
     dec r5
-    load r6, PONTOS
-    inc r6
-    store PONTOS, r6
+    load r6, MOEDAS
+    loadn r7, #5
+    add r6, r6, r7
+    store MOEDAS, r6
     store ATKUP, r5
     call mostraATKUP
-    call mostraPontos
+    call mostraMoedas
  
     jmp loop_status
 
@@ -366,17 +370,17 @@ diminui_atkup:
 aumenta_atkup:
     ; Checando se pode aumentar mais
     load r5, ATKUP
-    load r6, PONTOS
-    loadn r7, #0
+    load r6, MOEDAS
+    loadn r7, #5
     cmp r6, r7
-    jeq loop_status
+    jle loop_status
 
     inc r5
     store ATKUP, r5
-    dec r6
-    store PONTOS, r6
+    sub r6, r6, r7
+    store MOEDAS, r6
     call mostraATKUP
-    call mostraPontos
+    call mostraMoedas
 
     jmp loop_status
 
@@ -390,12 +394,13 @@ diminui_defup:
 
     ; Diminuindo e atualizando na tela
     dec r5
-    load r6, PONTOS
-    inc r6
-    store PONTOS, r6
+    load r6, MOEDAS
+    loadn r7, #5
+    add r6, r6, r7
+    store MOEDAS, r6
     store DEFUP, r5
     call mostraDEFUP
-    call mostraPontos
+    call mostraMoedas
  
     jmp loop_status
 
@@ -403,17 +408,17 @@ diminui_defup:
 aumenta_defup:
     ; Checando se pode aumentar mais
     load r5, DEFUP
-    load r6, PONTOS
-    loadn r7, #0
+    load r6, MOEDAS
+    loadn r7, #5
     cmp r6, r7
-    jeq loop_status
+    jle loop_status
 
     inc r5
     store DEFUP, r5
-    dec r6
-    store PONTOS, r6
+    sub r6, r6, r7
+    store MOEDAS, r6
     call mostraDEFUP
-    call mostraPontos
+    call mostraMoedas
 
     jmp loop_status
 
@@ -542,6 +547,18 @@ mostraPontos:
     pop r0
     rts
 
+mostraMoedas:
+    push r0
+    push r1
+
+    load r0, MOEDAS
+    loadn r1, #689
+    call printNum
+
+    pop r1
+    pop r0
+    rts
+
 ; Montra todos os status na tela
 mostraStatus:
     
@@ -555,7 +572,7 @@ mostraStatus:
     call mostraATKUP
     call mostraDEFUP
     call mostraPontos
-
+    call mostraMoedas
     rts
 
 ; Printa o número em r0 com dois digitos começando na posição r1
@@ -1320,12 +1337,12 @@ DefineStatus : var #1200
   static DefineStatus + #689, #3967
   static DefineStatus + #690, #3967
   static DefineStatus + #691, #0
-  static DefineStatus + #692, #0
-  static DefineStatus + #693, #0
-  static DefineStatus + #694, #0
-  static DefineStatus + #695, #0
-  static DefineStatus + #696, #0
-  static DefineStatus + #697, #0
+  static DefineStatus + #692, #77
+  static DefineStatus + #693, #79
+  static DefineStatus + #694, #69
+  static DefineStatus + #695, #68
+  static DefineStatus + #696, #65
+  static DefineStatus + #697, #83
   static DefineStatus + #698, #0
   static DefineStatus + #699, #0
   static DefineStatus + #700, #0
