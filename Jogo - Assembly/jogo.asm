@@ -307,6 +307,115 @@ aumenta_hp:
 
     jmp loop_status
 
+diminui_pocao:
+    ; Checando se pode diminuir mais
+    load r5, POCAO
+    loadn r6, #0
+    cmp r5, r6
+    jeq loop_status
+
+    ; Diminuindo e atualizando na tela
+    dec r5
+    load r6, PONTOS
+    inc r6
+    store PONTOS, r6
+    store POCAO, r5
+    call mostraPocao
+    call mostraPontos
+ 
+    jmp loop_status
+
+
+aumenta_pocao:
+    ; Checando se pode aumentar mais
+    load r5, POCAO
+    load r6, PONTOS
+    loadn r7, #0
+    cmp r6, r7
+    jeq loop_status
+
+    inc r5
+    store POCAO, r5
+    dec r6
+    store PONTOS, r6
+    call mostraPocao
+    call mostraPontos
+
+    jmp loop_status
+
+
+diminui_atkup:
+    ; Checando se pode diminuir mais
+    load r5, ATKUP
+    loadn r6, #0
+    cmp r5, r6
+    jeq loop_status
+
+    ; Diminuindo e atualizando na tela
+    dec r5
+    load r6, PONTOS
+    inc r6
+    store PONTOS, r6
+    store ATKUP, r5
+    call mostraATKUP
+    call mostraPontos
+ 
+    jmp loop_status
+
+
+aumenta_atkup:
+    ; Checando se pode aumentar mais
+    load r5, ATKUP
+    load r6, PONTOS
+    loadn r7, #0
+    cmp r6, r7
+    jeq loop_status
+
+    inc r5
+    store ATKUP, r5
+    dec r6
+    store PONTOS, r6
+    call mostraATKUP
+    call mostraPontos
+
+    jmp loop_status
+
+
+diminui_defup:
+    ; Checando se pode diminuir mais
+    load r5, DEFUP
+    loadn r6, #0
+    cmp r5, r6
+    jeq loop_status
+
+    ; Diminuindo e atualizando na tela
+    dec r5
+    load r6, PONTOS
+    inc r6
+    store PONTOS, r6
+    store DEFUP, r5
+    call mostraDEFUP
+    call mostraPontos
+ 
+    jmp loop_status
+
+
+aumenta_defup:
+    ; Checando se pode aumentar mais
+    load r5, DEFUP
+    load r6, PONTOS
+    loadn r7, #0
+    cmp r6, r7
+    jeq loop_status
+
+    inc r5
+    store DEFUP, r5
+    dec r6
+    store PONTOS, r6
+    call mostraDEFUP
+    call mostraPontos
+
+    jmp loop_status
 
 fim_loop_status:
     halt
@@ -455,7 +564,8 @@ printNum:
     push r3
     push r4
 
-    loadn r2, #48
+    ; #3632 é o 0 de cor azul pastel, talvez? É um azul aíkk
+    loadn r2, #3632
     loadn r3, #10
 
     ; Calcula digito das dezenas
@@ -470,7 +580,8 @@ printNum:
     mod r4, r0, r3
     
     ; Imprime digito das unidades
-    loadn r2, #48
+    ; #3632 é o 0 de cor azul pastel, talvez? É um azul aíkk
+    loadn r2, #3632
     add r2, r2, r4
     outchar r2, r1
     dec r1
@@ -610,24 +721,24 @@ DefineStatus : var #1200
 
   ;Linha 3
   static DefineStatus + #120, #3967
-  static DefineStatus + #121, #65
-  static DefineStatus + #122, #84
-  static DefineStatus + #123, #75
+  static DefineStatus + #121, #577
+  static DefineStatus + #122, #596
+  static DefineStatus + #123, #587
   static DefineStatus + #124, #58
   static DefineStatus + #125, #3967
   static DefineStatus + #126, #3967
   static DefineStatus + #127, #3967
   static DefineStatus + #128, #3967
   static DefineStatus + #129, #3967
-  static DefineStatus + #130, #45
+  static DefineStatus + #130, #2349
   static DefineStatus + #131, #3967
-  static DefineStatus + #132, #43
+  static DefineStatus + #132, #555
   static DefineStatus + #133, #3967
-  static DefineStatus + #134, #91
-  static DefineStatus + #135, #49
+  static DefineStatus + #134, #1371
+  static DefineStatus + #135, #2353
   static DefineStatus + #136, #3967
-  static DefineStatus + #137, #50
-  static DefineStatus + #138, #93
+  static DefineStatus + #137, #562
+  static DefineStatus + #138, #1373
   static DefineStatus + #139, #3967
   static DefineStatus + #140, #3967
   static DefineStatus + #141, #3967
@@ -694,24 +805,24 @@ DefineStatus : var #1200
 
   ;Linha 5
   static DefineStatus + #200, #3967
-  static DefineStatus + #201, #68
-  static DefineStatus + #202, #69
-  static DefineStatus + #203, #70
+  static DefineStatus + #201, #2116
+  static DefineStatus + #202, #2117
+  static DefineStatus + #203, #2118
   static DefineStatus + #204, #58
   static DefineStatus + #205, #3967
   static DefineStatus + #206, #3967
   static DefineStatus + #207, #3967
   static DefineStatus + #208, #3967
   static DefineStatus + #209, #3967
-  static DefineStatus + #210, #45
+  static DefineStatus + #210, #2349
   static DefineStatus + #211, #3967
-  static DefineStatus + #212, #43
+  static DefineStatus + #212, #555
   static DefineStatus + #213, #3967
-  static DefineStatus + #214, #91
-  static DefineStatus + #215, #51
+  static DefineStatus + #214, #1371
+  static DefineStatus + #215, #2355
   static DefineStatus + #216, #3967
-  static DefineStatus + #217, #52
-  static DefineStatus + #218, #93
+  static DefineStatus + #217, #564
+  static DefineStatus + #218, #1373
   static DefineStatus + #219, #3967
   static DefineStatus + #220, #3967
   static DefineStatus + #221, #3967
@@ -787,15 +898,15 @@ DefineStatus : var #1200
   static DefineStatus + #287, #3967
   static DefineStatus + #288, #3967
   static DefineStatus + #289, #3967
-  static DefineStatus + #290, #45
+  static DefineStatus + #290, #2349
   static DefineStatus + #291, #3967
-  static DefineStatus + #292, #43
+  static DefineStatus + #292, #555
   static DefineStatus + #293, #3967
-  static DefineStatus + #294, #91
-  static DefineStatus + #295, #53
+  static DefineStatus + #294, #1371
+  static DefineStatus + #295, #2357
   static DefineStatus + #296, #3967
-  static DefineStatus + #297, #54
-  static DefineStatus + #298, #93
+  static DefineStatus + #297, #566
+  static DefineStatus + #298, #1373
   static DefineStatus + #299, #3967
   static DefineStatus + #300, #3967
   static DefineStatus + #301, #3967
@@ -862,24 +973,24 @@ DefineStatus : var #1200
 
   ;Linha 9
   static DefineStatus + #360, #3967
-  static DefineStatus + #361, #83
-  static DefineStatus + #362, #80
-  static DefineStatus + #363, #68
+  static DefineStatus + #361, #2899
+  static DefineStatus + #362, #2896
+  static DefineStatus + #363, #2884
   static DefineStatus + #364, #58
   static DefineStatus + #365, #3967
   static DefineStatus + #366, #3967
   static DefineStatus + #367, #3967
   static DefineStatus + #368, #3967
   static DefineStatus + #369, #3967
-  static DefineStatus + #370, #45
+  static DefineStatus + #370, #2349
   static DefineStatus + #371, #3967
-  static DefineStatus + #372, #43
+  static DefineStatus + #372, #555
   static DefineStatus + #373, #3967
-  static DefineStatus + #374, #91
-  static DefineStatus + #375, #55
+  static DefineStatus + #374, #1371
+  static DefineStatus + #375, #2359
   static DefineStatus + #376, #3967
-  static DefineStatus + #377, #56
-  static DefineStatus + #378, #93
+  static DefineStatus + #377, #568
+  static DefineStatus + #378, #1373
   static DefineStatus + #379, #3967
   static DefineStatus + #380, #3967
   static DefineStatus + #381, #3967
@@ -946,24 +1057,24 @@ DefineStatus : var #1200
 
   ;Linha 11
   static DefineStatus + #440, #3967
-  static DefineStatus + #441, #83
-  static DefineStatus + #442, #80
-  static DefineStatus + #443, #69
+  static DefineStatus + #441, #3155
+  static DefineStatus + #442, #3152
+  static DefineStatus + #443, #3141
   static DefineStatus + #444, #58
   static DefineStatus + #445, #3967
   static DefineStatus + #446, #3967
   static DefineStatus + #447, #3967
   static DefineStatus + #448, #3967
   static DefineStatus + #449, #3967
-  static DefineStatus + #450, #45
+  static DefineStatus + #450, #2349
   static DefineStatus + #451, #3967
-  static DefineStatus + #452, #43
+  static DefineStatus + #452, #555
   static DefineStatus + #453, #3967
-  static DefineStatus + #454, #91
-  static DefineStatus + #455, #57
+  static DefineStatus + #454, #1371
+  static DefineStatus + #455, #2361
   static DefineStatus + #456, #3967
-  static DefineStatus + #457, #48
-  static DefineStatus + #458, #93
+  static DefineStatus + #457, #560
+  static DefineStatus + #458, #1373
   static DefineStatus + #459, #3967
   static DefineStatus + #460, #3967
   static DefineStatus + #461, #3967
@@ -1031,23 +1142,23 @@ DefineStatus : var #1200
   ;Linha 13
   static DefineStatus + #520, #3967
   static DefineStatus + #521, #3967
-  static DefineStatus + #522, #72
-  static DefineStatus + #523, #80
+  static DefineStatus + #522, #2376
+  static DefineStatus + #523, #2384
   static DefineStatus + #524, #58
   static DefineStatus + #525, #3967
   static DefineStatus + #526, #3967
   static DefineStatus + #527, #3967
   static DefineStatus + #528, #3967
   static DefineStatus + #529, #3967
-  static DefineStatus + #530, #45
+  static DefineStatus + #530, #2349
   static DefineStatus + #531, #3967
-  static DefineStatus + #532, #43
+  static DefineStatus + #532, #555
   static DefineStatus + #533, #3967
-  static DefineStatus + #534, #91
-  static DefineStatus + #535, #65
+  static DefineStatus + #534, #1371
+  static DefineStatus + #535, #2369
   static DefineStatus + #536, #127
-  static DefineStatus + #537, #66
-  static DefineStatus + #538, #93
+  static DefineStatus + #537, #578
+  static DefineStatus + #538, #1373
   static DefineStatus + #539, #3967
   static DefineStatus + #540, #3967
   static DefineStatus + #541, #3967
@@ -1282,36 +1393,36 @@ DefineStatus : var #1200
 
   ;Linha 19
   static DefineStatus + #760, #3967
-  static DefineStatus + #761, #80
-  static DefineStatus + #762, #79
-  static DefineStatus + #763, #67
-  static DefineStatus + #764, #65
-  static DefineStatus + #765, #79
+  static DefineStatus + #761, #3408
+  static DefineStatus + #762, #3407
+  static DefineStatus + #763, #3395
+  static DefineStatus + #764, #3393
+  static DefineStatus + #765, #3407
   static DefineStatus + #766, #58
   static DefineStatus + #767, #3967
   static DefineStatus + #768, #3967
   static DefineStatus + #769, #3967
   static DefineStatus + #770, #3967
   static DefineStatus + #771, #3967
-  static DefineStatus + #772, #45
+  static DefineStatus + #772, #2349
   static DefineStatus + #773, #3967
-  static DefineStatus + #774, #43
+  static DefineStatus + #774, #555
   static DefineStatus + #775, #3967
-  static DefineStatus + #776, #91
-  static DefineStatus + #777, #67
+  static DefineStatus + #776, #1371
+  static DefineStatus + #777, #2371
   static DefineStatus + #778, #3967
-  static DefineStatus + #779, #68
-  static DefineStatus + #780, #93
+  static DefineStatus + #779, #580
+  static DefineStatus + #780, #1373
   static DefineStatus + #781, #3967
   static DefineStatus + #782, #3967
   static DefineStatus + #783, #3967
   static DefineStatus + #784, #3967
   static DefineStatus + #785, #3967
-  static DefineStatus + #786, #69
-  static DefineStatus + #787, #78
-  static DefineStatus + #788, #84
-  static DefineStatus + #789, #69
-  static DefineStatus + #790, #82
+  static DefineStatus + #786, #2373
+  static DefineStatus + #787, #2382
+  static DefineStatus + #788, #2388
+  static DefineStatus + #789, #2373
+  static DefineStatus + #790, #2386
   static DefineStatus + #791, #3967
   static DefineStatus + #792, #3967
   static DefineStatus + #793, #3967
@@ -1366,26 +1477,26 @@ DefineStatus : var #1200
 
   ;Linha 21
   static DefineStatus + #840, #3967
-  static DefineStatus + #841, #65
-  static DefineStatus + #842, #84
-  static DefineStatus + #843, #75
-  static DefineStatus + #844, #85
-  static DefineStatus + #845, #80
+  static DefineStatus + #841, #577
+  static DefineStatus + #842, #596
+  static DefineStatus + #843, #587
+  static DefineStatus + #844, #597
+  static DefineStatus + #845, #592
   static DefineStatus + #846, #58
   static DefineStatus + #847, #3967
   static DefineStatus + #848, #3967
   static DefineStatus + #849, #3967
   static DefineStatus + #850, #3967
   static DefineStatus + #851, #3967
-  static DefineStatus + #852, #45
+  static DefineStatus + #852, #2349
   static DefineStatus + #853, #3967
-  static DefineStatus + #854, #43
+  static DefineStatus + #854, #555
   static DefineStatus + #855, #3967
-  static DefineStatus + #856, #91
-  static DefineStatus + #857, #69
+  static DefineStatus + #856, #1371
+  static DefineStatus + #857, #2373
   static DefineStatus + #858, #3967
-  static DefineStatus + #859, #70
-  static DefineStatus + #860, #93
+  static DefineStatus + #859, #582
+  static DefineStatus + #860, #1373
   static DefineStatus + #861, #3967
   static DefineStatus + #862, #3967
   static DefineStatus + #863, #3967
@@ -1450,26 +1561,26 @@ DefineStatus : var #1200
 
   ;Linha 23
   static DefineStatus + #920, #3967
-  static DefineStatus + #921, #68
-  static DefineStatus + #922, #69
-  static DefineStatus + #923, #70
-  static DefineStatus + #924, #85
-  static DefineStatus + #925, #80
+  static DefineStatus + #921, #2116
+  static DefineStatus + #922, #2117
+  static DefineStatus + #923, #2118
+  static DefineStatus + #924, #2133
+  static DefineStatus + #925, #2128
   static DefineStatus + #926, #58
   static DefineStatus + #927, #3967
   static DefineStatus + #928, #3967
   static DefineStatus + #929, #3967
   static DefineStatus + #930, #3967
   static DefineStatus + #931, #3967
-  static DefineStatus + #932, #45
+  static DefineStatus + #932, #2349
   static DefineStatus + #933, #3967
-  static DefineStatus + #934, #43
+  static DefineStatus + #934, #555
   static DefineStatus + #935, #3967
-  static DefineStatus + #936, #91
-  static DefineStatus + #937, #71
+  static DefineStatus + #936, #1371
+  static DefineStatus + #937, #2375
   static DefineStatus + #938, #3967
-  static DefineStatus + #939, #72
-  static DefineStatus + #940, #93
+  static DefineStatus + #939, #584
+  static DefineStatus + #940, #1373
   static DefineStatus + #941, #3967
   static DefineStatus + #942, #3967
   static DefineStatus + #943, #3967
@@ -1868,12 +1979,12 @@ static JMP_TABLE_STATUS + #95, #0
 static JMP_TABLE_STATUS + #96, #0
 static JMP_TABLE_STATUS + #97, #diminui_hp
 static JMP_TABLE_STATUS + #98, #aumenta_hp
-static JMP_TABLE_STATUS + #99, #0
-static JMP_TABLE_STATUS + #100, #0
-static JMP_TABLE_STATUS + #101, #0
-static JMP_TABLE_STATUS + #102, #0
-static JMP_TABLE_STATUS + #103, #0
-static JMP_TABLE_STATUS + #104, #0
+static JMP_TABLE_STATUS + #99, #diminui_pocao
+static JMP_TABLE_STATUS + #100, #aumenta_pocao
+static JMP_TABLE_STATUS + #101, #diminui_atkup
+static JMP_TABLE_STATUS + #102, #aumenta_atkup
+static JMP_TABLE_STATUS + #103, #diminui_defup
+static JMP_TABLE_STATUS + #104, #aumenta_defup
 static JMP_TABLE_STATUS + #105, #0
 static JMP_TABLE_STATUS + #106, #0
 static JMP_TABLE_STATUS + #107, #0
