@@ -27,14 +27,6 @@ static PONTOS + #0, #50
 MOEDAS: var #1
 static MOEDAS + #0, #20
 
-Palavra: var #41	; Vetor para Armazenar as letras da Palavra
-PalavraSize: var #1	; Tamanho da Palavra
-Letra: var #1		; Contem a letra que foi digitada
-TryList: var #60	; Lista com as letras ja' digitadas
-TryListSize: var #1	; Tamanho da Lista com as letras ja' digitadas
-Acerto: var #1		; Contador de Acertos
-Erro: var #1			; Contador de Erros
-
 ; Mensagens que serao impressas na tela
 Msn1: string "Pressione Enter para Iniciar o Jogo"
 
