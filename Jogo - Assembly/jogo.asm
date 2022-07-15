@@ -1325,19 +1325,19 @@ DefineStatus : var #1200
   static DefineStatus + #685, #83
   static DefineStatus + #686, #58
   static DefineStatus + #687, #3967
-  static DefineStatus + #688, #0
+  static DefineStatus + #688, #3967
   static DefineStatus + #689, #3967
   static DefineStatus + #690, #3967
-  static DefineStatus + #691, #0
+  static DefineStatus + #691, #3967
   static DefineStatus + #692, #77
   static DefineStatus + #693, #79
   static DefineStatus + #694, #69
   static DefineStatus + #695, #68
   static DefineStatus + #696, #65
   static DefineStatus + #697, #83
-  static DefineStatus + #698, #0
-  static DefineStatus + #699, #0
-  static DefineStatus + #700, #0
+  static DefineStatus + #698, #3967
+  static DefineStatus + #699, #3967
+  static DefineStatus + #700, #3967
   static DefineStatus + #701, #127
   static DefineStatus + #702, #127
   static DefineStatus + #703, #127
@@ -1369,11 +1369,11 @@ DefineStatus : var #1200
   static DefineStatus + #727, #3967
   static DefineStatus + #728, #3967
   static DefineStatus + #729, #3967
-  static DefineStatus + #730, #0
-  static DefineStatus + #731, #0
-  static DefineStatus + #732, #0
-  static DefineStatus + #733, #0
-  static DefineStatus + #734, #0
+  static DefineStatus + #730, #3967
+  static DefineStatus + #731, #3967
+  static DefineStatus + #732, #3967
+  static DefineStatus + #733, #3967
+  static DefineStatus + #734, #3967
   static DefineStatus + #735, #3967
   static DefineStatus + #736, #3967
   static DefineStatus + #737, #3967
