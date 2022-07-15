@@ -27,6 +27,25 @@ static PONTOS + #0, #50
 MOEDAS: var #1
 static MOEDAS + #0, #20
 
+ATK_INIMIGO: var #1
+static ATK_INIMIGO + #0, #10
+DEF_INIMIGO: var #1
+static DEF_INIMIGO + #0, #8
+SPA_INIMIGO: var #1
+static SPA_INIMIGO + #0, #8
+SPD_INIMIGO: var #1
+static SPD_INIMIGO + #0, #8
+SPE_INIMIGO: var #1
+static SPE_INIMIGO + #0, #8
+HP_INIMIGO: var #1
+static HP_INIMIGO + #0, #8
+POCAO_INIMIGO: var #1
+static POCAO_INIMIGO + #0, #2
+ATKUP_INIMIGO: var #1
+static ATKUP_INIMIGO + #0, #1
+DEFUP_INIMIGO: var #1
+static DEFUP_INIMIGO + #0, #1
+
 ; Mensagens que serao impressas na tela
 Msn1: string "Pressione Enter para Iniciar o Jogo"
 
@@ -415,7 +434,222 @@ aumenta_defup:
     jmp loop_status
 
 fim_loop_status:
+    jmp gera_inimigo
+
+gera_inimigo:
+    jmp batalha
+
+mostraHPsBatalha:
+    push r0
+    push r1
+
+    load r0, HP
+    loadn r1, #0
+    call printNum
+
+    load r0, HP_INIMIGO
+    loadn r1, #20
+    call printNum
+
+    pop r1
+    pop r0
+    rts
+
+fim_loop_batalha:
     halt
+
+batalha:
+    call printBatalha1Screen
+    call mostraHPsBatalha
+    loadn r0, #0
+
+
+
+loop_batalha1:
+    ; Checa condições de fim da batalha
+    ; HP = 0
+    load r2, HP
+    cmp r2, r0
+    jeq fim_loop_batalha
+    ; HP_INIMIGO = 0
+    load r2, HP_INIMIGO
+    cmp r2, r0
+    jeq fim_loop_batalha
+
+    inchar r1
+    
+    ; Caso seja 1, vai para tela batalha2
+    loadn r5, #49
+    cmp r1, r5
+    jeq inicio_loop_batalha2
+
+    ; Caso seja 2, vai para a tela batalha3
+    loadn r5, #50
+    cmp r1, r5
+    jeq inicio_loop_batalha3
+
+    ;Em outros casos, continua nessa tela
+    jmp loop_batalha1
+
+inicio_loop_batalha2:
+    call printBatalha2Screen
+
+loop_batalha2:
+    inchar r1
+    
+    ; Caso seja 1, vai dar um soco no inimigo
+    loadn r5, #49
+    cmp r1, r5
+    jeq soco_no_inimigo
+
+    ; Caso seja 2, vai dar um chute no inimigo
+    loadn r5, #50
+    cmp r1, r5
+    jeq chute_no_inimigo
+
+    ; Caso seja 3, vai lançar um relâmpago no inimigo
+    loadn r5, #51
+    cmp r1, r5
+    jeq relampago_no_inimigo
+
+    ; Caso seja 4, vai lançar uma bola de fogo no inimigo
+    loadn r5, #52
+    cmp r1, r5
+    jeq bola_de_fogo_no_inimigo
+
+    ; Qualquer outra coisa, continua nessa tela
+    jmp loop_batalha2
+
+inicio_loop_batalha3:
+    call printBatalha3Screen
+
+loop_batalha3:
+    inchar r1
+
+    ; Caso seja 1, vai usar uma poção
+    loadn r5, #49
+    cmp r1, r5
+    jeq usa_pocao
+
+    ; Caso seja 2, vai usar um ATKUP
+    loadn r5, #50
+    cmp r1, r5
+    jeq usa_atk_up
+
+    ; Caso seja 3, vai usar um DEFUP
+    loadn r5, #51
+    cmp r1, r5
+    jeq usa_def_up
+    
+    ; Caso seja 4, volta para a tela de batalha1
+    loadn r5, #52
+    cmp r1, r5
+    jeq batalha
+
+    ; Qualquer outro caso, continua nessa tela
+    jmp loop_batalha3
+
+usa_pocao:
+    load r0, POCAO
+    loadn r1, #0
+
+    ; Se tem 0 poções, não faz nada
+    cmp r0, r1
+    jeq batalha
+    
+    dec r0
+    store POCAO, r0
+    
+    load r0, HP
+    loadn r1, #5
+    add r0, r0, r1
+
+    store HP, r0
+
+    jmp batalha
+
+usa_atk_up:
+    load r0, ATKUP
+    loadn r1, #0
+
+    ; Se tem 0 ATKUPs, não faz nada
+    cmp r0, r1
+    jeq batalha
+    
+    dec r0
+    store ATKUP, r0
+    
+    load r0, ATK
+    loadn r1, #5
+    add r0, r0, r1
+
+    store ATK, r0
+
+    jmp batalha
+
+usa_def_up:
+    load r0, DEFUP
+    loadn r1, #0
+
+    ; Se tem 0 DEFUPs, não faz nada
+    cmp r0, r1
+    jeq batalha
+    
+    dec r0
+    store DEFUP, r0
+    
+    load r0, DEF
+    loadn r1, #5
+    add r0, r0, r1
+
+    store DEF, r0
+
+    jmp batalha
+
+chute_no_inimigo:
+soco_no_inimigo:
+    load r0, HP_INIMIGO
+    load r1, ATK
+    load r2, DEF_INIMIGO
+
+    ;r3 vai ter o cálculo do dano
+    loadn r3, #0
+
+    add r3, r3, r1
+    cmp r3, r2
+    jle batalha
+
+    sub r3, r3, r2
+    cmp r3, r0
+    jeg fim_loop_batalha_vitoria
+    
+    sub r0, r0, r3
+    store HP_INIMIGO, r0
+    
+    jmp batalha
+    
+relampago_no_inimigo:
+bola_de_fogo_no_inimigo:
+    breakp
+    load r0, HP_INIMIGO
+    load r1, SPA
+    load r2, SPD_INIMIGO
+
+    ;r3 vai ter o cálculo do dano
+    loadn r3, #0
+
+    add r3, r3, r1
+    cmp r3, r2
+    jle batalha
+
+    sub r3, r3, r2
+    cmp r3, r0
+    jeg fim_loop_batalha_vitoria
+
+    sub r0, r0, r3
+    store HP_INIMIGO, r0
+
+    jmp batalha
 
 ; Atualiza o valor do ATK na tela
 mostraATK:
