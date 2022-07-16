@@ -201,7 +201,7 @@ function View (model, controller){
             case Mnemonicos.JID:
                     console.log("OI\n");
                     switch(model.pega_pedaco(ir,6,3)) {
-                        case 0: texto = "PC: " + pc + "&#09;|  JID R" +  _rx + "			|	PC <- R" + _rx;
+                        case 0: texto = "PC: " + pc + "&#09;|  JID R" +  _rx + "			|	PC <- MEM[R" + _rx + "]";
                     }
                     break;
 

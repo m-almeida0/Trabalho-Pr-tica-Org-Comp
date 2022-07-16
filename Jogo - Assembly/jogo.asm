@@ -1,5 +1,4 @@
 jmp main
-
 ;---- Declaracao de Variaveis Globais -----
 ; Sao todas aquelas que precisam ser vistas por mais de uma funcao: Evita a passagem de parametros!!!
 ; As variaveis locais de cada funcao serao alocadas nos Registradores internos = r0 - r7
@@ -103,12 +102,12 @@ loop_status:
     add r4, r4, r1
     loadi r1, r4
 
-    loadn r4, #0
+    loadn r5, #0
 
-    cmp r1, r4
+    cmp r1, r5
     jeq loop_status
 
-    jid r1
+    jid r4
 
 diminui_atk:
     ; Checando se pode diminuir mais
@@ -650,6 +649,10 @@ bola_de_fogo_no_inimigo:
     store HP_INIMIGO, r0
 
     jmp batalha
+
+fim_loop_batalha_vitoria:
+    loadn r7, #255
+    halt
 
 ; Atualiza o valor do ATK na tela
 mostraATK:

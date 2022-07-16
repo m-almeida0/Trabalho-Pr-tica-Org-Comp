@@ -592,7 +592,7 @@
 					|| (FR[5]==0 && (la==12)) 						// NOT OVERFLOW
 					|| (FR[6]==1 && (la==14)) 						// NEGATIVO
 					|| (FR[9]==1 && (la==13))) 						// DIVBYZERO
-						pc = reg[rx];
+						pc = mem[reg[rx]];
 					else
 						pc++;
 				break;
@@ -696,7 +696,7 @@
 						|| (FR[5]==0 && (la==12)) 						// NOT OVERFLOW
 						|| (FR[6]==1 && (la==14)) 						// NEGATIVO
 						|| (FR[9]==1 && (la==13))) 						// DIVBYZERO
-							pc2 = reg[rx];
+							pc2 = mem[reg[rx]];
 						else
 							pc2++;
 				break;
