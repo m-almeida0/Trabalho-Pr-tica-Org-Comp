@@ -46,7 +46,7 @@ DEFUP_INIMIGO: var #1
 static DEFUP_INIMIGO + #0, #1
 
 ; Mensagens que serao impressas na tela
-Msn1: string "Pressione Enter para Iniciar o Jogo"
+Msn1: string "Pressione Espaco para Iniciar o Jogo"
 
 ; Recebe a mensagem em r0 e a posição em r1
 imprime_mensagem:
@@ -68,11 +68,11 @@ fim_loop_imprime_mensagem:
 main:
 	
 	loadn r0, #Msn1
-	loadn r1, #563
+	loadn r1, #558
 	call imprime_mensagem
 	
 	loadn r0, #0
-	loadn r2, #13
+	loadn r2, #32
 	loadn r5, #255
 	
 loop_inicio:
@@ -88,13 +88,16 @@ fim_loop_inicio:
 	store RNG, r0
 	load r7, RNG
 	
+    loadn r2, #13
     call printDefineStatusScreen
+    breakp
     call mostraStatus
+    breakp
     jmp loop_status
 
 loop_status:
     inchar r1
-
+    
     cmp r1,r2
     jeq fim_loop_status
 
