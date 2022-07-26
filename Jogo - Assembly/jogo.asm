@@ -26,7 +26,7 @@ static PONTOS + #0, #50
 MOEDAS: var #1
 static MOEDAS + #0, #20
 ULTIMA_TECLA: var #1
-static ULTIMA_TECLA + #0, #0
+static ULTIMA_TECLA + #0, #255
 
 ATK_INIMIGO: var #1
 static ATK_INIMIGO + #0, #10
@@ -92,9 +92,7 @@ fim_loop_inicio:
 	
     loadn r2, #13
     call printDefineStatusScreen
-    breakp
     call mostraStatus
-    breakp
     jmp loop_status
 
 loop_status:
@@ -486,7 +484,12 @@ loop_batalha1:
     jeq fim_loop_batalha
 
     inchar r1
-    
+
+    load r5, ULTIMA_TECLA   
+    cmp r1, r5
+    jeq loop_batalha1
+    store ULTIMA_TECLA, r1
+
     ; Caso seja 1, vai para tela batalha2
     loadn r5, #49
     cmp r1, r5
@@ -504,8 +507,14 @@ inicio_loop_batalha2:
     call printBatalha2Screen
 
 loop_batalha2:
+    breakp
     inchar r1
-    
+   
+    load r5, ULTIMA_TECLA   
+    cmp r1, r5
+    jeq loop_batalha2
+    store ULTIMA_TECLA, r1
+
     ; Caso seja 1, vai dar um soco no inimigo
     loadn r5, #49
     cmp r1, r5
@@ -534,6 +543,11 @@ inicio_loop_batalha3:
 
 loop_batalha3:
     inchar r1
+
+    load r5, ULTIMA_TECLA   
+    cmp r1, r5
+    jeq loop_batalha3
+    store ULTIMA_TECLA, r1
 
     ; Caso seja 1, vai usar uma poção
     loadn r5, #49
