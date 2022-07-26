@@ -629,7 +629,7 @@ usa_def_up:
 
     jmp batalha
 
-chute_no_inimigo:
+; DANO = ATK - DEF_INIMIGO
 soco_no_inimigo:
     load r0, HP_INIMIGO
     load r1, ATK
@@ -651,9 +651,34 @@ soco_no_inimigo:
     
     jmp batalha
     
+; DANO = (2*ATK - DEF)/3
+chute_no_inimigo:
+    load r0, HP_INIMIGO
+    load r1, ATK
+    loadn r3, #2
+    mul r1, r1, r3 ; r1 <- 2 * ATK
+    load r2, DEF_INIMIGO
+
+    ;r3 vai ter o cálculo do dano
+    loadn r3, #0
+
+    add r3, r3, r1
+    cmp r3, r2
+    jle batalha
+
+    sub r3, r3, r2
+    loadn r4, #3
+    div r3, r3, r4 ; r3 <- (2 * ATK - DEF) / 3
+    cmp r3, r0
+    jeg fim_loop_batalha_vitoria
+    
+    sub r0, r0, r3
+    store HP_INIMIGO, r0
+    
+    jmp batalha
+
+; DANO = SPA - SPD
 relampago_no_inimigo:
-bola_de_fogo_no_inimigo:
-    breakp
     load r0, HP_INIMIGO
     load r1, SPA
     load r2, SPD_INIMIGO
@@ -666,6 +691,32 @@ bola_de_fogo_no_inimigo:
     jle batalha
 
     sub r3, r3, r2
+    cmp r3, r0
+    jeg fim_loop_batalha_vitoria
+
+    sub r0, r0, r3
+    store HP_INIMIGO, r0
+
+    jmp batalha
+
+; DANO = (2*SPA - SPD)/3
+bola_de_fogo_no_inimigo:
+    load r0, HP_INIMIGO
+    load r1, SPA
+    loadn r3, #2
+    mul r1, r1, r3 ; r1 <- 2 * SPA
+    load r2, SPD_INIMIGO
+
+    ;r3 vai ter o cálculo do dano
+    loadn r3, #0
+
+    add r3, r3, r1
+    cmp r3, r2
+    jle batalha
+
+    sub r3, r3, r2
+    loadn r4, #3
+    div r3, r3, r4 ; r3 <- (2*SPA - SPD) / 3
     cmp r3, r0
     jeg fim_loop_batalha_vitoria
 
