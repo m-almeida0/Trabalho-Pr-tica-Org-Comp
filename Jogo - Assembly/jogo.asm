@@ -41,17 +41,17 @@ static ULTIMA_TECLA + #0, #255
 
 ; Status e Itens do Inimigo
 ATK_INIMIGO: var #1
-static ATK_INIMIGO + #0, #15
+static ATK_INIMIGO + #0, #20
 DEF_INIMIGO: var #1
-static DEF_INIMIGO + #0, #15
+static DEF_INIMIGO + #0, #25
 SPA_INIMIGO: var #1
-static SPA_INIMIGO + #0, #15
+static SPA_INIMIGO + #0, #20
 SPD_INIMIGO: var #1
-static SPD_INIMIGO + #0, #15
+static SPD_INIMIGO + #0, #25
 SPE_INIMIGO: var #1
-static SPE_INIMIGO + #0, #15
+static SPE_INIMIGO + #0, #25
 HP_INIMIGO: var #1
-static HP_INIMIGO + #0, #15
+static HP_INIMIGO + #0, #25
 POCAO_INIMIGO: var #1
 static POCAO_INIMIGO + #0, #2
 ATKUP_INIMIGO: var #1
@@ -477,11 +477,11 @@ mostraHPsBatalha:
     push r1
 
     load r0, HP
-    loadn r1, #0
+    loadn r1, #49
     call printNum
 
     load r0, HP_INIMIGO
-    loadn r1, #20
+    loadn r1, #152
     call printNum
 
     pop r1
