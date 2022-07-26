@@ -3,6 +3,14 @@ jmp main
 ; Sao todas aquelas que precisam ser vistas por mais de uma funcao: Evita a passagem de parametros!!!
 ; As variaveis locais de cada funcao serao alocadas nos Registradores internos = r0 - r7
 RNG: var #1
+MOD_NUMBER: var #1
+static MOD_NUMBER + #0, #113
+MOD_OFFSET: var #1
+static MOD_OFFSET + #0, #7
+MOD_MULTIPLY: var #1
+static MOD_MULTIPLY + #0, #23
+
+; Status e Itens do Jogador
 ATK: var #1
 static ATK + #0, #0
 DEF: var #1
@@ -22,24 +30,28 @@ static ATKUP + #0, #0
 DEFUP: var #1
 static DEFUP + #0, #0
 PONTOS: var #1
-static PONTOS + #0, #50
+static PONTOS + #0, #90
 MOEDAS: var #1
 static MOEDAS + #0, #20
+
+; Última Tecla Pressionada
+; Importante para evitar teclas de serem apertadas muito rapidamente
 ULTIMA_TECLA: var #1
 static ULTIMA_TECLA + #0, #255
 
+; Status e Itens do Inimigo
 ATK_INIMIGO: var #1
-static ATK_INIMIGO + #0, #10
+static ATK_INIMIGO + #0, #15
 DEF_INIMIGO: var #1
-static DEF_INIMIGO + #0, #8
+static DEF_INIMIGO + #0, #15
 SPA_INIMIGO: var #1
-static SPA_INIMIGO + #0, #8
+static SPA_INIMIGO + #0, #15
 SPD_INIMIGO: var #1
-static SPD_INIMIGO + #0, #8
+static SPD_INIMIGO + #0, #15
 SPE_INIMIGO: var #1
-static SPE_INIMIGO + #0, #8
+static SPE_INIMIGO + #0, #15
 HP_INIMIGO: var #1
-static HP_INIMIGO + #0, #8
+static HP_INIMIGO + #0, #15
 POCAO_INIMIGO: var #1
 static POCAO_INIMIGO + #0, #2
 ATKUP_INIMIGO: var #1
@@ -507,7 +519,6 @@ inicio_loop_batalha2:
     call printBatalha2Screen
 
 loop_batalha2:
-    breakp
     inchar r1
    
     load r5, ULTIMA_TECLA   
@@ -572,13 +583,75 @@ loop_batalha3:
     ; Qualquer outro caso, continua nessa tela
     jmp loop_batalha3
 
+gera_aleatorio:
+    push r2
+    push r3
+    push r4
+
+    load r1, RNG ; Carrega RNG
+
+    ; Calcula proximo valor na sequência dos números 'aleatórios'
+    load r2, MOD_MULTIPLY
+    mul r2, r2, r1
+    load r3, MOD_OFFSET
+    add r3, r2, r3
+    load r4, MOD_NUMBER
+    mod r4, r3, r4
+    store RNG, r4
+ 
+    pop r4
+    pop r3
+    pop r2
+    rts
+
+decisao_inimigo:
+    loadn r0, #2
+    
+    call gera_aleatorio ; Número aleatório para o r1
+   
+    mod r1, r1, r0  ;r1 vai conter a decisão de atacar (0) ou usar item (1)
+    
+    loadn r0, #0
+    cmp r0, r1
+    jne inimigo_usa_item
+    
+inimigo_usa_item:
+inimigo_ataca:
+    loadn r0, #4
+
+    call gera_aleatorio ; Número aleatório para o r1
+
+    mod r1, r1, r0
+    
+    ; r1 vai de 0 a 3, representando os possíveis ataques
+    ; 0 - Soco
+    ; 1 - Chute
+    ; 2 - Relâmpago
+    ; 3 - Bola de Fogo
+
+    loadn r0, #0
+    cmp r1, r0
+    jeq soco_no_jogador
+
+    loadn r0, #1
+    cmp r1, r0
+    jeq chute_no_jogador
+
+    loadn r0, #2
+    cmp r1, r0
+    jeq relampago_no_jogador
+
+    loadn r0, #3
+    cmp r1, r0
+    jeq bola_de_fogo_no_jogador
+
 usa_pocao:
     load r0, POCAO
     loadn r1, #0
 
     ; Se tem 0 poções, não faz nada
     cmp r0, r1
-    jeq batalha
+    jeq decisao_inimigo
     
     dec r0
     store POCAO, r0
@@ -589,7 +662,7 @@ usa_pocao:
 
     store HP, r0
 
-    jmp batalha
+    jmp decisao_inimigo
 
 usa_atk_up:
     load r0, ATKUP
@@ -597,7 +670,7 @@ usa_atk_up:
 
     ; Se tem 0 ATKUPs, não faz nada
     cmp r0, r1
-    jeq batalha
+    jeq decisao_inimigo
     
     dec r0
     store ATKUP, r0
@@ -608,7 +681,7 @@ usa_atk_up:
 
     store ATK, r0
 
-    jmp batalha
+    jmp decisao_inimigo
 
 usa_def_up:
     load r0, DEFUP
@@ -616,7 +689,7 @@ usa_def_up:
 
     ; Se tem 0 DEFUPs, não faz nada
     cmp r0, r1
-    jeq batalha
+    jeq decisao_inimigo
     
     dec r0
     store DEFUP, r0
@@ -627,7 +700,7 @@ usa_def_up:
 
     store DEF, r0
 
-    jmp batalha
+    jmp decisao_inimigo
 
 ; DANO = ATK - DEF_INIMIGO
 soco_no_inimigo:
@@ -640,7 +713,7 @@ soco_no_inimigo:
 
     add r3, r3, r1
     cmp r3, r2
-    jle batalha
+    jle decisao_inimigo
 
     sub r3, r3, r2
     cmp r3, r0
@@ -649,7 +722,7 @@ soco_no_inimigo:
     sub r0, r0, r3
     store HP_INIMIGO, r0
     
-    jmp batalha
+    jmp decisao_inimigo
     
 ; DANO = (2*ATK - DEF)/3
 chute_no_inimigo:
@@ -664,7 +737,7 @@ chute_no_inimigo:
 
     add r3, r3, r1
     cmp r3, r2
-    jle batalha
+    jle decisao_inimigo
 
     sub r3, r3, r2
     loadn r4, #3
@@ -675,7 +748,7 @@ chute_no_inimigo:
     sub r0, r0, r3
     store HP_INIMIGO, r0
     
-    jmp batalha
+    jmp decisao_inimigo
 
 ; DANO = SPA - SPD
 relampago_no_inimigo:
@@ -688,7 +761,7 @@ relampago_no_inimigo:
 
     add r3, r3, r1
     cmp r3, r2
-    jle batalha
+    jle decisao_inimigo
 
     sub r3, r3, r2
     cmp r3, r0
@@ -697,7 +770,7 @@ relampago_no_inimigo:
     sub r0, r0, r3
     store HP_INIMIGO, r0
 
-    jmp batalha
+    jmp decisao_inimigo
 
 ; DANO = (2*SPA - SPD)/3
 bola_de_fogo_no_inimigo:
@@ -706,6 +779,102 @@ bola_de_fogo_no_inimigo:
     loadn r3, #2
     mul r1, r1, r3 ; r1 <- 2 * SPA
     load r2, SPD_INIMIGO
+
+    ;r3 vai ter o cálculo do dano
+    loadn r3, #0
+
+    add r3, r3, r1
+    cmp r3, r2
+    jle decisao_inimigo
+
+    sub r3, r3, r2
+    loadn r4, #3
+    div r3, r3, r4 ; r3 <- (2*SPA - SPD) / 3
+    cmp r3, r0
+    jeg fim_loop_batalha_vitoria
+
+    sub r0, r0, r3
+    store HP_INIMIGO, r0
+
+    jmp decisao_inimigo
+
+; DANO = ATK_INIMIGO - DEF
+soco_no_jogador:
+    load r0, HP
+    load r1, ATK_INIMIGO
+    load r2, DEF
+
+    ;r3 vai ter o cálculo do dano
+    loadn r3, #0
+
+    add r3, r3, r1
+    cmp r3, r2
+    jle batalha
+
+    sub r3, r3, r2
+    cmp r3, r0
+    jeg fim_loop_batalha_derrota
+    
+    sub r0, r0, r3
+    store HP, r0
+    
+    jmp batalha
+    
+; DANO = (2*ATK_INIMIGO - DEF)/3
+chute_no_jogador:
+    load r0, HP
+    load r1, ATK_INIMIGO
+    loadn r3, #2
+    mul r1, r1, r3 ; r1 <- 2 * ATK
+    load r2, DEF
+
+    ;r3 vai ter o cálculo do dano
+    loadn r3, #0
+
+    add r3, r3, r1
+    cmp r3, r2
+    jle batalha
+
+    sub r3, r3, r2
+    loadn r4, #3
+    div r3, r3, r4 ; r3 <- (2 * ATK - DEF) / 3
+    cmp r3, r0
+    jeg fim_loop_batalha_derrota
+    
+    sub r0, r0, r3
+    store HP, r0
+    
+    jmp batalha
+
+; DANO = SPA - SPD
+relampago_no_jogador:
+    load r0, HP
+    load r1, SPA_INIMIGO
+    load r2, SPD
+
+    ;r3 vai ter o cálculo do dano
+    loadn r3, #0
+
+    add r3, r3, r1
+    cmp r3, r2
+    jle batalha
+
+    sub r3, r3, r2
+    cmp r3, r0
+    jeg fim_loop_batalha_derrota
+
+    sub r0, r0, r3
+    store HP, r0
+
+    jmp batalha
+
+; DANO = (2*SPA - SPD)/3
+bola_de_fogo_no_jogador:
+    load r0, HP
+    load r1, SPA_INIMIGO
+    loadn r3, #2
+    mul r1, r1, r3 ; r1 <- 2 * SPA
+    load r2, SPD
 
     ;r3 vai ter o cálculo do dano
     loadn r3, #0
@@ -721,9 +890,15 @@ bola_de_fogo_no_inimigo:
     jeg fim_loop_batalha_vitoria
 
     sub r0, r0, r3
-    store HP_INIMIGO, r0
+    store HP, r0
 
     jmp batalha
+
+
+
+fim_loop_batalha_derrota:
+    loadn r7, #127
+    halt
 
 fim_loop_batalha_vitoria:
     loadn r7, #255
