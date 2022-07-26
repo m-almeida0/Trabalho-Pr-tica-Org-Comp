@@ -20,10 +20,10 @@
   - Tela de Criação do Personagem: Na criação do personagem, o jogador poderá selecionar os status do seu personagem, além de usar moedas para comprar itens. Os status são: Ataque, Defesa, Ataque Especial, Defesa Especial, Velocidade e HP. Os itens são: Poção, Ataque UP (aumenta ataque), Defesa Up (aumenta defesa). Note que o jogador tem XX pontos e YY moedas. Para sair dessa tela, o jogador deve pressionar ENTER.
   - Tela de Batalha 1: Nessa Tela, o jogador tem a opção de Atacar, (que levará para a Tela de Batalha 2) e a opção de Usar Item (que levará para a Tela de Batalha 3).
   - Tela de Batalha 2: Nessa Tela, o jogador tem 4 opções:
-    - Socar  (Ataque que causa FÓRMULA de dano)
-    - Chutar (Ataque que causa FÓRMULA de dano)
-    - Relâmpago (Atauqe que causa FÓRMULA de dano)
-    - Bola de Fogo (Ataque que causa Fórmula de dano)
+    - Socar  (Ataque que causa ATK - DEF_INIMIGO de dano)
+    - Chutar (Ataque que causa (2 * ATK - DEF_INIMIGO) / 3 de dano)
+    - Relâmpago (Atauqe que causa SPA - SPD_INIMIGO de dano)
+    - Bola de Fogo (Ataque que causa (2 * SPA - SPD_INIMIGO) / 3 de dano)
     Após a escolha, o ataque é realizado e o jogador é levado de volta para a Tela de Batalha 1 (se a batalha continua) ou para as telas de vitória e derrota (se a batalha acabou).
   - Tela de Batalha 3: Nessa Tela, o jogador tem 4 opções:
     - Poção (Se tiver alguma, ganha 5 de HP)
