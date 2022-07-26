@@ -84,9 +84,10 @@ main:
 	loadn r5, #255
 
 	loadn r1, #90
-	loadn r3, #312
+	loadn r3, #115
 
 	store SalvadorenhoPosition, r1
+	store VilaozaozaoPosition, r3
 	
 ; Loop para obter valor inicial para o RNG
 loop_inicio:
@@ -494,9 +495,8 @@ batalha:
     call printBatalha1Screen
     call mostraHPsBatalha
     call printSalvadorenho
+    call printVilaozaozao
     loadn r0, #0
-
-
 
 loop_batalha1:
     ; Checa condições de fim da batalha
@@ -531,6 +531,9 @@ loop_batalha1:
 
 inicio_loop_batalha2:
     call printBatalha2Screen
+    call printSalvadorenho
+    call printVilaozaozao
+    call mostraHPsBatalha
 
 loop_batalha2:
     inchar r1
@@ -565,6 +568,9 @@ loop_batalha2:
 
 inicio_loop_batalha3:
     call printBatalha3Screen
+    call printSalvadorenho
+    call printVilaozaozao
+    call mostraHPsBatalha
 
 loop_batalha3:
     inchar r1
@@ -8349,6 +8355,229 @@ apagarSalvadorenho:
      inc R4
      cmp R3, R4
     jne apagarSalvadorenhoLoop
+
+  pop R5
+  pop R4
+  pop R3
+  pop R2
+  pop R1
+  pop R0
+  rts
+
+VilaozaozaoPosition : var #1
+
+Vilaozaozao : var #61
+  static Vilaozaozao + #0, #2832 ; 
+  static Vilaozaozao + #1, #2832 ; 
+  ;38  espacos para o proximo caractere
+  static Vilaozaozao + #2, #2320 ; 
+  static Vilaozaozao + #3, #2320 ; 
+  static Vilaozaozao + #4, #2320 ; 
+  static Vilaozaozao + #5, #2320 ; 
+  ;74  espacos para o proximo caractere
+  static Vilaozaozao + #6, #2362 ; :
+  ;3  espacos para o proximo caractere
+  static Vilaozaozao + #7, #2305 ; 
+  static Vilaozaozao + #8, #2304 ; 
+  static Vilaozaozao + #9, #2304 ; 
+  static Vilaozaozao + #10, #2311 ; 
+  ;33  espacos para o proximo caractere
+  static Vilaozaozao + #11, #2362 ; :
+  static Vilaozaozao + #12, #2362 ; :
+  ;3  espacos para o proximo caractere
+  static Vilaozaozao + #13, #2818 ; 
+  static Vilaozaozao + #14, #2318 ; 
+  static Vilaozaozao + #15, #2319 ; 
+  static Vilaozaozao + #16, #2822 ; 
+  ;32  espacos para o proximo caractere
+  static Vilaozaozao + #17, #2362 ; :
+  static Vilaozaozao + #18, #2362 ; :
+  static Vilaozaozao + #19, #2362 ; :
+  ;3  espacos para o proximo caractere
+  static Vilaozaozao + #20, #2818 ; 
+  static Vilaozaozao + #21, #2817 ; 
+  static Vilaozaozao + #22, #2823 ; 
+  static Vilaozaozao + #23, #2822 ; 
+  ;31  espacos para o proximo caractere
+  static Vilaozaozao + #24, #2362 ; :
+  static Vilaozaozao + #25, #2362 ; :
+  static Vilaozaozao + #26, #2362 ; :
+  static Vilaozaozao + #27, #2362 ; :
+  ;3  espacos para o proximo caractere
+  static Vilaozaozao + #28, #2307 ; 
+  static Vilaozaozao + #29, #2308 ; 
+  static Vilaozaozao + #30, #2308 ; 
+  static Vilaozaozao + #31, #2309 ; 
+  ;32  espacos para o proximo caractere
+  static Vilaozaozao + #32, #2362 ; :
+  static Vilaozaozao + #33, #2362 ; :
+  static Vilaozaozao + #34, #2362 ; :
+  ;4  espacos para o proximo caractere
+  static Vilaozaozao + #35, #2059 ; 
+  static Vilaozaozao + #36, #2057 ; 
+  ;34  espacos para o proximo caractere
+  static Vilaozaozao + #37, #2362 ; :
+  static Vilaozaozao + #38, #2362 ; :
+  static Vilaozaozao + #39, #2304 ; 
+  static Vilaozaozao + #40, #2304 ; 
+  static Vilaozaozao + #41, #2310 ; 
+  static Vilaozaozao + #42, #2316 ; 
+  static Vilaozaozao + #43, #2314 ; 
+  static Vilaozaozao + #44, #2306 ; 
+  static Vilaozaozao + #45, #2304 ; 
+  static Vilaozaozao + #46, #2304 ; 
+  static Vilaozaozao + #47, #2322 ; 
+  ;31  espacos para o proximo caractere
+  static Vilaozaozao + #48, #2362 ; :
+  ;3  espacos para o proximo caractere
+  static Vilaozaozao + #49, #2310 ; 
+  ;3  espacos para o proximo caractere
+  static Vilaozaozao + #50, #2306 ; 
+  ;4  espacos para o proximo caractere
+  static Vilaozaozao + #51, #2430 ; ~
+  ;33  espacos para o proximo caractere
+  static Vilaozaozao + #52, #2310 ; 
+  static Vilaozaozao + #53, #2308 ; 
+  static Vilaozaozao + #54, #2308 ; 
+  static Vilaozaozao + #55, #2306 ; 
+  ;38  espacos para o proximo caractere
+  static Vilaozaozao + #56, #2310 ; 
+  ;40  espacos para o proximo caractere
+  static Vilaozaozao + #57, #2321 ; 
+  static Vilaozaozao + #58, #2322 ; 
+  ;38  espacos para o proximo caractere
+  static Vilaozaozao + #59, #2321 ; 
+  ;3  espacos para o proximo caractere
+  static Vilaozaozao + #60, #2322 ; 
+
+VilaozaozaoGaps : var #61
+  static VilaozaozaoGaps + #0, #0
+  static VilaozaozaoGaps + #1, #0
+  static VilaozaozaoGaps + #2, #37
+  static VilaozaozaoGaps + #3, #0
+  static VilaozaozaoGaps + #4, #0
+  static VilaozaozaoGaps + #5, #0
+  static VilaozaozaoGaps + #6, #73
+  static VilaozaozaoGaps + #7, #2
+  static VilaozaozaoGaps + #8, #0
+  static VilaozaozaoGaps + #9, #0
+  static VilaozaozaoGaps + #10, #0
+  static VilaozaozaoGaps + #11, #32
+  static VilaozaozaoGaps + #12, #0
+  static VilaozaozaoGaps + #13, #2
+  static VilaozaozaoGaps + #14, #0
+  static VilaozaozaoGaps + #15, #0
+  static VilaozaozaoGaps + #16, #0
+  static VilaozaozaoGaps + #17, #31
+  static VilaozaozaoGaps + #18, #0
+  static VilaozaozaoGaps + #19, #0
+  static VilaozaozaoGaps + #20, #2
+  static VilaozaozaoGaps + #21, #0
+  static VilaozaozaoGaps + #22, #0
+  static VilaozaozaoGaps + #23, #0
+  static VilaozaozaoGaps + #24, #30
+  static VilaozaozaoGaps + #25, #0
+  static VilaozaozaoGaps + #26, #0
+  static VilaozaozaoGaps + #27, #0
+  static VilaozaozaoGaps + #28, #2
+  static VilaozaozaoGaps + #29, #0
+  static VilaozaozaoGaps + #30, #0
+  static VilaozaozaoGaps + #31, #0
+  static VilaozaozaoGaps + #32, #31
+  static VilaozaozaoGaps + #33, #0
+  static VilaozaozaoGaps + #34, #0
+  static VilaozaozaoGaps + #35, #3
+  static VilaozaozaoGaps + #36, #0
+  static VilaozaozaoGaps + #37, #33
+  static VilaozaozaoGaps + #38, #0
+  static VilaozaozaoGaps + #39, #0
+  static VilaozaozaoGaps + #40, #0
+  static VilaozaozaoGaps + #41, #0
+  static VilaozaozaoGaps + #42, #0
+  static VilaozaozaoGaps + #43, #0
+  static VilaozaozaoGaps + #44, #0
+  static VilaozaozaoGaps + #45, #0
+  static VilaozaozaoGaps + #46, #0
+  static VilaozaozaoGaps + #47, #0
+  static VilaozaozaoGaps + #48, #30
+  static VilaozaozaoGaps + #49, #2
+  static VilaozaozaoGaps + #50, #2
+  static VilaozaozaoGaps + #51, #3
+  static VilaozaozaoGaps + #52, #32
+  static VilaozaozaoGaps + #53, #0
+  static VilaozaozaoGaps + #54, #0
+  static VilaozaozaoGaps + #55, #0
+  static VilaozaozaoGaps + #56, #37
+  static VilaozaozaoGaps + #57, #39
+  static VilaozaozaoGaps + #58, #0
+  static VilaozaozaoGaps + #59, #37
+  static VilaozaozaoGaps + #60, #2
+
+printVilaozaozao:
+  push R0
+  push R1
+  push R2
+  push R3
+  push R4
+  push R5
+  push R6
+
+  loadn R0, #Vilaozaozao
+  loadn R1, #VilaozaozaoGaps
+  load R2, VilaozaozaoPosition
+  loadn R3, #61 ;tamanho Vilaozaozao
+  loadn R4, #0 ;incremetador
+
+  printVilaozaozaoLoop:
+    add R5,R0,R4
+    loadi R5, R5
+
+    add R6,R1,R4
+    loadi R6, R6
+
+    add R2, R2, R6
+
+    outchar R5, R2
+
+    inc R2
+     inc R4
+     cmp R3, R4
+    jne printVilaozaozaoLoop
+
+  pop R6
+  pop R5
+  pop R4
+  pop R3
+  pop R2
+  pop R1
+  pop R0
+  rts
+
+apagarVilaozaozao:
+  push R0
+  push R1
+  push R2
+  push R3
+  push R4
+  push R5
+
+  loadn R0, #3967
+  loadn R1, #VilaozaozaoGaps
+  load R2, VilaozaozaoPosition
+  loadn R3, #61 ;tamanho Vilaozaozao
+  loadn R4, #0 ;incremetador
+
+  apagarVilaozaozaoLoop:
+    add R5,R1,R4
+    loadi R5, R5
+
+    add R2,R2,R5
+    outchar R0, R2
+
+    inc R2
+     inc R4
+     cmp R3, R4
+    jne apagarVilaozaozaoLoop
 
   pop R5
   pop R4
