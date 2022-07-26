@@ -25,6 +25,8 @@ PONTOS: var #1
 static PONTOS + #0, #50
 MOEDAS: var #1
 static MOEDAS + #0, #20
+ULTIMA_TECLA: var #1
+static ULTIMA_TECLA + #0, #0
 
 ATK_INIMIGO: var #1
 static ATK_INIMIGO + #0, #10
@@ -97,7 +99,12 @@ fim_loop_inicio:
 
 loop_status:
     inchar r1
-    
+
+    load r5, ULTIMA_TECLA
+    cmp r1, r5
+    jeq loop_status
+    store ULTIMA_TECLA, r1
+
     cmp r1,r2
     jeq fim_loop_status
 
