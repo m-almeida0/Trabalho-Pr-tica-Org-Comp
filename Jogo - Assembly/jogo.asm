@@ -89,6 +89,7 @@ main:
 	loadn r2, #32
 	loadn r5, #255
 	
+; Loop para obter valor inicial para o RNG
 loop_inicio:
 	inchar r1
 	
@@ -102,33 +103,46 @@ fim_loop_inicio:
 	store RNG, r0
 	load r7, RNG
 	
+    ; Põe valor de ENTER em r2
     loadn r2, #13
+    ; Printa a tela da criação de personagem
     call printDefineStatusScreen
+    ; Mostra os Status Atuais
     call mostraStatus
     jmp loop_status
 
+; Tela para Criação do Personagem
 loop_status:
     inchar r1
 
     load r5, ULTIMA_TECLA
     cmp r1, r5
-    jeq loop_status
+    jeq loop_status ; Se a mesma tecla foi pressionada duas vezes consecutivas, volta para o começo do loop
     store ULTIMA_TECLA, r1
 
+    ; Se a tecla pressionada foi ENTER, encerra a criação do personagem
     cmp r1,r2
     jeq fim_loop_status
 
+    ; Abaixo, está implementado um 'switch case' usando a instrução JID que criamos e uma JMP_TABLE
+
+    ; Carrega Conteúdo da Posição r1 na JMP_TABLE para r1
+    ; E valor da posição para r4
     loadn r4, #JMP_TABLE_STATUS
     add r4, r4, r1
     loadi r1, r4
 
     loadn r5, #0
 
+    ; Se posição na JMP_TABLE está preenchida com zero, é o default
     cmp r1, r5
     jeq loop_status
 
+    ; Se não, usa a instrução JID para fazer PC <- mem[r4], ou seja, o conteúdo na posição.
     jid r4
 
+; As labels abaixo são endereçadas pela JMP_TABLE e modificam os status e itens do jogador
+; (Da diminui_atk até a aumenta_defup)
 diminui_atk:
     ; Checando se pode diminuir mais
     load r5, ATK
