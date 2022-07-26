@@ -59,9 +59,6 @@ static ATKUP_INIMIGO + #0, #1
 DEFUP_INIMIGO: var #1
 static DEFUP_INIMIGO + #0, #1
 
-; Mensagens que serao impressas na tela
-Msn1: string "Pressione Espaco para Iniciar o Jogo"
-
 ; Recebe a mensagem em r0 e a posição em r1
 imprime_mensagem:
 	loadn r2, #0 ; Comparador para encontrar \0
@@ -80,14 +77,16 @@ fim_loop_imprime_mensagem:
 
 ;---- Inicio do Programa Principal -----
 main:
-	
-	loadn r0, #Msn1
-	loadn r1, #558
-	call imprime_mensagem
+	call printTelaInicialScreen
 	
 	loadn r0, #0
 	loadn r2, #32
 	loadn r5, #255
+
+	loadn r1, #90
+	loadn r3, #312
+
+	store SalvadorenhoPosition, r1
 	
 ; Loop para obter valor inicial para o RNG
 loop_inicio:
@@ -494,6 +493,7 @@ fim_loop_batalha:
 batalha:
     call printBatalha1Screen
     call mostraHPsBatalha
+    call printSalvadorenho
     loadn r0, #0
 
 
@@ -6510,6 +6510,1574 @@ printBatalha3Screen:
 
 SalvadorenhoPosition : var #1
     static SalvadorenhoPosition + #0, #20
+
+Salvadorenho : var #90
+  static Salvadorenho + #0, #1284 ; 
+  static Salvadorenho + #1, #1284 ; 
+  static Salvadorenho + #2, #1284 ; 
+  static Salvadorenho + #3, #1284 ; 
+  ;37  espacos para o proximo caractere
+  static Salvadorenho + #4, #1282 ; 
+  static Salvadorenho + #5, #3626 ; *
+  static Salvadorenho + #6, #3626 ; *
+  static Salvadorenho + #7, #1286 ; 
+  ;37  espacos para o proximo caractere
+  static Salvadorenho + #8, #1282 ; 
+  static Salvadorenho + #9, #3626 ; *
+  static Salvadorenho + #10, #3626 ; *
+  static Salvadorenho + #11, #1286 ; 
+  ;36  espacos para o proximo caractere
+  static Salvadorenho + #12, #1280 ; 
+  static Salvadorenho + #13, #1280 ; 
+  static Salvadorenho + #14, #1280 ; 
+  static Salvadorenho + #15, #1280 ; 
+  static Salvadorenho + #16, #1280 ; 
+  static Salvadorenho + #17, #1280 ; 
+  ;36  espacos para o proximo caractere
+  static Salvadorenho + #18, #1 ; 
+  static Salvadorenho + #19, #0 ; 
+  static Salvadorenho + #20, #0 ; 
+  static Salvadorenho + #21, #7 ; 
+  ;37  espacos para o proximo caractere
+  static Salvadorenho + #22, #2 ; 
+  static Salvadorenho + #23, #3080 ; 
+  static Salvadorenho + #24, #3080 ; 
+  static Salvadorenho + #25, #6 ; 
+  ;37  espacos para o proximo caractere
+  static Salvadorenho + #26, #2 ; 
+  static Salvadorenho + #27, #2820 ; 
+  static Salvadorenho + #28, #2309 ; 
+  static Salvadorenho + #29, #6 ; 
+  ;4  espacos para o proximo caractere
+  static Salvadorenho + #30, #2858 ; *
+  static Salvadorenho + #31, #2858 ; *
+  ;32  espacos para o proximo caractere
+  static Salvadorenho + #32, #3 ; 
+  static Salvadorenho + #33, #4 ; 
+  static Salvadorenho + #34, #4 ; 
+  static Salvadorenho + #35, #5 ; 
+  ;4  espacos para o proximo caractere
+  static Salvadorenho + #36, #2858 ; *
+  static Salvadorenho + #37, #2858 ; *
+  ;25  espacos para o proximo caractere
+  static Salvadorenho + #38, #2080 ; SPACE
+  static Salvadorenho + #39, #2080 ; SPACE
+  ;7  espacos para o proximo caractere
+  static Salvadorenho + #40, #1538 ; 
+  static Salvadorenho + #41, #1542 ; 
+  ;5  espacos para o proximo caractere
+  static Salvadorenho + #42, #2858 ; *
+  static Salvadorenho + #43, #2858 ; *
+  ;26  espacos para o proximo caractere
+  static Salvadorenho + #44, #2059 ; 
+  static Salvadorenho + #45, #2057 ; 
+  static Salvadorenho + #46, #4 ; 
+  static Salvadorenho + #47, #4 ; 
+  static Salvadorenho + #48, #1542 ; 
+  static Salvadorenho + #49, #1536 ; 
+  static Salvadorenho + #50, #1536 ; 
+  static Salvadorenho + #51, #2347 ; +
+  static Salvadorenho + #52, #2347 ; +
+  static Salvadorenho + #53, #1536 ; 
+  static Salvadorenho + #54, #1536 ; 
+  static Salvadorenho + #55, #1538 ; 
+  static Salvadorenho + #56, #2858 ; *
+  static Salvadorenho + #57, #2858 ; *
+  static Salvadorenho + #58, #2858 ; *
+  ;26  espacos para o proximo caractere
+  static Salvadorenho + #59, #2060 ; 
+  static Salvadorenho + #60, #2058 ; 
+  static Salvadorenho + #61, #0 ; 
+  static Salvadorenho + #62, #0 ; 
+  static Salvadorenho + #63, #1542 ; 
+  static Salvadorenho + #64, #1540 ; 
+  static Salvadorenho + #65, #1540 ; 
+  static Salvadorenho + #66, #2347 ; +
+  static Salvadorenho + #67, #2347 ; +
+  static Salvadorenho + #68, #1540 ; 
+  static Salvadorenho + #69, #1540 ; 
+  static Salvadorenho + #70, #1538 ; 
+  static Salvadorenho + #71, #2858 ; *
+  static Salvadorenho + #72, #2858 ; *
+  ;26  espacos para o proximo caractere
+  static Salvadorenho + #73, #2080 ; SPACE
+  static Salvadorenho + #74, #2080 ; SPACE
+  ;7  espacos para o proximo caractere
+  static Salvadorenho + #75, #1538 ; 
+  static Salvadorenho + #76, #2350 ; .
+  static Salvadorenho + #77, #1538 ; 
+  ;38  espacos para o proximo caractere
+  static Salvadorenho + #78, #1538 ; 
+  static Salvadorenho + #79, #2350 ; .
+  static Salvadorenho + #80, #1538 ; 
+  ;38  espacos para o proximo caractere
+  static Salvadorenho + #81, #1538 ; 
+  static Salvadorenho + #82, #2350 ; .
+  static Salvadorenho + #83, #1538 ; 
+  ;38  espacos para o proximo caractere
+  static Salvadorenho + #84, #1536 ; 
+  static Salvadorenho + #85, #1536 ; 
+  ;39  espacos para o proximo caractere
+  static Salvadorenho + #86, #2061 ; 
+  static Salvadorenho + #87, #2061 ; 
+  ;39  espacos para o proximo caractere
+  static Salvadorenho + #88, #2061 ; 
+  static Salvadorenho + #89, #2061 ; 
+
+SalvadorenhoGaps : var #90
+  static SalvadorenhoGaps + #0, #0
+  static SalvadorenhoGaps + #1, #0
+  static SalvadorenhoGaps + #2, #0
+  static SalvadorenhoGaps + #3, #0
+  static SalvadorenhoGaps + #4, #36
+  static SalvadorenhoGaps + #5, #0
+  static SalvadorenhoGaps + #6, #0
+  static SalvadorenhoGaps + #7, #0
+  static SalvadorenhoGaps + #8, #36
+  static SalvadorenhoGaps + #9, #0
+  static SalvadorenhoGaps + #10, #0
+  static SalvadorenhoGaps + #11, #0
+  static SalvadorenhoGaps + #12, #35
+  static SalvadorenhoGaps + #13, #0
+  static SalvadorenhoGaps + #14, #0
+  static SalvadorenhoGaps + #15, #0
+  static SalvadorenhoGaps + #16, #0
+  static SalvadorenhoGaps + #17, #0
+  static SalvadorenhoGaps + #18, #35
+  static SalvadorenhoGaps + #19, #0
+  static SalvadorenhoGaps + #20, #0
+  static SalvadorenhoGaps + #21, #0
+  static SalvadorenhoGaps + #22, #36
+  static SalvadorenhoGaps + #23, #0
+  static SalvadorenhoGaps + #24, #0
+  static SalvadorenhoGaps + #25, #0
+  static SalvadorenhoGaps + #26, #36
+  static SalvadorenhoGaps + #27, #0
+  static SalvadorenhoGaps + #28, #0
+  static SalvadorenhoGaps + #29, #0
+  static SalvadorenhoGaps + #30, #3
+  static SalvadorenhoGaps + #31, #0
+  static SalvadorenhoGaps + #32, #31
+  static SalvadorenhoGaps + #33, #0
+  static SalvadorenhoGaps + #34, #0
+  static SalvadorenhoGaps + #35, #0
+  static SalvadorenhoGaps + #36, #3
+  static SalvadorenhoGaps + #37, #0
+  static SalvadorenhoGaps + #38, #24
+  static SalvadorenhoGaps + #39, #0
+  static SalvadorenhoGaps + #40, #6
+  static SalvadorenhoGaps + #41, #0
+  static SalvadorenhoGaps + #42, #4
+  static SalvadorenhoGaps + #43, #0
+  static SalvadorenhoGaps + #44, #25
+  static SalvadorenhoGaps + #45, #0
+  static SalvadorenhoGaps + #46, #0
+  static SalvadorenhoGaps + #47, #0
+  static SalvadorenhoGaps + #48, #0
+  static SalvadorenhoGaps + #49, #0
+  static SalvadorenhoGaps + #50, #0
+  static SalvadorenhoGaps + #51, #0
+  static SalvadorenhoGaps + #52, #0
+  static SalvadorenhoGaps + #53, #0
+  static SalvadorenhoGaps + #54, #0
+  static SalvadorenhoGaps + #55, #0
+  static SalvadorenhoGaps + #56, #0
+  static SalvadorenhoGaps + #57, #0
+  static SalvadorenhoGaps + #58, #0
+  static SalvadorenhoGaps + #59, #25
+  static SalvadorenhoGaps + #60, #0
+  static SalvadorenhoGaps + #61, #0
+  static SalvadorenhoGaps + #62, #0
+  static SalvadorenhoGaps + #63, #0
+  static SalvadorenhoGaps + #64, #0
+  static SalvadorenhoGaps + #65, #0
+  static SalvadorenhoGaps + #66, #0
+  static SalvadorenhoGaps + #67, #0
+  static SalvadorenhoGaps + #68, #0
+  static SalvadorenhoGaps + #69, #0
+  static SalvadorenhoGaps + #70, #0
+  static SalvadorenhoGaps + #71, #0
+  static SalvadorenhoGaps + #72, #0
+  static SalvadorenhoGaps + #73, #25
+  static SalvadorenhoGaps + #74, #0
+  static SalvadorenhoGaps + #75, #6
+  static SalvadorenhoGaps + #76, #0
+  static SalvadorenhoGaps + #77, #0
+  static SalvadorenhoGaps + #78, #37
+  static SalvadorenhoGaps + #79, #0
+  static SalvadorenhoGaps + #80, #0
+  static SalvadorenhoGaps + #81, #37
+  static SalvadorenhoGaps + #82, #0
+  static SalvadorenhoGaps + #83, #0
+  static SalvadorenhoGaps + #84, #37
+  static SalvadorenhoGaps + #85, #0
+  static SalvadorenhoGaps + #86, #38
+  static SalvadorenhoGaps + #87, #0
+  static SalvadorenhoGaps + #88, #38
+  static SalvadorenhoGaps + #89, #0
+
+printSalvadorenho:
+  push R0
+  push R1
+  push R2
+  push R3
+  push R4
+  push R5
+  push R6
+
+  loadn R0, #Salvadorenho
+  loadn R1, #SalvadorenhoGaps
+  load R2, SalvadorenhoPosition
+  loadn R3, #90 ;tamanho Salvadorenho
+  loadn R4, #0 ;incremetador
+
+  printSalvadorenhoLoop:
+    add R5,R0,R4
+    loadi R5, R5
+
+    add R6,R1,R4
+    loadi R6, R6
+
+    add R2, R2, R6
+
+    outchar R5, R2
+
+    inc R2
+     inc R4
+     cmp R3, R4
+    jne printSalvadorenhoLoop
+
+  pop R6
+  pop R5
+  pop R4
+  pop R3
+  pop R2
+  pop R1
+  pop R0
+  rts
+
+apagarSalvadorenho:
+  push R0
+  push R1
+  push R2
+  push R3
+  push R4
+  push R5
+
+  loadn R0, #3967
+  loadn R1, #SalvadorenhoGaps
+  load R2, SalvadorenhoPosition
+  loadn R3, #90 ;tamanho Salvadorenho
+  loadn R4, #0 ;incremetador
+
+  apagarSalvadorenhoLoop:
+    add R5,R1,R4
+    loadi R5, R5
+
+    add R2,R2,R5
+    outchar R0, R2
+
+    inc R2
+     inc R4
+     cmp R3, R4
+    jne apagarSalvadorenhoLoop
+
+  pop R5
+  pop R4
+  pop R3
+  pop R2
+  pop R1
+  pop R0
+  rts
+
+TelaInicial : var #1200
+  ;Linha 0
+  static TelaInicial + #0, #3967
+  static TelaInicial + #1, #3967
+  static TelaInicial + #2, #3967
+  static TelaInicial + #3, #3967
+  static TelaInicial + #4, #3967
+  static TelaInicial + #5, #3967
+  static TelaInicial + #6, #3967
+  static TelaInicial + #7, #3967
+  static TelaInicial + #8, #3967
+  static TelaInicial + #9, #3967
+  static TelaInicial + #10, #3967
+  static TelaInicial + #11, #3967
+  static TelaInicial + #12, #3967
+  static TelaInicial + #13, #3967
+  static TelaInicial + #14, #3967
+  static TelaInicial + #15, #3967
+  static TelaInicial + #16, #3967
+  static TelaInicial + #17, #3967
+  static TelaInicial + #18, #3967
+  static TelaInicial + #19, #3967
+  static TelaInicial + #20, #3967
+  static TelaInicial + #21, #3967
+  static TelaInicial + #22, #3967
+  static TelaInicial + #23, #3967
+  static TelaInicial + #24, #3967
+  static TelaInicial + #25, #3967
+  static TelaInicial + #26, #3967
+  static TelaInicial + #27, #3967
+  static TelaInicial + #28, #3967
+  static TelaInicial + #29, #3967
+  static TelaInicial + #30, #3967
+  static TelaInicial + #31, #3967
+  static TelaInicial + #32, #3967
+  static TelaInicial + #33, #3967
+  static TelaInicial + #34, #3967
+  static TelaInicial + #35, #3967
+  static TelaInicial + #36, #3967
+  static TelaInicial + #37, #3967
+  static TelaInicial + #38, #3967
+  static TelaInicial + #39, #3967
+
+  ;Linha 1
+  static TelaInicial + #40, #3967
+  static TelaInicial + #41, #3967
+  static TelaInicial + #42, #3967
+  static TelaInicial + #43, #3967
+  static TelaInicial + #44, #3967
+  static TelaInicial + #45, #3967
+  static TelaInicial + #46, #3967
+  static TelaInicial + #47, #3967
+  static TelaInicial + #48, #3967
+  static TelaInicial + #49, #3967
+  static TelaInicial + #50, #3967
+  static TelaInicial + #51, #3967
+  static TelaInicial + #52, #3967
+  static TelaInicial + #53, #3967
+  static TelaInicial + #54, #3967
+  static TelaInicial + #55, #3967
+  static TelaInicial + #56, #3967
+  static TelaInicial + #57, #3967
+  static TelaInicial + #58, #3967
+  static TelaInicial + #59, #3083
+  static TelaInicial + #60, #3081
+  static TelaInicial + #61, #3967
+  static TelaInicial + #62, #3967
+  static TelaInicial + #63, #3967
+  static TelaInicial + #64, #3967
+  static TelaInicial + #65, #3967
+  static TelaInicial + #66, #3967
+  static TelaInicial + #67, #3967
+  static TelaInicial + #68, #3967
+  static TelaInicial + #69, #3967
+  static TelaInicial + #70, #3967
+  static TelaInicial + #71, #3967
+  static TelaInicial + #72, #3967
+  static TelaInicial + #73, #3967
+  static TelaInicial + #74, #3967
+  static TelaInicial + #75, #3967
+  static TelaInicial + #76, #3967
+  static TelaInicial + #77, #3967
+  static TelaInicial + #78, #3967
+  static TelaInicial + #79, #3967
+
+  ;Linha 2
+  static TelaInicial + #80, #3967
+  static TelaInicial + #81, #3967
+  static TelaInicial + #82, #3967
+  static TelaInicial + #83, #3967
+  static TelaInicial + #84, #3967
+  static TelaInicial + #85, #3967
+  static TelaInicial + #86, #3967
+  static TelaInicial + #87, #3967
+  static TelaInicial + #88, #3967
+  static TelaInicial + #89, #3967
+  static TelaInicial + #90, #3967
+  static TelaInicial + #91, #3967
+  static TelaInicial + #92, #3967
+  static TelaInicial + #93, #3967
+  static TelaInicial + #94, #3967
+  static TelaInicial + #95, #3967
+  static TelaInicial + #96, #3967
+  static TelaInicial + #97, #3967
+  static TelaInicial + #98, #3083
+  static TelaInicial + #99, #3967
+  static TelaInicial + #100, #3967
+  static TelaInicial + #101, #3081
+  static TelaInicial + #102, #3967
+  static TelaInicial + #103, #3967
+  static TelaInicial + #104, #3967
+  static TelaInicial + #105, #3967
+  static TelaInicial + #106, #3967
+  static TelaInicial + #107, #3967
+  static TelaInicial + #108, #3967
+  static TelaInicial + #109, #3967
+  static TelaInicial + #110, #3967
+  static TelaInicial + #111, #3967
+  static TelaInicial + #112, #3967
+  static TelaInicial + #113, #3967
+  static TelaInicial + #114, #3967
+  static TelaInicial + #115, #3967
+  static TelaInicial + #116, #3967
+  static TelaInicial + #117, #3967
+  static TelaInicial + #118, #3967
+  static TelaInicial + #119, #3967
+
+  ;Linha 3
+  static TelaInicial + #120, #3967
+  static TelaInicial + #121, #3967
+  static TelaInicial + #122, #3967
+  static TelaInicial + #123, #3967
+  static TelaInicial + #124, #3967
+  static TelaInicial + #125, #3967
+  static TelaInicial + #126, #3967
+  static TelaInicial + #127, #3967
+  static TelaInicial + #128, #3967
+  static TelaInicial + #129, #3967
+  static TelaInicial + #130, #3967
+  static TelaInicial + #131, #3967
+  static TelaInicial + #132, #3967
+  static TelaInicial + #133, #3967
+  static TelaInicial + #134, #3967
+  static TelaInicial + #135, #3967
+  static TelaInicial + #136, #3967
+  static TelaInicial + #137, #3083
+  static TelaInicial + #138, #3967
+  static TelaInicial + #139, #3967
+  static TelaInicial + #140, #3967
+  static TelaInicial + #141, #3967
+  static TelaInicial + #142, #3081
+  static TelaInicial + #143, #3967
+  static TelaInicial + #144, #3967
+  static TelaInicial + #145, #3967
+  static TelaInicial + #146, #3967
+  static TelaInicial + #147, #3967
+  static TelaInicial + #148, #3967
+  static TelaInicial + #149, #3967
+  static TelaInicial + #150, #3967
+  static TelaInicial + #151, #3967
+  static TelaInicial + #152, #3967
+  static TelaInicial + #153, #3967
+  static TelaInicial + #154, #3967
+  static TelaInicial + #155, #3967
+  static TelaInicial + #156, #3967
+  static TelaInicial + #157, #3967
+  static TelaInicial + #158, #3967
+  static TelaInicial + #159, #3967
+
+  ;Linha 4
+  static TelaInicial + #160, #3967
+  static TelaInicial + #161, #3967
+  static TelaInicial + #162, #3967
+  static TelaInicial + #163, #3967
+  static TelaInicial + #164, #3967
+  static TelaInicial + #165, #3967
+  static TelaInicial + #166, #3967
+  static TelaInicial + #167, #3967
+  static TelaInicial + #168, #3967
+  static TelaInicial + #169, #3967
+  static TelaInicial + #170, #3967
+  static TelaInicial + #171, #3967
+  static TelaInicial + #172, #3967
+  static TelaInicial + #173, #3967
+  static TelaInicial + #174, #3967
+  static TelaInicial + #175, #3967
+  static TelaInicial + #176, #3967
+  static TelaInicial + #177, #3084
+  static TelaInicial + #178, #3967
+  static TelaInicial + #179, #3967
+  static TelaInicial + #180, #3967
+  static TelaInicial + #181, #3967
+  static TelaInicial + #182, #3082
+  static TelaInicial + #183, #3967
+  static TelaInicial + #184, #3967
+  static TelaInicial + #185, #3967
+  static TelaInicial + #186, #3967
+  static TelaInicial + #187, #3967
+  static TelaInicial + #188, #3967
+  static TelaInicial + #189, #3967
+  static TelaInicial + #190, #3967
+  static TelaInicial + #191, #3967
+  static TelaInicial + #192, #3967
+  static TelaInicial + #193, #3967
+  static TelaInicial + #194, #3967
+  static TelaInicial + #195, #3967
+  static TelaInicial + #196, #3967
+  static TelaInicial + #197, #3967
+  static TelaInicial + #198, #3967
+  static TelaInicial + #199, #3967
+
+  ;Linha 5
+  static TelaInicial + #200, #3967
+  static TelaInicial + #201, #3967
+  static TelaInicial + #202, #3967
+  static TelaInicial + #203, #3967
+  static TelaInicial + #204, #3967
+  static TelaInicial + #205, #3967
+  static TelaInicial + #206, #3967
+  static TelaInicial + #207, #3967
+  static TelaInicial + #208, #3967
+  static TelaInicial + #209, #3967
+  static TelaInicial + #210, #3967
+  static TelaInicial + #211, #3967
+  static TelaInicial + #212, #3967
+  static TelaInicial + #213, #3967
+  static TelaInicial + #214, #3967
+  static TelaInicial + #215, #3967
+  static TelaInicial + #216, #3967
+  static TelaInicial + #217, #3967
+  static TelaInicial + #218, #3084
+  static TelaInicial + #219, #3967
+  static TelaInicial + #220, #3967
+  static TelaInicial + #221, #3082
+  static TelaInicial + #222, #3967
+  static TelaInicial + #223, #3967
+  static TelaInicial + #224, #3967
+  static TelaInicial + #225, #3967
+  static TelaInicial + #226, #3967
+  static TelaInicial + #227, #3967
+  static TelaInicial + #228, #3967
+  static TelaInicial + #229, #3967
+  static TelaInicial + #230, #3967
+  static TelaInicial + #231, #3967
+  static TelaInicial + #232, #3967
+  static TelaInicial + #233, #3967
+  static TelaInicial + #234, #3967
+  static TelaInicial + #235, #3967
+  static TelaInicial + #236, #3967
+  static TelaInicial + #237, #3967
+  static TelaInicial + #238, #3967
+  static TelaInicial + #239, #3967
+
+  ;Linha 6
+  static TelaInicial + #240, #3967
+  static TelaInicial + #241, #3967
+  static TelaInicial + #242, #3967
+  static TelaInicial + #243, #3967
+  static TelaInicial + #244, #3967
+  static TelaInicial + #245, #3967
+  static TelaInicial + #246, #3967
+  static TelaInicial + #247, #3967
+  static TelaInicial + #248, #3967
+  static TelaInicial + #249, #3967
+  static TelaInicial + #250, #3967
+  static TelaInicial + #251, #3967
+  static TelaInicial + #252, #3967
+  static TelaInicial + #253, #3967
+  static TelaInicial + #254, #3967
+  static TelaInicial + #255, #3967
+  static TelaInicial + #256, #3967
+  static TelaInicial + #257, #3967
+  static TelaInicial + #258, #3967
+  static TelaInicial + #259, #3084
+  static TelaInicial + #260, #3082
+  static TelaInicial + #261, #3967
+  static TelaInicial + #262, #3967
+  static TelaInicial + #263, #3967
+  static TelaInicial + #264, #3967
+  static TelaInicial + #265, #3967
+  static TelaInicial + #266, #3967
+  static TelaInicial + #267, #3967
+  static TelaInicial + #268, #3967
+  static TelaInicial + #269, #3967
+  static TelaInicial + #270, #3967
+  static TelaInicial + #271, #127
+  static TelaInicial + #272, #127
+  static TelaInicial + #273, #3967
+  static TelaInicial + #274, #3967
+  static TelaInicial + #275, #3967
+  static TelaInicial + #276, #3967
+  static TelaInicial + #277, #3967
+  static TelaInicial + #278, #3967
+  static TelaInicial + #279, #3967
+
+  ;Linha 7
+  static TelaInicial + #280, #3967
+  static TelaInicial + #281, #3967
+  static TelaInicial + #282, #3967
+  static TelaInicial + #283, #3967
+  static TelaInicial + #284, #3967
+  static TelaInicial + #285, #3967
+  static TelaInicial + #286, #3967
+  static TelaInicial + #287, #3967
+  static TelaInicial + #288, #3967
+  static TelaInicial + #289, #3967
+  static TelaInicial + #290, #3967
+  static TelaInicial + #291, #3967
+  static TelaInicial + #292, #3967
+  static TelaInicial + #293, #3967
+  static TelaInicial + #294, #3967
+  static TelaInicial + #295, #3967
+  static TelaInicial + #296, #3967
+  static TelaInicial + #297, #3967
+  static TelaInicial + #298, #3967
+  static TelaInicial + #299, #3967
+  static TelaInicial + #300, #3967
+  static TelaInicial + #301, #3967
+  static TelaInicial + #302, #3967
+  static TelaInicial + #303, #3967
+  static TelaInicial + #304, #3967
+  static TelaInicial + #305, #3967
+  static TelaInicial + #306, #3967
+  static TelaInicial + #307, #3967
+  static TelaInicial + #308, #3967
+  static TelaInicial + #309, #3967
+  static TelaInicial + #310, #3967
+  static TelaInicial + #311, #3967
+  static TelaInicial + #312, #127
+  static TelaInicial + #313, #3967
+  static TelaInicial + #314, #3967
+  static TelaInicial + #315, #3967
+  static TelaInicial + #316, #3967
+  static TelaInicial + #317, #3967
+  static TelaInicial + #318, #3967
+  static TelaInicial + #319, #3967
+
+  ;Linha 8
+  static TelaInicial + #320, #3967
+  static TelaInicial + #321, #3967
+  static TelaInicial + #322, #3967
+  static TelaInicial + #323, #3967
+  static TelaInicial + #324, #3967
+  static TelaInicial + #325, #3967
+  static TelaInicial + #326, #3967
+  static TelaInicial + #327, #3967
+  static TelaInicial + #328, #3967
+  static TelaInicial + #329, #3967
+  static TelaInicial + #330, #3967
+  static TelaInicial + #331, #3967
+  static TelaInicial + #332, #3967
+  static TelaInicial + #333, #3967
+  static TelaInicial + #334, #3967
+  static TelaInicial + #335, #3967
+  static TelaInicial + #336, #3967
+  static TelaInicial + #337, #3967
+  static TelaInicial + #338, #3967
+  static TelaInicial + #339, #3967
+  static TelaInicial + #340, #3967
+  static TelaInicial + #341, #3967
+  static TelaInicial + #342, #3967
+  static TelaInicial + #343, #3967
+  static TelaInicial + #344, #3967
+  static TelaInicial + #345, #3967
+  static TelaInicial + #346, #3967
+  static TelaInicial + #347, #3967
+  static TelaInicial + #348, #3967
+  static TelaInicial + #349, #3967
+  static TelaInicial + #350, #3967
+  static TelaInicial + #351, #3967
+  static TelaInicial + #352, #3967
+  static TelaInicial + #353, #3967
+  static TelaInicial + #354, #3967
+  static TelaInicial + #355, #3967
+  static TelaInicial + #356, #3967
+  static TelaInicial + #357, #3967
+  static TelaInicial + #358, #3967
+  static TelaInicial + #359, #3967
+
+  ;Linha 9
+  static TelaInicial + #360, #3967
+  static TelaInicial + #361, #3967
+  static TelaInicial + #362, #3967
+  static TelaInicial + #363, #3967
+  static TelaInicial + #364, #3967
+  static TelaInicial + #365, #3967
+  static TelaInicial + #366, #3967
+  static TelaInicial + #367, #3967
+  static TelaInicial + #368, #3967
+  static TelaInicial + #369, #3967
+  static TelaInicial + #370, #3967
+  static TelaInicial + #371, #3967
+  static TelaInicial + #372, #3967
+  static TelaInicial + #373, #3967
+  static TelaInicial + #374, #3967
+  static TelaInicial + #375, #3967
+  static TelaInicial + #376, #3967
+  static TelaInicial + #377, #3967
+  static TelaInicial + #378, #3967
+  static TelaInicial + #379, #3967
+  static TelaInicial + #380, #3967
+  static TelaInicial + #381, #3967
+  static TelaInicial + #382, #3967
+  static TelaInicial + #383, #3967
+  static TelaInicial + #384, #3967
+  static TelaInicial + #385, #3967
+  static TelaInicial + #386, #3967
+  static TelaInicial + #387, #3967
+  static TelaInicial + #388, #3967
+  static TelaInicial + #389, #3967
+  static TelaInicial + #390, #3967
+  static TelaInicial + #391, #3967
+  static TelaInicial + #392, #3967
+  static TelaInicial + #393, #3967
+  static TelaInicial + #394, #3967
+  static TelaInicial + #395, #3967
+  static TelaInicial + #396, #3967
+  static TelaInicial + #397, #3967
+  static TelaInicial + #398, #3967
+  static TelaInicial + #399, #3967
+
+  ;Linha 10
+  static TelaInicial + #400, #3967
+  static TelaInicial + #401, #3967
+  static TelaInicial + #402, #3967
+  static TelaInicial + #403, #3967
+  static TelaInicial + #404, #3967
+  static TelaInicial + #405, #3967
+  static TelaInicial + #406, #3967
+  static TelaInicial + #407, #3967
+  static TelaInicial + #408, #3967
+  static TelaInicial + #409, #3967
+  static TelaInicial + #410, #3967
+  static TelaInicial + #411, #3967
+  static TelaInicial + #412, #3967
+  static TelaInicial + #413, #3967
+  static TelaInicial + #414, #3967
+  static TelaInicial + #415, #3967
+  static TelaInicial + #416, #3967
+  static TelaInicial + #417, #3967
+  static TelaInicial + #418, #3967
+  static TelaInicial + #419, #3967
+  static TelaInicial + #420, #3967
+  static TelaInicial + #421, #3967
+  static TelaInicial + #422, #3967
+  static TelaInicial + #423, #3967
+  static TelaInicial + #424, #3967
+  static TelaInicial + #425, #3967
+  static TelaInicial + #426, #3967
+  static TelaInicial + #427, #3967
+  static TelaInicial + #428, #3967
+  static TelaInicial + #429, #3967
+  static TelaInicial + #430, #3967
+  static TelaInicial + #431, #3967
+  static TelaInicial + #432, #3967
+  static TelaInicial + #433, #3967
+  static TelaInicial + #434, #3967
+  static TelaInicial + #435, #3967
+  static TelaInicial + #436, #3967
+  static TelaInicial + #437, #3967
+  static TelaInicial + #438, #3967
+  static TelaInicial + #439, #3967
+
+  ;Linha 11
+  static TelaInicial + #440, #127
+  static TelaInicial + #441, #127
+  static TelaInicial + #442, #127
+  static TelaInicial + #443, #127
+  static TelaInicial + #444, #127
+  static TelaInicial + #445, #127
+  static TelaInicial + #446, #80
+  static TelaInicial + #447, #114
+  static TelaInicial + #448, #101
+  static TelaInicial + #449, #115
+  static TelaInicial + #450, #115
+  static TelaInicial + #451, #105
+  static TelaInicial + #452, #111
+  static TelaInicial + #453, #110
+  static TelaInicial + #454, #101
+  static TelaInicial + #455, #127
+  static TelaInicial + #456, #101
+  static TelaInicial + #457, #115
+  static TelaInicial + #458, #112
+  static TelaInicial + #459, #97
+  static TelaInicial + #460, #99
+  static TelaInicial + #461, #111
+  static TelaInicial + #462, #127
+  static TelaInicial + #463, #112
+  static TelaInicial + #464, #97
+  static TelaInicial + #465, #114
+  static TelaInicial + #466, #97
+  static TelaInicial + #467, #127
+  static TelaInicial + #468, #105
+  static TelaInicial + #469, #110
+  static TelaInicial + #470, #105
+  static TelaInicial + #471, #99
+  static TelaInicial + #472, #105
+  static TelaInicial + #473, #97
+  static TelaInicial + #474, #114
+  static TelaInicial + #475, #3967
+  static TelaInicial + #476, #3967
+  static TelaInicial + #477, #3967
+  static TelaInicial + #478, #3967
+  static TelaInicial + #479, #3967
+
+  ;Linha 12
+  static TelaInicial + #480, #3967
+  static TelaInicial + #481, #3967
+  static TelaInicial + #482, #3967
+  static TelaInicial + #483, #3967
+  static TelaInicial + #484, #3967
+  static TelaInicial + #485, #3967
+  static TelaInicial + #486, #3967
+  static TelaInicial + #487, #3967
+  static TelaInicial + #488, #3967
+  static TelaInicial + #489, #3967
+  static TelaInicial + #490, #3967
+  static TelaInicial + #491, #3967
+  static TelaInicial + #492, #3967
+  static TelaInicial + #493, #3967
+  static TelaInicial + #494, #3967
+  static TelaInicial + #495, #3967
+  static TelaInicial + #496, #3967
+  static TelaInicial + #497, #3967
+  static TelaInicial + #498, #3967
+  static TelaInicial + #499, #3967
+  static TelaInicial + #500, #3967
+  static TelaInicial + #501, #3967
+  static TelaInicial + #502, #3967
+  static TelaInicial + #503, #3967
+  static TelaInicial + #504, #3967
+  static TelaInicial + #505, #3967
+  static TelaInicial + #506, #3967
+  static TelaInicial + #507, #3967
+  static TelaInicial + #508, #3967
+  static TelaInicial + #509, #3967
+  static TelaInicial + #510, #3967
+  static TelaInicial + #511, #3967
+  static TelaInicial + #512, #3967
+  static TelaInicial + #513, #3967
+  static TelaInicial + #514, #3967
+  static TelaInicial + #515, #3967
+  static TelaInicial + #516, #3967
+  static TelaInicial + #517, #3967
+  static TelaInicial + #518, #3967
+  static TelaInicial + #519, #3967
+
+  ;Linha 13
+  static TelaInicial + #520, #3967
+  static TelaInicial + #521, #127
+  static TelaInicial + #522, #3967
+  static TelaInicial + #523, #3967
+  static TelaInicial + #524, #3967
+  static TelaInicial + #525, #3967
+  static TelaInicial + #526, #3967
+  static TelaInicial + #527, #3967
+  static TelaInicial + #528, #3967
+  static TelaInicial + #529, #3967
+  static TelaInicial + #530, #3967
+  static TelaInicial + #531, #3967
+  static TelaInicial + #532, #3967
+  static TelaInicial + #533, #3967
+  static TelaInicial + #534, #3967
+  static TelaInicial + #535, #3967
+  static TelaInicial + #536, #3967
+  static TelaInicial + #537, #3967
+  static TelaInicial + #538, #3967
+  static TelaInicial + #539, #3967
+  static TelaInicial + #540, #3967
+  static TelaInicial + #541, #3967
+  static TelaInicial + #542, #3967
+  static TelaInicial + #543, #3967
+  static TelaInicial + #544, #3967
+  static TelaInicial + #545, #3967
+  static TelaInicial + #546, #3967
+  static TelaInicial + #547, #3967
+  static TelaInicial + #548, #3967
+  static TelaInicial + #549, #3967
+  static TelaInicial + #550, #3967
+  static TelaInicial + #551, #3967
+  static TelaInicial + #552, #3967
+  static TelaInicial + #553, #3967
+  static TelaInicial + #554, #3967
+  static TelaInicial + #555, #3967
+  static TelaInicial + #556, #3967
+  static TelaInicial + #557, #3967
+  static TelaInicial + #558, #3967
+  static TelaInicial + #559, #3967
+
+  ;Linha 14
+  static TelaInicial + #560, #3967
+  static TelaInicial + #561, #3967
+  static TelaInicial + #562, #3967
+  static TelaInicial + #563, #3967
+  static TelaInicial + #564, #3967
+  static TelaInicial + #565, #3967
+  static TelaInicial + #566, #3967
+  static TelaInicial + #567, #3967
+  static TelaInicial + #568, #3967
+  static TelaInicial + #569, #127
+  static TelaInicial + #570, #3967
+  static TelaInicial + #571, #3967
+  static TelaInicial + #572, #3967
+  static TelaInicial + #573, #3967
+  static TelaInicial + #574, #3967
+  static TelaInicial + #575, #3967
+  static TelaInicial + #576, #3967
+  static TelaInicial + #577, #3967
+  static TelaInicial + #578, #3967
+  static TelaInicial + #579, #3967
+  static TelaInicial + #580, #3967
+  static TelaInicial + #581, #3967
+  static TelaInicial + #582, #3967
+  static TelaInicial + #583, #3967
+  static TelaInicial + #584, #3967
+  static TelaInicial + #585, #3967
+  static TelaInicial + #586, #3967
+  static TelaInicial + #587, #3967
+  static TelaInicial + #588, #3967
+  static TelaInicial + #589, #3967
+  static TelaInicial + #590, #3967
+  static TelaInicial + #591, #3967
+  static TelaInicial + #592, #3967
+  static TelaInicial + #593, #3967
+  static TelaInicial + #594, #3967
+  static TelaInicial + #595, #3967
+  static TelaInicial + #596, #3967
+  static TelaInicial + #597, #3967
+  static TelaInicial + #598, #3967
+  static TelaInicial + #599, #3967
+
+  ;Linha 15
+  static TelaInicial + #600, #3967
+  static TelaInicial + #601, #3967
+  static TelaInicial + #602, #3967
+  static TelaInicial + #603, #3967
+  static TelaInicial + #604, #3967
+  static TelaInicial + #605, #3967
+  static TelaInicial + #606, #3967
+  static TelaInicial + #607, #3967
+  static TelaInicial + #608, #3967
+  static TelaInicial + #609, #127
+  static TelaInicial + #610, #3967
+  static TelaInicial + #611, #3967
+  static TelaInicial + #612, #3967
+  static TelaInicial + #613, #3967
+  static TelaInicial + #614, #3967
+  static TelaInicial + #615, #3967
+  static TelaInicial + #616, #3967
+  static TelaInicial + #617, #3967
+  static TelaInicial + #618, #3967
+  static TelaInicial + #619, #3967
+  static TelaInicial + #620, #3967
+  static TelaInicial + #621, #3967
+  static TelaInicial + #622, #3967
+  static TelaInicial + #623, #3967
+  static TelaInicial + #624, #3967
+  static TelaInicial + #625, #3967
+  static TelaInicial + #626, #3967
+  static TelaInicial + #627, #3967
+  static TelaInicial + #628, #3967
+  static TelaInicial + #629, #3967
+  static TelaInicial + #630, #3967
+  static TelaInicial + #631, #3967
+  static TelaInicial + #632, #3967
+  static TelaInicial + #633, #3967
+  static TelaInicial + #634, #3967
+  static TelaInicial + #635, #3967
+  static TelaInicial + #636, #3967
+  static TelaInicial + #637, #3967
+  static TelaInicial + #638, #3967
+  static TelaInicial + #639, #3967
+
+  ;Linha 16
+  static TelaInicial + #640, #3967
+  static TelaInicial + #641, #3967
+  static TelaInicial + #642, #3967
+  static TelaInicial + #643, #3967
+  static TelaInicial + #644, #3967
+  static TelaInicial + #645, #3967
+  static TelaInicial + #646, #3967
+  static TelaInicial + #647, #3967
+  static TelaInicial + #648, #3967
+  static TelaInicial + #649, #3967
+  static TelaInicial + #650, #3967
+  static TelaInicial + #651, #3967
+  static TelaInicial + #652, #127
+  static TelaInicial + #653, #127
+  static TelaInicial + #654, #127
+  static TelaInicial + #655, #127
+  static TelaInicial + #656, #3967
+  static TelaInicial + #657, #3967
+  static TelaInicial + #658, #3967
+  static TelaInicial + #659, #3967
+  static TelaInicial + #660, #3967
+  static TelaInicial + #661, #3967
+  static TelaInicial + #662, #3967
+  static TelaInicial + #663, #3967
+  static TelaInicial + #664, #3967
+  static TelaInicial + #665, #3967
+  static TelaInicial + #666, #3967
+  static TelaInicial + #667, #3967
+  static TelaInicial + #668, #3967
+  static TelaInicial + #669, #3967
+  static TelaInicial + #670, #3967
+  static TelaInicial + #671, #3967
+  static TelaInicial + #672, #3967
+  static TelaInicial + #673, #3967
+  static TelaInicial + #674, #3967
+  static TelaInicial + #675, #3967
+  static TelaInicial + #676, #3967
+  static TelaInicial + #677, #3967
+  static TelaInicial + #678, #3967
+  static TelaInicial + #679, #3967
+
+  ;Linha 17
+  static TelaInicial + #680, #3967
+  static TelaInicial + #681, #3967
+  static TelaInicial + #682, #3967
+  static TelaInicial + #683, #3967
+  static TelaInicial + #684, #3967
+  static TelaInicial + #685, #3967
+  static TelaInicial + #686, #3967
+  static TelaInicial + #687, #3967
+  static TelaInicial + #688, #3967
+  static TelaInicial + #689, #3967
+  static TelaInicial + #690, #3967
+  static TelaInicial + #691, #3967
+  static TelaInicial + #692, #127
+  static TelaInicial + #693, #127
+  static TelaInicial + #694, #127
+  static TelaInicial + #695, #127
+  static TelaInicial + #696, #2343
+  static TelaInicial + #697, #127
+  static TelaInicial + #698, #127
+  static TelaInicial + #699, #127
+  static TelaInicial + #700, #127
+  static TelaInicial + #701, #2910
+  static TelaInicial + #702, #127
+  static TelaInicial + #703, #3166
+  static TelaInicial + #704, #3967
+  static TelaInicial + #705, #3967
+  static TelaInicial + #706, #3967
+  static TelaInicial + #707, #3967
+  static TelaInicial + #708, #3967
+  static TelaInicial + #709, #3967
+  static TelaInicial + #710, #3967
+  static TelaInicial + #711, #3967
+  static TelaInicial + #712, #3967
+  static TelaInicial + #713, #3967
+  static TelaInicial + #714, #3967
+  static TelaInicial + #715, #3967
+  static TelaInicial + #716, #3967
+  static TelaInicial + #717, #3967
+  static TelaInicial + #718, #3967
+  static TelaInicial + #719, #3967
+
+  ;Linha 18
+  static TelaInicial + #720, #3967
+  static TelaInicial + #721, #3967
+  static TelaInicial + #722, #3967
+  static TelaInicial + #723, #3967
+  static TelaInicial + #724, #3967
+  static TelaInicial + #725, #3967
+  static TelaInicial + #726, #3967
+  static TelaInicial + #727, #3967
+  static TelaInicial + #728, #3967
+  static TelaInicial + #729, #3967
+  static TelaInicial + #730, #3967
+  static TelaInicial + #731, #127
+  static TelaInicial + #732, #127
+  static TelaInicial + #733, #127
+  static TelaInicial + #734, #127
+  static TelaInicial + #735, #3967
+  static TelaInicial + #736, #2373
+  static TelaInicial + #737, #2418
+  static TelaInicial + #738, #2418
+  static TelaInicial + #739, #2405
+  static TelaInicial + #740, #2896
+  static TelaInicial + #741, #2917
+  static TelaInicial + #742, #3143
+  static TelaInicial + #743, #3173
+  static TelaInicial + #744, #3967
+  static TelaInicial + #745, #3967
+  static TelaInicial + #746, #3967
+  static TelaInicial + #747, #3967
+  static TelaInicial + #748, #3967
+  static TelaInicial + #749, #3967
+  static TelaInicial + #750, #3967
+  static TelaInicial + #751, #3967
+  static TelaInicial + #752, #3967
+  static TelaInicial + #753, #3967
+  static TelaInicial + #754, #3967
+  static TelaInicial + #755, #3967
+  static TelaInicial + #756, #3967
+  static TelaInicial + #757, #3967
+  static TelaInicial + #758, #3967
+  static TelaInicial + #759, #3967
+
+  ;Linha 19
+  static TelaInicial + #760, #3967
+  static TelaInicial + #761, #3967
+  static TelaInicial + #762, #3967
+  static TelaInicial + #763, #3967
+  static TelaInicial + #764, #3967
+  static TelaInicial + #765, #3967
+  static TelaInicial + #766, #3967
+  static TelaInicial + #767, #3967
+  static TelaInicial + #768, #3967
+  static TelaInicial + #769, #3967
+  static TelaInicial + #770, #3967
+  static TelaInicial + #771, #127
+  static TelaInicial + #772, #127
+  static TelaInicial + #773, #127
+  static TelaInicial + #774, #3967
+  static TelaInicial + #775, #3967
+  static TelaInicial + #776, #127
+  static TelaInicial + #777, #3967
+  static TelaInicial + #778, #127
+  static TelaInicial + #779, #127
+  static TelaInicial + #780, #3967
+  static TelaInicial + #781, #127
+  static TelaInicial + #782, #127
+  static TelaInicial + #783, #127
+  static TelaInicial + #784, #3967
+  static TelaInicial + #785, #3967
+  static TelaInicial + #786, #3967
+  static TelaInicial + #787, #3967
+  static TelaInicial + #788, #3967
+  static TelaInicial + #789, #3967
+  static TelaInicial + #790, #3967
+  static TelaInicial + #791, #3967
+  static TelaInicial + #792, #3967
+  static TelaInicial + #793, #3967
+  static TelaInicial + #794, #3967
+  static TelaInicial + #795, #3967
+  static TelaInicial + #796, #3967
+  static TelaInicial + #797, #3967
+  static TelaInicial + #798, #3967
+  static TelaInicial + #799, #3967
+
+  ;Linha 20
+  static TelaInicial + #800, #3967
+  static TelaInicial + #801, #3967
+  static TelaInicial + #802, #3967
+  static TelaInicial + #803, #127
+  static TelaInicial + #804, #127
+  static TelaInicial + #805, #127
+  static TelaInicial + #806, #127
+  static TelaInicial + #807, #127
+  static TelaInicial + #808, #127
+  static TelaInicial + #809, #3967
+  static TelaInicial + #810, #3967
+  static TelaInicial + #811, #127
+  static TelaInicial + #812, #127
+  static TelaInicial + #813, #127
+  static TelaInicial + #814, #3967
+  static TelaInicial + #815, #3967
+  static TelaInicial + #816, #127
+  static TelaInicial + #817, #127
+  static TelaInicial + #818, #3967
+  static TelaInicial + #819, #127
+  static TelaInicial + #820, #3967
+  static TelaInicial + #821, #127
+  static TelaInicial + #822, #127
+  static TelaInicial + #823, #127
+  static TelaInicial + #824, #3967
+  static TelaInicial + #825, #3967
+  static TelaInicial + #826, #3967
+  static TelaInicial + #827, #3967
+  static TelaInicial + #828, #3967
+  static TelaInicial + #829, #3967
+  static TelaInicial + #830, #3967
+  static TelaInicial + #831, #3967
+  static TelaInicial + #832, #3967
+  static TelaInicial + #833, #3967
+  static TelaInicial + #834, #3967
+  static TelaInicial + #835, #3967
+  static TelaInicial + #836, #3967
+  static TelaInicial + #837, #3967
+  static TelaInicial + #838, #3967
+  static TelaInicial + #839, #3967
+
+  ;Linha 21
+  static TelaInicial + #840, #3967
+  static TelaInicial + #841, #3967
+  static TelaInicial + #842, #3967
+  static TelaInicial + #843, #127
+  static TelaInicial + #844, #127
+  static TelaInicial + #845, #127
+  static TelaInicial + #846, #127
+  static TelaInicial + #847, #127
+  static TelaInicial + #848, #127
+  static TelaInicial + #849, #3967
+  static TelaInicial + #850, #127
+  static TelaInicial + #851, #127
+  static TelaInicial + #852, #127
+  static TelaInicial + #853, #127
+  static TelaInicial + #854, #127
+  static TelaInicial + #855, #127
+  static TelaInicial + #856, #127
+  static TelaInicial + #857, #127
+  static TelaInicial + #858, #127
+  static TelaInicial + #859, #127
+  static TelaInicial + #860, #127
+  static TelaInicial + #861, #127
+  static TelaInicial + #862, #127
+  static TelaInicial + #863, #3967
+  static TelaInicial + #864, #3967
+  static TelaInicial + #865, #3967
+  static TelaInicial + #866, #3967
+  static TelaInicial + #867, #3967
+  static TelaInicial + #868, #3967
+  static TelaInicial + #869, #3967
+  static TelaInicial + #870, #3967
+  static TelaInicial + #871, #3967
+  static TelaInicial + #872, #3967
+  static TelaInicial + #873, #3967
+  static TelaInicial + #874, #3967
+  static TelaInicial + #875, #3967
+  static TelaInicial + #876, #3967
+  static TelaInicial + #877, #3967
+  static TelaInicial + #878, #3967
+  static TelaInicial + #879, #3967
+
+  ;Linha 22
+  static TelaInicial + #880, #3967
+  static TelaInicial + #881, #3967
+  static TelaInicial + #882, #3967
+  static TelaInicial + #883, #127
+  static TelaInicial + #884, #127
+  static TelaInicial + #885, #127
+  static TelaInicial + #886, #127
+  static TelaInicial + #887, #127
+  static TelaInicial + #888, #127
+  static TelaInicial + #889, #3967
+  static TelaInicial + #890, #127
+  static TelaInicial + #891, #127
+  static TelaInicial + #892, #127
+  static TelaInicial + #893, #3967
+  static TelaInicial + #894, #3967
+  static TelaInicial + #895, #3967
+  static TelaInicial + #896, #3967
+  static TelaInicial + #897, #3967
+  static TelaInicial + #898, #127
+  static TelaInicial + #899, #3967
+  static TelaInicial + #900, #3967
+  static TelaInicial + #901, #3967
+  static TelaInicial + #902, #3967
+  static TelaInicial + #903, #3967
+  static TelaInicial + #904, #3967
+  static TelaInicial + #905, #3967
+  static TelaInicial + #906, #3967
+  static TelaInicial + #907, #3967
+  static TelaInicial + #908, #3967
+  static TelaInicial + #909, #3967
+  static TelaInicial + #910, #3967
+  static TelaInicial + #911, #3967
+  static TelaInicial + #912, #3967
+  static TelaInicial + #913, #3967
+  static TelaInicial + #914, #3967
+  static TelaInicial + #915, #3967
+  static TelaInicial + #916, #3967
+  static TelaInicial + #917, #3967
+  static TelaInicial + #918, #3967
+  static TelaInicial + #919, #3967
+
+  ;Linha 23
+  static TelaInicial + #920, #3967
+  static TelaInicial + #921, #3967
+  static TelaInicial + #922, #3967
+  static TelaInicial + #923, #3967
+  static TelaInicial + #924, #3967
+  static TelaInicial + #925, #127
+  static TelaInicial + #926, #127
+  static TelaInicial + #927, #127
+  static TelaInicial + #928, #127
+  static TelaInicial + #929, #3967
+  static TelaInicial + #930, #127
+  static TelaInicial + #931, #127
+  static TelaInicial + #932, #127
+  static TelaInicial + #933, #127
+  static TelaInicial + #934, #4
+  static TelaInicial + #935, #4
+  static TelaInicial + #936, #4
+  static TelaInicial + #937, #4
+  static TelaInicial + #938, #3967
+  static TelaInicial + #939, #3967
+  static TelaInicial + #940, #3967
+  static TelaInicial + #941, #3967
+  static TelaInicial + #942, #3967
+  static TelaInicial + #943, #3967
+  static TelaInicial + #944, #3967
+  static TelaInicial + #945, #3967
+  static TelaInicial + #946, #3967
+  static TelaInicial + #947, #3967
+  static TelaInicial + #948, #3967
+  static TelaInicial + #949, #3967
+  static TelaInicial + #950, #3967
+  static TelaInicial + #951, #3967
+  static TelaInicial + #952, #3967
+  static TelaInicial + #953, #3967
+  static TelaInicial + #954, #3967
+  static TelaInicial + #955, #3967
+  static TelaInicial + #956, #3967
+  static TelaInicial + #957, #3967
+  static TelaInicial + #958, #3967
+  static TelaInicial + #959, #3967
+
+  ;Linha 24
+  static TelaInicial + #960, #3967
+  static TelaInicial + #961, #3967
+  static TelaInicial + #962, #3967
+  static TelaInicial + #963, #3967
+  static TelaInicial + #964, #3967
+  static TelaInicial + #965, #127
+  static TelaInicial + #966, #127
+  static TelaInicial + #967, #3967
+  static TelaInicial + #968, #127
+  static TelaInicial + #969, #127
+  static TelaInicial + #970, #127
+  static TelaInicial + #971, #127
+  static TelaInicial + #972, #127
+  static TelaInicial + #973, #127
+  static TelaInicial + #974, #2
+  static TelaInicial + #975, #127
+  static TelaInicial + #976, #2
+  static TelaInicial + #977, #127
+  static TelaInicial + #978, #1
+  static TelaInicial + #979, #0
+  static TelaInicial + #980, #0
+  static TelaInicial + #981, #7
+  static TelaInicial + #982, #1
+  static TelaInicial + #983, #0
+  static TelaInicial + #984, #0
+  static TelaInicial + #985, #7
+  static TelaInicial + #986, #3967
+  static TelaInicial + #987, #3967
+  static TelaInicial + #988, #3967
+  static TelaInicial + #989, #3967
+  static TelaInicial + #990, #3967
+  static TelaInicial + #991, #3967
+  static TelaInicial + #992, #3967
+  static TelaInicial + #993, #3967
+  static TelaInicial + #994, #3967
+  static TelaInicial + #995, #3967
+  static TelaInicial + #996, #3967
+  static TelaInicial + #997, #3967
+  static TelaInicial + #998, #3967
+  static TelaInicial + #999, #3967
+
+  ;Linha 25
+  static TelaInicial + #1000, #3967
+  static TelaInicial + #1001, #3967
+  static TelaInicial + #1002, #3967
+  static TelaInicial + #1003, #3967
+  static TelaInicial + #1004, #3967
+  static TelaInicial + #1005, #127
+  static TelaInicial + #1006, #127
+  static TelaInicial + #1007, #127
+  static TelaInicial + #1008, #127
+  static TelaInicial + #1009, #127
+  static TelaInicial + #1010, #127
+  static TelaInicial + #1011, #127
+  static TelaInicial + #1012, #127
+  static TelaInicial + #1013, #127
+  static TelaInicial + #1014, #2
+  static TelaInicial + #1015, #127
+  static TelaInicial + #1016, #2
+  static TelaInicial + #1017, #127
+  static TelaInicial + #1018, #2
+  static TelaInicial + #1019, #127
+  static TelaInicial + #1020, #14
+  static TelaInicial + #1021, #3967
+  static TelaInicial + #1022, #3967
+  static TelaInicial + #1023, #3967
+  static TelaInicial + #1024, #127
+  static TelaInicial + #1025, #6
+  static TelaInicial + #1026, #3967
+  static TelaInicial + #1027, #3967
+  static TelaInicial + #1028, #3967
+  static TelaInicial + #1029, #3967
+  static TelaInicial + #1030, #3967
+  static TelaInicial + #1031, #3967
+  static TelaInicial + #1032, #3967
+  static TelaInicial + #1033, #3967
+  static TelaInicial + #1034, #3967
+  static TelaInicial + #1035, #3967
+  static TelaInicial + #1036, #3967
+  static TelaInicial + #1037, #3967
+  static TelaInicial + #1038, #3967
+  static TelaInicial + #1039, #3967
+
+  ;Linha 26
+  static TelaInicial + #1040, #3967
+  static TelaInicial + #1041, #3967
+  static TelaInicial + #1042, #3967
+  static TelaInicial + #1043, #3967
+  static TelaInicial + #1044, #3967
+  static TelaInicial + #1045, #3967
+  static TelaInicial + #1046, #3967
+  static TelaInicial + #1047, #3967
+  static TelaInicial + #1048, #3967
+  static TelaInicial + #1049, #3967
+  static TelaInicial + #1050, #3967
+  static TelaInicial + #1051, #3967
+  static TelaInicial + #1052, #3967
+  static TelaInicial + #1053, #127
+  static TelaInicial + #1054, #2
+  static TelaInicial + #1055, #127
+  static TelaInicial + #1056, #2
+  static TelaInicial + #1057, #127
+  static TelaInicial + #1058, #14
+  static TelaInicial + #1059, #3967
+  static TelaInicial + #1060, #127
+  static TelaInicial + #1061, #14
+  static TelaInicial + #1062, #127
+  static TelaInicial + #1063, #127
+  static TelaInicial + #1064, #2
+  static TelaInicial + #1065, #6
+  static TelaInicial + #1066, #3967
+  static TelaInicial + #1067, #3967
+  static TelaInicial + #1068, #3967
+  static TelaInicial + #1069, #3967
+  static TelaInicial + #1070, #3967
+  static TelaInicial + #1071, #3967
+  static TelaInicial + #1072, #3967
+  static TelaInicial + #1073, #3967
+  static TelaInicial + #1074, #3967
+  static TelaInicial + #1075, #3967
+  static TelaInicial + #1076, #3967
+  static TelaInicial + #1077, #3967
+  static TelaInicial + #1078, #3967
+  static TelaInicial + #1079, #3967
+
+  ;Linha 27
+  static TelaInicial + #1080, #3967
+  static TelaInicial + #1081, #3967
+  static TelaInicial + #1082, #3967
+  static TelaInicial + #1083, #3967
+  static TelaInicial + #1084, #3967
+  static TelaInicial + #1085, #3967
+  static TelaInicial + #1086, #3967
+  static TelaInicial + #1087, #3967
+  static TelaInicial + #1088, #3967
+  static TelaInicial + #1089, #3967
+  static TelaInicial + #1090, #3967
+  static TelaInicial + #1091, #3967
+  static TelaInicial + #1092, #3967
+  static TelaInicial + #1093, #127
+  static TelaInicial + #1094, #2
+  static TelaInicial + #1095, #127
+  static TelaInicial + #1096, #2
+  static TelaInicial + #1097, #3967
+  static TelaInicial + #1098, #127
+  static TelaInicial + #1099, #14
+  static TelaInicial + #1100, #127
+  static TelaInicial + #1101, #6
+  static TelaInicial + #1102, #127
+  static TelaInicial + #1103, #127
+  static TelaInicial + #1104, #2
+  static TelaInicial + #1105, #0
+  static TelaInicial + #1106, #3967
+  static TelaInicial + #1107, #3967
+  static TelaInicial + #1108, #3967
+  static TelaInicial + #1109, #3967
+  static TelaInicial + #1110, #3967
+  static TelaInicial + #1111, #3967
+  static TelaInicial + #1112, #3967
+  static TelaInicial + #1113, #3967
+  static TelaInicial + #1114, #3967
+  static TelaInicial + #1115, #3967
+  static TelaInicial + #1116, #3967
+  static TelaInicial + #1117, #3967
+  static TelaInicial + #1118, #3967
+  static TelaInicial + #1119, #3967
+
+  ;Linha 28
+  static TelaInicial + #1120, #3967
+  static TelaInicial + #1121, #3967
+  static TelaInicial + #1122, #3967
+  static TelaInicial + #1123, #3967
+  static TelaInicial + #1124, #3967
+  static TelaInicial + #1125, #3967
+  static TelaInicial + #1126, #3967
+  static TelaInicial + #1127, #3967
+  static TelaInicial + #1128, #3967
+  static TelaInicial + #1129, #3967
+  static TelaInicial + #1130, #3967
+  static TelaInicial + #1131, #3967
+  static TelaInicial + #1132, #3967
+  static TelaInicial + #1133, #127
+  static TelaInicial + #1134, #3
+  static TelaInicial + #1135, #4
+  static TelaInicial + #1136, #4
+  static TelaInicial + #1137, #5
+  static TelaInicial + #1138, #3
+  static TelaInicial + #1139, #4
+  static TelaInicial + #1140, #4
+  static TelaInicial + #1141, #5
+  static TelaInicial + #1142, #4
+  static TelaInicial + #1143, #4
+  static TelaInicial + #1144, #2
+  static TelaInicial + #1145, #3967
+  static TelaInicial + #1146, #3967
+  static TelaInicial + #1147, #3967
+  static TelaInicial + #1148, #3967
+  static TelaInicial + #1149, #3967
+  static TelaInicial + #1150, #3967
+  static TelaInicial + #1151, #3967
+  static TelaInicial + #1152, #3967
+  static TelaInicial + #1153, #3967
+  static TelaInicial + #1154, #3967
+  static TelaInicial + #1155, #3967
+  static TelaInicial + #1156, #3967
+  static TelaInicial + #1157, #3967
+  static TelaInicial + #1158, #3967
+  static TelaInicial + #1159, #3967
+
+  ;Linha 29
+  static TelaInicial + #1160, #3967
+  static TelaInicial + #1161, #3967
+  static TelaInicial + #1162, #3967
+  static TelaInicial + #1163, #3967
+  static TelaInicial + #1164, #3967
+  static TelaInicial + #1165, #3967
+  static TelaInicial + #1166, #3967
+  static TelaInicial + #1167, #3967
+  static TelaInicial + #1168, #3967
+  static TelaInicial + #1169, #3967
+  static TelaInicial + #1170, #3967
+  static TelaInicial + #1171, #3967
+  static TelaInicial + #1172, #3967
+  static TelaInicial + #1173, #3967
+  static TelaInicial + #1174, #3967
+  static TelaInicial + #1175, #3967
+  static TelaInicial + #1176, #3967
+  static TelaInicial + #1177, #3967
+  static TelaInicial + #1178, #3967
+  static TelaInicial + #1179, #3967
+  static TelaInicial + #1180, #3967
+  static TelaInicial + #1181, #127
+  static TelaInicial + #1182, #127
+  static TelaInicial + #1183, #3967
+  static TelaInicial + #1184, #3967
+  static TelaInicial + #1185, #3967
+  static TelaInicial + #1186, #3967
+  static TelaInicial + #1187, #3967
+  static TelaInicial + #1188, #3967
+  static TelaInicial + #1189, #3967
+  static TelaInicial + #1190, #3967
+  static TelaInicial + #1191, #3967
+  static TelaInicial + #1192, #3967
+  static TelaInicial + #1193, #3967
+  static TelaInicial + #1194, #3967
+  static TelaInicial + #1195, #3967
+  static TelaInicial + #1196, #3967
+  static TelaInicial + #1197, #3967
+  static TelaInicial + #1198, #3967
+  static TelaInicial + #1199, #3967
+
+printTelaInicialScreen:
+  push R0
+  push R1
+  push R2
+  push R3
+
+  loadn R0, #TelaInicial
+  loadn R1, #0
+  loadn R2, #1200
+
+  printTelaInicialScreenLoop:
+
+    add R3,R0,R1
+    loadi R3, R3
+    outchar R3, R1
+    inc R1
+    cmp R1, R2
+
+    jne printTelaInicialScreenLoop
+
+  pop R3
+  pop R2
+  pop R1
+  pop R0
+  rts
+
+SalvadorenhoPosition : var #1
 
 Salvadorenho : var #90
   static Salvadorenho + #0, #1284 ; 
