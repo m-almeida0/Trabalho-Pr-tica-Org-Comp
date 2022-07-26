@@ -83,8 +83,8 @@ main:
 	loadn r2, #32
 	loadn r5, #255
 
-	loadn r1, #90
-	loadn r3, #115
+	loadn r1, #88
+	loadn r3, #232
 
 	store SalvadorenhoPosition, r1
 	store VilaozaozaoPosition, r3
