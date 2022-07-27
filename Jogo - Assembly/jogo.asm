@@ -999,7 +999,7 @@ fim_loop_batalha_derrota:
 
     call printVilaozaozao
 
-    halt
+    jmp loop_infinito
 
 fim_loop_batalha_vitoria:
     loadn r7, #255
@@ -1010,7 +1010,8 @@ fim_loop_batalha_vitoria:
 
     call printSalvadorenho
 
-    halt
+loop_infinito:
+    jmp loop_infinito
 
 ; Atualiza o valor do ATK na tela
 mostraATK:
