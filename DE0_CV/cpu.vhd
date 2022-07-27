@@ -509,8 +509,8 @@ begin
 				or(IR(6 downto 3) = "1010" and (FR(2 downto 0) = "100" or FR(2 downto 0) = "010"))--jump lesser than or equal
 				or(IR(6 downto 3) = "1011" and FR(5) = '1')--jump overflow
 				or(IR(6 downto 3) = "1100" and FR(5) = '0')--jump not overflow
-				or(IR(6 downto 3) = "1101" and FR(9) = '1')--jump negative
-				or(IR(6 downto 3) = "1110" and FR(6) = '1')--jump overflow
+				(IR(9 downto 6) = "1101" and FR(6) = '1') or -- DIV0
+				(IR(9 downto 6) = "1110" and FR(9) = '1')) then -- result negative
 				then
 					M4 := reg(RX);
 					M1 <= M4;
