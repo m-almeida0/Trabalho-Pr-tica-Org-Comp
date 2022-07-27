@@ -13,6 +13,14 @@
 
 ### Telas
 ![Tela Inicial](Imagens/comeco.jpeg)
+![Tela Status](Imagens/status.jpeg)
+![Tela Status Preenchida](Imagens/status_fim.jpeg)
+![Tela Inicial de Batalha](Imagens/batalha.jpeg)
+![Tela de Batalha para uso de Itens](Imagens/itens.jpeg)
+![Tela de Batalha para ataques](Imagens/ataques.jpeg)
+![Tela de Batalha Atacando](Imagens/atacando.jpeg)
+![Tela de Batalha sendo Atacado](Imagens/atacado.jpeg)
+![Tela de Derrota](Imagens/perdeu.jpeg)
 ### Vídeo do Jogo Funcionando
 
 ### Como o jogo funciona?
