@@ -22,6 +22,7 @@
 ![Tela de Batalha sendo Atacado](Imagens/atacado.jpeg)
 ![Tela de Derrota](Imagens/perdeu.jpeg)
 ### Vídeo do Jogo Funcionando
+[Link para o YouTube](https://www.youtube.com/watch?v=ndglzhwaIls)
 
 ### Como o jogo funciona?
   - Tela Inicial: Apenas para geração do RNG. Enquanto o jogador não pressiona espaço, um registrador é incrementado. Quando espaço for pressionado, o valor desse registrador é salvo em uma posição específica da memória e terá seu valor usado posteriormente
