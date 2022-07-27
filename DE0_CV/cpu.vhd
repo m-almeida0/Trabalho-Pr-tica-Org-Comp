@@ -130,12 +130,14 @@ process(clk, reset)
 	-- Mux dos barramentos de dados internos	
 	VARIABLE	M2				:STD_LOGIC_VECTOR(15 downto 0);	-- Mux dos barramentos de dados internos para os Registradores
 	VARIABLE M3, M4		:STD_LOGIC_VECTOR(15 downto 0);	-- Mux dos Registradores para as entradas da ULA
-	
+	VARIABLE M6         :STD_LOGIC_VECTOR(9 downto 0);	-- Mux do Flag Register
+
 	-- Novos Sinais da Versao 2: Controle dos registradores internos (Load-Inc-Dec)
 	variable LoadReg		: LoadRegisters; 
 	variable LoadIR		: std_LOGIC;
 	variable LoadMAR		: std_LOGIC;
 	variable LoadPC		: std_LOGIC;
+    --variable LoadFR     : std_logic;
 	variable IncPC 		: std_LOGIC;
 	VARIABLE LoadSP		: STD_LOGIC;
 	variable IncSP 		: std_LOGIC;
@@ -527,8 +529,14 @@ begin
 -- PUSH RX
 --========================================================================		
 			IF(IR(15 DOWNTO 10) = PUSH) THEN
+                if(IR(6) = '0') then
+				    M5 <= Reg(RX);
+                else
+                    M3 <= FR;
+                    M5 <= M3;
+                end if;
 				M1 <= SP;
-				M5 <= Reg(RX);
+				--M5 <= Reg(RX);
 				Rw <= '1';
 				DecSP := '1';
 				state := fetch;
@@ -717,9 +725,17 @@ begin
 -- EXEC POP RX/FR
 --========================================================================
 			IF(IR(15 DOWNTO 10) = POP) THEN
+                if(IR(6) = '0')
+				    selM2 := sMem;
+				    LoadReg(RX) := '1';
+                else
+                    selM6 := sMem;
+                    LoadFR := '1';
+                end if;
+
 				M1 <= SP;
-				selM2 := sMem;
-				LoadReg(RX) := '1';
+				--selM2 := sMem;
+				--LoadReg(RX) := '1';
 				RW <= '0';
 				state := fetch;
 			END IF;		
