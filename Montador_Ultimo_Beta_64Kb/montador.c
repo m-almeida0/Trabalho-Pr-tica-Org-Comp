@@ -1477,6 +1477,137 @@ void MontarInstrucoes(void)
                         end_cnt +=1;//incrementa o contador
                         free(str_tmp1);
                     break;
+                    
+                case JEQINDEX_CODE :
+                        str_tmp1 = parser_GetItem_s();//pega o nome do registrador
+                        val1 = BuscaRegistrador(str_tmp1);//pega o número do registrador
+                        free(str_tmp1); str_tmp1 = ConverteRegistrador(val1);//armazena o binários do registrador como string
+                        sprintf(str_msg,"%s%s%s000",JID,str_tmp1,COND_EQ);
+                        parser_Write_Inst(str_msg,end_cnt);//escreve str_msg no arquivo binário
+                        end_cnt +=1;//incrementa o contador
+                        free(str_tmp1);
+                    break;
+               
+               case JNEINDEX_CODE :
+                        str_tmp1 = parser_GetItem_s();//pega o nome do registrador
+                        val1 = BuscaRegistrador(str_tmp1);//pega o número do registrador
+                        free(str_tmp1); str_tmp1 = ConverteRegistrador(val1);//armazena o binários do registrador como string
+                        sprintf(str_msg,"%s%s%s000",JID,str_tmp1,COND_NE);
+                        parser_Write_Inst(str_msg,end_cnt);//escreve str_msg no arquivo binário
+                        end_cnt +=1;//incrementa o contador
+                        free(str_tmp1);
+                    break;
+               
+               case JZINDEX_CODE :
+                        str_tmp1 = parser_GetItem_s();//pega o nome do registrador
+                        val1 = BuscaRegistrador(str_tmp1);//pega o número do registrador
+                        free(str_tmp1); str_tmp1 = ConverteRegistrador(val1);//armazena o binários do registrador como string
+                        sprintf(str_msg,"%s%s%s000",JID,str_tmp1,COND_Z);
+                        parser_Write_Inst(str_msg,end_cnt);//escreve str_msg no arquivo binário
+                        end_cnt +=1;//incrementa o contador
+                        free(str_tmp1);
+                    break;
+               
+                    
+               case JNZINDEX_CODE :
+                        str_tmp1 = parser_GetItem_s();//pega o nome do registrador
+                        val1 = BuscaRegistrador(str_tmp1);//pega o número do registrador
+                        free(str_tmp1); str_tmp1 = ConverteRegistrador(val1);//armazena o binários do registrador como string
+                        sprintf(str_msg,"%s%s%s000",JID,str_tmp1,COND_NZ);
+                        parser_Write_Inst(str_msg,end_cnt);//escreve str_msg no arquivo binário
+                        end_cnt +=1;//incrementa o contador
+                        free(str_tmp1);
+                    break;
+                    
+               case JCINDEX_CODE :
+                        str_tmp1 = parser_GetItem_s();//pega o nome do registrador
+                        val1 = BuscaRegistrador(str_tmp1);//pega o número do registrador
+                        free(str_tmp1); str_tmp1 = ConverteRegistrador(val1);//armazena o binários do registrador como string
+                        sprintf(str_msg,"%s%s%s000",JID,str_tmp1,COND_C);
+                        parser_Write_Inst(str_msg,end_cnt);//escreve str_msg no arquivo binário
+                        end_cnt +=1;//incrementa o contador
+                        free(str_tmp1);
+                    break;
+                    
+               case JGTINDEX_CODE :
+                        str_tmp1 = parser_GetItem_s();//pega o nome do registrador
+                        val1 = BuscaRegistrador(str_tmp1);//pega o número do registrador
+                        free(str_tmp1); str_tmp1 = ConverteRegistrador(val1);//armazena o binários do registrador como string
+                        sprintf(str_msg,"%s%s%s000",JID,str_tmp1,COND_GT);
+                        parser_Write_Inst(str_msg,end_cnt);//escreve str_msg no arquivo binário
+                        end_cnt +=1;//incrementa o contador
+                        free(str_tmp1);
+                    break;
+                    
+               case JLTINDEX_CODE :
+                        str_tmp1 = parser_GetItem_s();//pega o nome do registrador
+                        val1 = BuscaRegistrador(str_tmp1);//pega o número do registrador
+                        free(str_tmp1); str_tmp1 = ConverteRegistrador(val1);//armazena o binários do registrador como string
+                        sprintf(str_msg,"%s%s%s000",JID,str_tmp1,COND_LT);
+                        parser_Write_Inst(str_msg,end_cnt);//escreve str_msg no arquivo binário
+                        end_cnt +=1;//incrementa o contador
+                        free(str_tmp1);
+                    break;
+                    
+               case JEGINDEX_CODE :
+                        str_tmp1 = parser_GetItem_s();//pega o nome do registrador
+                        val1 = BuscaRegistrador(str_tmp1);//pega o número do registrador
+                        free(str_tmp1); str_tmp1 = ConverteRegistrador(val1);//armazena o binários do registrador como string
+                        sprintf(str_msg,"%s%s%s000",JID,str_tmp1,COND_EG);
+                        parser_Write_Inst(str_msg,end_cnt);//escreve str_msg no arquivo binário
+                        end_cnt +=1;//incrementa o contador
+                        free(str_tmp1);
+                    break;
+                    
+               case JELINDEX_CODE :
+                        str_tmp1 = parser_GetItem_s();//pega o nome do registrador
+                        val1 = BuscaRegistrador(str_tmp1);//pega o número do registrador
+                        free(str_tmp1); str_tmp1 = ConverteRegistrador(val1);//armazena o binários do registrador como string
+                        sprintf(str_msg,"%s%s%s000",JID,str_tmp1,COND_EL);
+                        parser_Write_Inst(str_msg,end_cnt);//escreve str_msg no arquivo binário
+                        end_cnt +=1;//incrementa o contador
+                        free(str_tmp1);
+                    break;
+                    
+               case JOINDEX_CODE :
+                        str_tmp1 = parser_GetItem_s();//pega o nome do registrador
+                        val1 = BuscaRegistrador(str_tmp1);//pega o número do registrador
+                        free(str_tmp1); str_tmp1 = ConverteRegistrador(val1);//armazena o binários do registrador como string
+                        sprintf(str_msg,"%s%s%s000",JID,str_tmp1,COND_O);
+                        parser_Write_Inst(str_msg,end_cnt);//escreve str_msg no arquivo binário
+                        end_cnt +=1;//incrementa o contador
+                        free(str_tmp1);
+                    break;
+                    
+               case JNOINDEX_CODE :
+                        str_tmp1 = parser_GetItem_s();//pega o nome do registrador
+                        val1 = BuscaRegistrador(str_tmp1);//pega o número do registrador
+                        free(str_tmp1); str_tmp1 = ConverteRegistrador(val1);//armazena o binários do registrador como string
+                        sprintf(str_msg,"%s%s%s000",JID,str_tmp1,COND_NO);
+                        parser_Write_Inst(str_msg,end_cnt);//escreve str_msg no arquivo binário
+                        end_cnt +=1;//incrementa o contador
+                        free(str_tmp1);
+                    break;
+                    
+               case JDZINDEX_CODE :
+                        str_tmp1 = parser_GetItem_s();//pega o nome do registrador
+                        val1 = BuscaRegistrador(str_tmp1);//pega o número do registrador
+                        free(str_tmp1); str_tmp1 = ConverteRegistrador(val1);//armazena o binários do registrador como string
+                        sprintf(str_msg,"%s%s%s000",JID,str_tmp1,COND_DZ);
+                        parser_Write_Inst(str_msg,end_cnt);//escreve str_msg no arquivo binário
+                        end_cnt +=1;//incrementa o contador
+                        free(str_tmp1);
+                    break;
+                    
+               case JNINDEX_CODE :
+                        str_tmp1 = parser_GetItem_s();//pega o nome do registrador
+                        val1 = BuscaRegistrador(str_tmp1);//pega o número do registrador
+                        free(str_tmp1); str_tmp1 = ConverteRegistrador(val1);//armazena o binários do registrador como string
+                        sprintf(str_msg,"%s%s%s000",JID,str_tmp1,COND_N);
+                        parser_Write_Inst(str_msg,end_cnt);//escreve str_msg no arquivo binário
+                        end_cnt +=1;//incrementa o contador
+                        free(str_tmp1);
+                    break;
 
                 /* ==============		
                    Call End
