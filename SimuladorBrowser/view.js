@@ -201,7 +201,22 @@ function View (model, controller){
             case Mnemonicos.JID:
                     console.log("OI\n");
                     switch(model.pega_pedaco(ir,6,3)) {
-                        case 0: texto = "PC: " + pc + "&#09;|  JID R" +  _rx + "			|	PC <- MEM[R" + _rx + "]";
+                        case 0: texto = "PC: " + pc + "&#09;|  JID R" +  _rx + "			|	PC <- MEM[R" + _rx + "]"; break;
+                        case 1: texto = "PC: " + pc + "&#09;|  JIEQ R" +  _rx + "			|	PC <- MEM[R" + _rx + "]"; break;
+                        case 2: texto = "PC: " + pc + "&#09;|  JINE R" +  _rx + "			|	PC <- MEM[R" + _rx + "]"; break;
+                        case 3: texto = "PC: " + pc + "&#09;|  JIZ R" +  _rx + "			|	PC <- MEM[R" + _rx + "]"; break;
+                        case 4: texto = "PC: " + pc + "&#09;|  JINZ R" +  _rx + "			|	PC <- MEM[R" + _rx + "]"; break;
+                        case 5: texto = "PC: " + pc + "&#09;|  JIC R" +  _rx + "			|	PC <- MEM[R" + _rx + "]"; break;
+                        case 6: texto = "PC: " + pc + "&#09;|  JINC R" +  _rx + "			|	PC <- MEM[R" + _rx + "]"; break;
+                        case 7: texto = "PC: " + pc + "&#09;|  JIGR R" +  _rx + "			|	PC <- MEM[R" + _rx + "]"; break;
+                        case 8: texto = "PC: " + pc + "&#09;|  JILE R" +  _rx + "			|	PC <- MEM[R" + _rx + "]"; break;
+                        case 9: texto = "PC: " + pc + "&#09;|  JIEG R" +  _rx + "			|	PC <- MEM[R" + _rx + "]"; break;
+                        case 10:texto = "PC: " + pc + "&#09;|  JIEL R" +  _rx + "			|	PC <- MEM[R" + _rx + "]"; break;
+                        case 11:texto = "PC: " + pc + "&#09;|  JIOV R" +  _rx + "			|	PC <- MEM[R" + _rx + "]"; break;
+                        case 12:texto = "PC: " + pc + "&#09;|  JINOV R" +  _rx + "			|	PC <- MEM[R" + _rx + "]"; break;
+                        case 13:texto = "PC: " + pc + "&#09;|  JIN R" +  _rx + "			|	PC <- MEM[R" + _rx + "]"; break;
+                        case 14:texto = "PC: " + pc + "&#09;|  JIDZ R" +  _rx + "			|	PC <- MEM[R" + _rx + "]"; break;
+                        default: console.log("Erro. Instrucao inesperada em show_program");break;
                     }
                     break;
 
