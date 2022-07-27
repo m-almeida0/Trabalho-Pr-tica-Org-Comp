@@ -59,8 +59,27 @@ static ATKUP_INIMIGO + #0, #1
 DEFUP_INIMIGO: var #1
 static DEFUP_INIMIGO + #0, #1
 
-; Recebe a mensagem em r0 e a posição em r1
+; Mensagens para ações do jogador
+MENSAGEM_SOCOU: string "Voce Socou"
+MENSAGEM_CHUTOU: string "Voce Chutou"
+MENSAGEM_RELAMPAGO: string "Voce lancou um relampago"
+MENSAGEM_BOLA_DE_FOGO: string "Voce lancou uma bola de fogo"
+MENSAGEM_POCAO: string "Voce usou uma Pocao"
+MENSAGEM_ATKUP: string "Voce usou um ATKUP"
+MENSAGEM_DEFUP: string "Voce usou um DEFUP"
+
+; Mensagens para ações do inimigo
+MENSAGEM_SOCADO: string "Voce levou um Soco"
+MENSAGEM_CHUTADO: string "Voce levou um Chute"
+MENSAGEM_RELAMPAGADO: string "Voce foi acertado por um relampago"
+MENSAGEM_BOLA_DE_FOGADO: string "Voce foi acertado por uma bola de fogo"
+
+; Recebe a mensagem em r0 e imprime na posição 962
 imprime_mensagem:
+    push r1
+    push r2
+    
+    loadn r1, #962
 	loadn r2, #0 ; Comparador para encontrar \0
 
 loop_imprime_mensagem:
@@ -73,6 +92,8 @@ loop_imprime_mensagem:
 	jmp loop_imprime_mensagem
 
 fim_loop_imprime_mensagem:
+    pop r2
+    pop r1
 	rts
 
 ;---- Inicio do Programa Principal -----
@@ -666,6 +687,11 @@ inimigo_ataca:
     jeq bola_de_fogo_no_jogador
 
 usa_pocao:
+    call limpaTextoBatalha
+    loadn r0, #MENSAGEM_POCAO
+    call imprime_mensagem
+    call esperaEnter
+
     load r0, POCAO
     loadn r1, #0
 
@@ -685,6 +711,11 @@ usa_pocao:
     jmp decisao_inimigo
 
 usa_atk_up:
+    call limpaTextoBatalha
+    loadn r0, #MENSAGEM_ATKUP
+    call imprime_mensagem
+    call esperaEnter
+
     load r0, ATKUP
     loadn r1, #0
 
@@ -704,6 +735,11 @@ usa_atk_up:
     jmp decisao_inimigo
 
 usa_def_up:
+    call limpaTextoBatalha
+    loadn r0, #MENSAGEM_DEFUP
+    call imprime_mensagem
+    call esperaEnter
+
     load r0, DEFUP
     loadn r1, #0
 
@@ -724,6 +760,11 @@ usa_def_up:
 
 ; DANO = ATK - DEF_INIMIGO
 soco_no_inimigo:
+    call limpaTextoBatalha
+    loadn r0, #MENSAGEM_SOCOU
+    call imprime_mensagem
+    call esperaEnter
+
     load r0, HP_INIMIGO
     load r1, ATK
     load r2, DEF_INIMIGO
@@ -746,6 +787,11 @@ soco_no_inimigo:
     
 ; DANO = (2*ATK - DEF)/3
 chute_no_inimigo:
+    call limpaTextoBatalha
+    loadn r0, #MENSAGEM_CHUTOU
+    call imprime_mensagem
+    call esperaEnter
+
     load r0, HP_INIMIGO
     load r1, ATK
     loadn r3, #2
@@ -772,6 +818,11 @@ chute_no_inimigo:
 
 ; DANO = SPA - SPD
 relampago_no_inimigo:
+    call limpaTextoBatalha
+    loadn r0, #MENSAGEM_RELAMPAGO
+    call imprime_mensagem
+    call esperaEnter
+
     load r0, HP_INIMIGO
     load r1, SPA
     load r2, SPD_INIMIGO
@@ -794,6 +845,11 @@ relampago_no_inimigo:
 
 ; DANO = (2*SPA - SPD)/3
 bola_de_fogo_no_inimigo:
+    call limpaTextoBatalha
+    loadn r0, #MENSAGEM_BOLA_DE_FOGO
+    call imprime_mensagem
+    call esperaEnter
+
     load r0, HP_INIMIGO
     load r1, SPA
     loadn r3, #2
@@ -820,6 +876,11 @@ bola_de_fogo_no_inimigo:
 
 ; DANO = ATK_INIMIGO - DEF
 soco_no_jogador:
+    call limpaTextoBatalha
+    loadn r0, #MENSAGEM_SOCADO
+    call imprime_mensagem
+    call esperaEnter
+
     load r0, HP
     load r1, ATK_INIMIGO
     load r2, DEF
@@ -842,6 +903,11 @@ soco_no_jogador:
     
 ; DANO = (2*ATK_INIMIGO - DEF)/3
 chute_no_jogador:
+    call limpaTextoBatalha
+    loadn r0, #MENSAGEM_CHUTADO
+    call imprime_mensagem
+    call esperaEnter
+
     load r0, HP
     load r1, ATK_INIMIGO
     loadn r3, #2
@@ -868,6 +934,11 @@ chute_no_jogador:
 
 ; DANO = SPA - SPD
 relampago_no_jogador:
+    call limpaTextoBatalha
+    loadn r0, #MENSAGEM_RELAMPAGADO
+    call imprime_mensagem
+    call esperaEnter
+
     load r0, HP
     load r1, SPA_INIMIGO
     load r2, SPD
@@ -889,7 +960,12 @@ relampago_no_jogador:
     jmp batalha
 
 ; DANO = (2*SPA - SPD)/3
-bola_de_fogo_no_jogador:
+bola_de_fogo_no_jogador: 
+    call limpaTextoBatalha
+    loadn r0, #MENSAGEM_BOLA_DE_FOGADO
+    call imprime_mensagem
+    call esperaEnter
+
     load r0, HP
     load r1, SPA_INIMIGO
     loadn r3, #2
@@ -913,8 +989,6 @@ bola_de_fogo_no_jogador:
     store HP, r0
 
     jmp batalha
-
-
 
 fim_loop_batalha_derrota:
     loadn r7, #127
@@ -1120,6 +1194,47 @@ printNum:
     pop r3
     pop r2
 
+    rts
+
+limpaTextoBatalha:
+    push r0
+    push r1
+    push r2
+
+    loadn r0, #1200 ; Condição de Parada
+    loadn r1, #860 ; Iterador
+    loadn r2, #255 ; Caractere que será impresso
+
+loop_limpa_texto_batalha:
+    cmp r0, r1
+    jeq fim_loop_limpa_texto_batalha
+    
+    outchar r2, r1
+    inc r1
+    jmp loop_limpa_texto_batalha
+
+fim_loop_limpa_texto_batalha:
+    pop r2
+    pop r1
+    pop r0
+    rts
+
+esperaEnter:
+    push r0
+    push r1
+
+    loadn r0, #13 ; Condição de Parada ENTER
+
+loop_espera_enter:
+    inchar r1
+    
+    cmp r0, r1
+    jeq fim_espera_enter
+    jmp loop_espera_enter
+
+fim_espera_enter:
+    pop r1
+    pop r0
     rts
 
 DefineStatus : var #1200
