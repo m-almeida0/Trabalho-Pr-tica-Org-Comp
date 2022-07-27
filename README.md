@@ -12,7 +12,7 @@
   O jogo El ÉrrePêGê pretende ser um simulador de batalhas de um rpg por turnos simples. A seguir, temos as imagens de cada uma das telas do jogo e o vídeo demonstrando o jogo funcionando. Segue também um tutorial básico explicativo do jogo.
 
 ### Telas
-
+![Tela Inicial](Imagens/comeco.jpeg)
 ### Vídeo do Jogo Funcionando
 
 ### Como o jogo funciona?
