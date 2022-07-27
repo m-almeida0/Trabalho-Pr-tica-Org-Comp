@@ -25,7 +25,7 @@
 
 ### Como o jogo funciona?
   - Tela Inicial: Apenas para geração do RNG. Enquanto o jogador não pressiona espaço, um registrador é incrementado. Quando espaço for pressionado, o valor desse registrador é salvo em uma posição específica da memória e terá seu valor usado posteriormente
-  - Tela de Criação do Personagem: Na criação do personagem, o jogador poderá selecionar os status do seu personagem, além de usar moedas para comprar itens. Os status são: Ataque, Defesa, Ataque Especial, Defesa Especial, Velocidade e HP. Os itens são: Poção, Ataque UP (aumenta ataque), Defesa Up (aumenta defesa). Note que o jogador tem XX pontos e YY moedas. Para sair dessa tela, o jogador deve pressionar ENTER.
+  - Tela de Criação do Personagem: Na criação do personagem, o jogador poderá selecionar os status do seu personagem, além de usar moedas para comprar itens. Os status são: Ataque, Defesa, Ataque Especial, Defesa Especial, Velocidade e HP. Os itens são: Poção, Ataque UP (aumenta ataque), Defesa Up (aumenta defesa). Note que o jogador tem 90 pontos e 20 moedas. Para sair dessa tela, o jogador deve pressionar ENTER.
   - Tela de Batalha 1: Nessa Tela, o jogador tem a opção de Atacar, (que levará para a Tela de Batalha 2) e a opção de Usar Item (que levará para a Tela de Batalha 3).
   - Tela de Batalha 2: Nessa Tela, o jogador tem 4 opções:
     - Socar  (Ataque que causa ATK - DEF_INIMIGO de dano)
@@ -41,8 +41,8 @@
 
 ## Créditos e Agradecimentos
 Membros da Equipe:
-Antonio Italo Lima Lopes - N-USP 12542290
-Antonio Lucas Sales Cavalcante Barbosa - N-USP 12677529
-Marcos Patrício Nogueira Filho - N-USP 11819063
+- Antonio Italo Lima Lopes - N-USP 12542290
+- Antonio Lucas Sales Cavalcante Barbosa - N-USP 12677529
+- Marcos Patrício Nogueira Filho - N-USP 11819063
 
 Nós agradecemos especialmente ao professor Simões por nos dar a oportunidade de entender melhor na prática como criar um processador e como desenvolver softwares (no caso, jogos) usando assembly. Além disso, queríamos agradecer também aos criadores do projeto [Create Screens In Assembly With Python](https://github.com/GustavoSelhorstMarconi/Create-Screens-in-Assembly-with-python), que foi essencial na criação das telas do nosso jogo.
