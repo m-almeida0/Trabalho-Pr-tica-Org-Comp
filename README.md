@@ -1,6 +1,6 @@
 # Trabalho-Prática-Org-Comp
 ## Modificações na CPU
-  Nossa CPU implementa uma instrução extra chamada Jump Indexed. Essa instrução é basicamente equivalente a instrução Jump, mas recebe um registrador ao invés de um valor imediato. Atualmente, essa instrução é utilizada no nosso jogo para implementar uma estrutura de switch/case com uma Jump Table.
+  Nossa CPU implementa uma instrução extra chamada Jump Indexed. Essa instrução é basicamente equivalente a instrução Jump, mas recebe um valor indexado por um registrador ao invés de um valor imediato, ou seja, nessa instrução PC = MEM(RX). Atualmente, essa instrução é utilizada no nosso jogo para implementar uma estrutura de switch/case com uma Jump Table.
 
 ## Modificações no Montador
   A unica modificação que realizamos até o momento no montador foi a adição da nossa instrução de Jump Indexado
