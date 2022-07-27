@@ -38,3 +38,11 @@
     - ATKUP (Se tiver algum, ganha 5 de Ataque)
     - DEFUP (Se tiver algum, ganha 5 de Defesa)
     - Voltar (Volta para a Tela de Batalha 1)
+
+## Créditos e Agradecimentos
+Membros da Equipe:
+Antonio Italo Lima Lopes - N-USP 12542290
+Antonio Lucas Sales Cavalcante Barbosa - N-USP 12677529
+Marcos Patrício Nogueira Filho - N-USP 11819063
+
+Nós agradecemos especialmente ao professor Simões por nos dar a oportunidade de entender melhor na prática como criar um processador e como desenvolver softwares (no caso, jogos) usando assembly. Além disso, queríamos agradecer também aos criadores do projeto [Create Screens In Assembly With Python](https://github.com/GustavoSelhorstMarconi/Create-Screens-in-Assembly-with-python), que foi essencial na criação das telas do nosso jogo.
