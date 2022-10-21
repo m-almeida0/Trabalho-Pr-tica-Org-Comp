@@ -510,7 +510,7 @@ begin
 				or(IR(6 downto 3) = "1011" and FR(5) = '1')--jump overflow
 				or(IR(6 downto 3) = "1100" and FR(5) = '0')--jump not overflow
 				(IR(9 downto 6) = "1101" and FR(6) = '1') or -- DIV0
-				(IR(9 downto 6) = "1110" and FR(9) = '1')) then -- result negative
+				(IR(9 downto 6) = "1110" and FR(9) = '1')) -- result negative
 				then
 					M4 := reg(RX);
 					M1 <= M4;
